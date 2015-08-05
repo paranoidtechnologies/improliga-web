@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
     // autoWatch, it works enabled or not. Probably defined by singleRun.
     basePath: '',
-    browsers: ['ChromeSmall'],
+    browsers: ['PhantomJS'],
     coverageReporter: process.env.CONTINUOUS_INTEGRATION ? {
       type: 'lcov',
       dir: 'coverage/'

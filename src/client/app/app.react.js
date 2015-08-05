@@ -1,6 +1,5 @@
 import './app.styl';
 import Component from '../components/component.react';
-import Footer from './footer.react';
 import Header from './header.react';
 import React from 'react';
 import flux from '../lib/flux';
@@ -8,10 +7,7 @@ import store from './store';
 import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
 
-import * as authActions from '../auth/actions';
-import * as todosActions from '../todos/actions';
-
-const actions = [authActions, todosActions];
+const actions = [];
 
 @flux(store)
 export default class App extends Component {
@@ -38,14 +34,12 @@ export default class App extends Component {
 
   render() {
     const props = {...this.props, actions: this.actions};
-    const {users: {viewer}, msg} = props;
+    const {users: msg} = props;
 
     return (
       <div className="page">
-        {/* Pass only what's needed. Law of Demeter ftw. */}
-        <Header msg={msg} viewer={viewer} />
+        <Header msg={this.props.msg} />
         <RouteHandler {...props} />
-        <Footer msg={msg} />
       </div>
     );
   }

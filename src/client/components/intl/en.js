@@ -7,5 +7,10 @@ export default {
     header: 'This page isn\'t available',
     message: 'The link may be broken, or the page may have been removed.',
     title: 'Page Not Found'
+  },
+
+  menu: {
+    about: 'About Improliga',
+    teams: 'Teams'
   }
 };
