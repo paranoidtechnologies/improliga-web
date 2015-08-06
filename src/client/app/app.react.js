@@ -1,5 +1,4 @@
-import './app.styl';
-import './styles/animations.styl';
+import './styles/page.styl';
 import Component from '../components/component.react';
 import Header from './header.react';
 import React from 'react';
@@ -34,7 +33,6 @@ export default class App extends Component {
 
   render() {
     const props = {...this.props, actions: this.actions};
-    const {users: msg} = props;
 
     return (
       <div className="page">

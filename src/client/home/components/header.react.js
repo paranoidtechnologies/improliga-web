@@ -5,13 +5,17 @@ import Logo from './logo.react';
 import './header.styl';
 
 export default class Header extends Component {
+  static propTypes = {
+    msg: React.PropTypes.object.isRequired
+  }
+
   render() {
     const msg = this.props.msg;
 
     return (
       <div className="ui-section site-header">
         <div className="ui-section-inner-wrapper">
-          <Link to="o-improlize">{msg.about}</Link>
+          <Link title={msg.what} to="o-improlize" />
           <Logo msg={msg} />
         </div>
       </div>

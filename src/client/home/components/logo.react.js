@@ -3,6 +3,10 @@ import React from 'react';
 import './logo.styl';
 
 export default class Logo extends Component {
+  static propTypes = {
+    msg: React.PropTypes.object.isRequired
+  }
+
   render() {
     var msg = this.props.msg;
 
@@ -12,7 +16,7 @@ export default class Logo extends Component {
         <div className="ripple-hover site-logo-ripple-hover" />
         <div className="site-logo-icon" />
         <div className="site-logo-text">
-          <div className="site-logo-name-title">{msg.site.title}</div>
+          <h1 className="site-logo-name-title">{msg.site.title}</h1>
           <div className="site-logo-name-desc">{msg.site.desc}</div>
         </div>
       </div>

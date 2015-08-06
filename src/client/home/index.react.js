@@ -1,9 +1,7 @@
 import Component from '../components/component.react';
-import DocumentTitle from 'react-document-title';
 import React from 'react';
-import {FormattedHTMLMessage} from 'react-intl';
-import {Link} from 'react-router';
 import Header from './components/header.react';
+import About from './components/about.react';
 
 export default class Index extends Component {
 
@@ -17,8 +15,10 @@ export default class Index extends Component {
     return (
       <div className="page-home">
         <Header msg={msg} />
+        <About msg={msg} />
       </div>
     );
   }
 
 }
+

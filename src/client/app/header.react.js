@@ -1,8 +1,6 @@
 import Component from '../components/component.react';
 import Menu from '../components/public/menu.react';
 import React from 'react';
-import {FormattedHTMLMessage} from 'react-intl';
-import {Link} from 'react-router';
 
 export default class Header extends Component {
 
@@ -16,7 +14,6 @@ export default class Header extends Component {
 
     return (
       <header>
-        <h1>Hello</h1>
         <Menu msg={menu} />
       </header>
     );

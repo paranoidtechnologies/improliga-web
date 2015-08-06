@@ -1,10 +1,13 @@
 import Component from '../component.react';
 import './menu.styl';
 import React from 'react';
-import {FormattedHTMLMessage} from 'react-intl';
 import {Link} from 'react-router';
 
 export default class Menu extends Component {
+  static propTypes = {
+    msg: React.PropTypes.object.isRequired
+  }
+
   render() {
     const msg = this.props.msg;
 
