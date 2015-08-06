@@ -1,4 +1,5 @@
 import './app.styl';
+import './styles/animations.styl';
 import Component from '../components/component.react';
 import Header from './header.react';
 import React from 'react';
@@ -14,8 +15,7 @@ export default class App extends Component {
 
   static propTypes = {
     flux: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    users: React.PropTypes.object.isRequired
+    msg: React.PropTypes.object.isRequired
   }
 
   componentWillMount() {

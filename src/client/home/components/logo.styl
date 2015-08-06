@@ -1,0 +1,57 @@
+@import '../../app/styles/animations.styl'
+@import '../../app/styles/vars.styl'
+
+.site-logo
+	display block
+	margin 0 auto
+	position relative
+	width 264px
+
+	.site-logo-icon
+		background url(/assets/pixmaps/home/logo.png) left top no-repeat
+		display block
+		height 264px
+		margin 0 auto 20px
+		position relative
+		width 264px
+
+	.ripple,
+	.ripple-hover
+		fix-animation(anim-ripple 2s linear infinite)
+		border 1px solid #fff
+		border-radius 264px
+		height 528px
+		left -132px
+		position absolute
+		top -132px
+		width 528px
+
+	.ripple-hover
+		display none
+
+	.site-logo-text
+		user-select-none()
+		color white-full
+		cursor default
+		margin 0 auto
+		text-align center
+		text-shadow 0 0 3px #000, 0 0 6px #000
+
+	.site-logo-name-title
+		font-size 34px
+		font-weight 600
+		line-height 42px
+		margin-bottom 2px
+		text-transform uppercase
+
+	.logo-name-desc
+		font-size 18px
+		font-weight 400
+		line-height 24px
+
+	&:hover
+		text-decoration none
+
+		.ripple-hover
+			display block
+			fix-animation(anim-ripple 1s linear infinite)

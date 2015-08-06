@@ -3,6 +3,7 @@ import DocumentTitle from 'react-document-title';
 import React from 'react';
 import {FormattedHTMLMessage} from 'react-intl';
 import {Link} from 'react-router';
+import Header from './components/header.react';
 
 export default class Index extends Component {
 
@@ -14,13 +15,9 @@ export default class Index extends Component {
     const {msg: {home: msg}} = this.props;
 
     return (
-      <DocumentTitle title={msg.title}>
-        <div className="home-page">
-          <p>
-            <FormattedHTMLMessage message={msg.infoHtml} />{' '}
-          </p>
-        </div>
-      </DocumentTitle>
+      <div className="page-home">
+        <Header msg={msg} />
+      </div>
     );
   }
 
