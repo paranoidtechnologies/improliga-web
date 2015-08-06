@@ -1,0 +1,108 @@
+black-fg = #000
+black-bg = black-fg
+black-dirt-bg = #030303
+black-fade-bg = rgba(0,0,0,.4)
+black-dimm-bg = rgba(0,0,0,.95)
+
+gray-bg = #111
+gray-sep = #333
+
+red-fg = #b82429
+
+white-full = #fff
+white-normal = #dadada
+white-fg = white-normal
+white-dimm = rgba(255,255,255,.8)
+white-dimm-bg = rgba(255,255,255,.75)
+
+yellow-fg = #EFC800
+yellow-bg = yellow-fg
+
+col-text = white-normal
+col-link = yellow-fg
+
+col-button-border = rgba(239,200,0,.25)
+col-button-fg = white-normal
+
+col-button-bg-highlight = rgba(255,255,255,0.05)
+col-button-fg-highlight = white-full
+
+col-section-bg = #111
+
+box-padding = 20px 30px
+box-border-radius = 5px
+
+speed-slow = .5s
+speed-neutral = .3s
+speed-fast = .2s
+
+
+
+fix-transition(time = speed-fast, mode = linear)
+  -webkit-transition all time mode
+  -moz-transition all time mode
+  -o-transition all time mode
+  -ms-transition all time mode
+  transition all time mode
+
+
+box()
+  padding box-padding
+  background black-dimm-bg
+  border-radius box-border-radius
+
+circle(w, rh = 3, rv = 4)
+  border-radius w
+  height w - w/rv
+  padding w/rv/2 w/rh/2
+  width w - w/rh
+
+
+fix-animation(animate)
+  -ms-animation animate
+  -webkit-animation animate
+  -moz-animation animate
+  animation animate
+
+
+user-select-none()
+  -moz-user-select none
+  -webkit-user-select none
+  -o-user-select none
+  -ms-user-select none
+  user-select none
+
+
+dirt()
+  fix-transition(speed-slow)
+
+  background black-dirt-bg
+  border-radius box-border-radius
+  padding 15px
+
+  & hover
+    background gray-bg
+
+ui()
+  fix-transition(.2s)
+  cursor pointer
+
+
+active-ui()
+  ui()
+  opacity .5
+
+  & hover
+    opacity 1
+
+ui-button()
+  ui()
+
+  border-bottom 1px solid col-button-border
+  color col-button-fg
+  padding 10px 15px
+
+  & hover
+    background col-button-bg-highlight
+    border-color col-button-fg-highlight
+    color col-button-fg-highlight

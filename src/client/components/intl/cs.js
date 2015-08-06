@@ -1,5 +1,6 @@
 export default {
   menu: {
+    home: 'Úvod',
     about: 'O Improlize',
     contacts: 'Kontakty',
     media: 'Média o Improlize',
