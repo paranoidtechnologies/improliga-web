@@ -4,7 +4,7 @@ import List from './browser/list.react';
 
 export default class Browser extends Component {
   static propTypes = {
-    draw: React.PropTypes.object.isRequired
+    draw: React.PropTypes.func.isRequired
   }
 
   state = {
