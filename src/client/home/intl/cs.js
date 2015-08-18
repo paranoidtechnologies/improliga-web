@@ -1,4 +1,5 @@
 export default {
+  title: 'Improliga - divadlo jako hokejový zápas',
   what: 'Co je Improliga',
 
   site: {
