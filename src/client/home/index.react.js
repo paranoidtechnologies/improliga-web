@@ -2,6 +2,7 @@ import Component from '../components/component.react';
 import React from 'react';
 import Header from './components/header.react';
 import About from './components/about.react';
+import Shows from './shows/index.react';
 
 export default class Index extends Component {
 
@@ -16,9 +17,9 @@ export default class Index extends Component {
       <div className="page-home">
         <Header msg={msg} />
         <About msg={msg} />
+        <Shows msg={msg} />
       </div>
     );
   }
 
 }
-
