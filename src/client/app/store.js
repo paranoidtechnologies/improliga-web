@@ -1,5 +1,6 @@
 import immutable from 'immutable';
 
+import showsStore from '../home/shows/store';
 import intlStore from '../intl/store';
 
 export default function(state, action, payload) {
@@ -8,14 +9,13 @@ export default function(state, action, payload) {
 
   // Btw, this can be refactored, but leaving it explicit for now.
   state = state
-    .update('intl', (s) => intlStore(s, action, payload));
+    .update('intl', (s) => intlStore(s, action, payload))
+    .update('shows', (s) => showsStore(s, action, payload));
 
   // We can reduce and compose stores. Note we don't need no waitFor.
   state = state
     // Reduced store.
     .update('msg', (s) => state.get('intl').messages);
-    // Composed store example:
-    // .update('foo', (s) => fooStore(s, state.get('auth'), action, payload));
 
   return state;
 }
