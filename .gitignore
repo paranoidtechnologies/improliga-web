@@ -6,4 +6,5 @@ build
 coverage
 dist
 node_modules
+/conf
 npm-debug.log

@@ -8,11 +8,9 @@ import ReactAsync from 'react-async';
 export default class Shows extends Browser {
   static mixins = [ReactAsync.Mixin];
 
-  getInitialStateAsync(next) {
-    console.log('asdf');
-    return props.actions.loadEvents();
+  componentDidMount(next) {
+    return this.props.actions.loadEvents();
   }
-
 
   static defaultProps = {
     draw: Event

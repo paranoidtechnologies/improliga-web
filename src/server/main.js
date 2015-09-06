@@ -9,7 +9,7 @@ const app = express();
 const server = Server(app);
 
 // Load API.
-app.use('/api/v1', api);
+app.use('/api/1', api);
 
 // Load react-js frontend.
 app.use(frontend);

@@ -5,7 +5,6 @@ import Dispatcher from './dispatcher';
 export default class Api {
   static timeout = 10000;
   static pending = {};
-  static host = 'api.improvanywhere.org.local';
 
   static abortRequests(key) {
     if (this.pending[key]) {
@@ -41,7 +40,7 @@ export default class Api {
 
   static get(url) {
     return request
-      .get('http://' + this.host + url)
+      .get(url)
       .set('Accept', 'application/json')
       .timeout(this.TIMEOUT)
       .query();

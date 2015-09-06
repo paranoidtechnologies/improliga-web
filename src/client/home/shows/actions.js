@@ -6,7 +6,7 @@ export const feature = 'shows';
 export function create(dispatch, validate) {
   return {
     loadEvents() {
-      Api.fetch('/api/model/Impro.Event/browse', feature, {}, function(a, res) {
+      Api.fetch('/api/1/events/shows', feature, {}, function(a, res) {
         dispatch(actions.loadEvents, res.body.data);
       });
     }
