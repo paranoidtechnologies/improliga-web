@@ -16,7 +16,7 @@ export default function(state = initialState, action, payload) {
   switch (action) {
 
     case actions.loadEvents:
-      return state.set('list', payload);
+      return state.set('list', payload ? payload.list:[]);
   }
 
   return state;

@@ -7,11 +7,16 @@ import {DefaultRoute, NotFoundRoute, Route} from 'react-router';
 export default (
   <Route handler={App} path="/">
     <DefaultRoute handler={Home} name="home" />
+
+    <Route handler={Home} name="about" path="/o-improlize" />
+    <Route handler={Home} name="shows" path="/predstaveni">
+      <Route handler={NotFound} name="show" path="/predstaveni/:showId" />
+    </Route>
+
+    <Route handler={Home} name="teams" path="/tymy" />
+    <Route handler={Home} name="workshops" path="/workshopy" />
+    <Route handler={Home} name="contact" path="/kontakty" />
+
     <NotFoundRoute handler={NotFound} name="not-found" />
-    <Route handler={NotFound} name="kontakty" />
-    <Route handler={NotFound} name="o-improlize" />
-    <Route handler={NotFound} name="predstaveni" />
-    <Route handler={NotFound} name="tymy" />
-    <Route handler={NotFound} name="workshopy" />
   </Route>
 );

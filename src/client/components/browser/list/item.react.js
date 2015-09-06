@@ -8,7 +8,6 @@ export default class Item extends Component {
   }
 
   render() {
-    var comp = React.createElement(this.props.draw, this.props.item);
-    return (<div className="ui-browser-list-item">{comp}</div>);
+    return React.createElement(this.props.draw, this.props.item);
   }
 };

@@ -16,11 +16,11 @@ export default class Menu extends Component {
         <div className="site-menu-center">
           <ul className="site-menu-inner">
             <li><Link to="home">{msg.home}</Link></li>
-            <li><Link to="o-improlize">{msg.about}</Link></li>
-            <li><Link to="predstaveni">{msg.shows}</Link></li>
-            <li><Link to="tymy">{msg.teams}</Link></li>
-            <li><Link to="workshopy">{msg.workshops}</Link></li>
-            <li><Link to="kontakty">{msg.contacts}</Link></li>
+            <li><Link to="about">{msg.about}</Link></li>
+            <li><Link to="shows">{msg.shows}</Link></li>
+            <li><Link to="teams">{msg.teams}</Link></li>
+            <li><Link to="workshops">{msg.workshops}</Link></li>
+            <li><Link to="contact">{msg.contacts}</Link></li>
           </ul>
         </div>
       </div>

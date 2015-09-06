@@ -1,6 +1,4 @@
 import request from 'superagent';
-import constants from './constants';
-import Dispatcher from './dispatcher';
 
 export default class Api {
   static timeout = 10000;
@@ -8,23 +6,16 @@ export default class Api {
 
   static abortRequests(key) {
     if (this.pending[key]) {
-      this.pending[key].callback = function(){};
+      this.pending[key].callback = function() { };
       this.pending[key].abort();
       this.pending[key] = null;
     }
   }
 
-  static dispatch(key, response, params) {
-    var payload = {actionType: key, response: response};
-
-    if (params) {
-      payload.queryParams = params;
-    }
-
-    Dispatcher.dispatch(payload);
-  }
-
   static fetch(url, key, params, callback) {
+    const self = this;
+
+    console.log('fetch', url);
     if (typeof params === 'undefined' || !params) {
       params = {};
     }
@@ -34,8 +25,10 @@ export default class Api {
     }
 
     this.abortRequests(key);
-    //~ this.dispatch(key, constants.request.PENDING, params);
-    this.pending[key] = this.get(url).end(callback);
+    this.pending[key] = this.get(url).end(function(err, res) {
+      delete self.pending[key];
+      callback(err, res);
+    });
   }
 
   static get(url) {

@@ -1,5 +1,6 @@
 import Component from '../../components/component.react';
 import React from 'react';
+import {Link} from 'react-router';
 import './logo.styl';
 
 export default class Logo extends Component {
@@ -11,7 +12,7 @@ export default class Logo extends Component {
     var msg = this.props.msg;
 
     return (
-      <div className="ui-ripple site-logo">
+      <Link to="shows" className="ui-ripple site-logo">
         <div className="ripple site-logo-ripple" />
         <div className="ripple-hover site-logo-ripple-hover" />
         <div className="site-logo-icon" />
@@ -19,7 +20,7 @@ export default class Logo extends Component {
           <h1 className="site-logo-name-title">{msg.site.title}</h1>
           <div className="site-logo-name-desc">{msg.site.desc}</div>
         </div>
-      </div>
+      </Link>
     );
   }
 };

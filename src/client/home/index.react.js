@@ -3,7 +3,7 @@ import DocumentTitle from 'react-document-title';
 import React from 'react';
 import Header from './components/header.react';
 import About from './components/about.react';
-import Shows from './shows/index.react';
+import Shows from './components/shows.react';
 
 export default class Index extends Component {
 
@@ -13,7 +13,6 @@ export default class Index extends Component {
 
   render() {
     const {
-      donkey: donkey,
       msg: {home: msg},
       actions: {shows: actions},
       shows: shows
@@ -24,7 +23,7 @@ export default class Index extends Component {
         <div className="page-home">
           <Header msg={msg} />
           <About msg={msg} />
-          <Shows actions={actions} donkey={donkey} items={shows.list} msg={msg} />
+          <Shows actions={actions} msg={msg} shows={shows} />
         </div>
       </DocumentTitle>
     );

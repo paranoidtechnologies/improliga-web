@@ -1,14 +1,14 @@
 import Browser from '../../components/browser';
 import Event from '../../components/event.react';
 import React from 'react';
-import Rx from 'rx';
-import ReactAsync from 'react-async';
 
+export default class ShowsBrowser extends Browser {
+  static propTypes = {
+    actions: React.PropTypes.object.isRequired,
+    items: React.PropTypes.array.isRequired
+  }
 
-export default class Shows extends Browser {
-  static mixins = [ReactAsync.Mixin];
-
-  componentDidMount(next) {
+  componentDidMount(next) {
     return this.props.actions.loadEvents();
   }
 

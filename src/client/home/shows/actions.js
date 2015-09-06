@@ -6,8 +6,12 @@ export const feature = 'shows';
 export function create(dispatch, validate) {
   return {
     loadEvents() {
-      Api.fetch('/api/1/events/shows', feature, {}, function(a, res) {
-        dispatch(actions.loadEvents, res.body.data);
+      Api.fetch('/api/1/events/shows', feature, {}, function(err, res) {
+        console.log('actions', err, res);
+
+        dispatch(actions.loadEvents, {
+          list: res.body.data
+        });
       });
     }
   };

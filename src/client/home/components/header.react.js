@@ -15,7 +15,7 @@ export default class Header extends Component {
     return (
       <div className="ui-section site-header">
         <div className="ui-section-inner-wrapper">
-          <Link title={msg.what} to="o-improlize" />
+          <Link title={msg.what} to="about" />
           <Logo msg={msg} />
         </div>
       </div>

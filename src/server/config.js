@@ -1,12 +1,13 @@
 var nconf = require('nconf');
 var fs = require('fs');
+var path = require('path');
 
 // Specifying an env delimiter allows you to override below config when shipping to production server
 // by e.g. defining piping__ignore or version variables.
 nconf.env('__');
 
 var config = {
-  api: {
+  api: {
     host: 'api.improvanywhere.org'
   },
   appLocales: ['en', 'cs'],
@@ -29,7 +30,7 @@ var config = {
 // Check out nconf docs for fancier examples
 nconf.defaults(config);
 
-const override = fs.realpathSync(__dirname + '../../../conf/' + process.env.IMPROLIGA_ENV + '.json');
+const override = fs.realpathSync(path.join('conf', process.env.IMPROLIGA_ENV + '.json'));
 nconf.file('env', override);
 
 module.exports = nconf.get();

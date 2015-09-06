@@ -5,7 +5,7 @@ import Item from './list/item.react';
 export default class List extends Component {
   static propTypes = {
     draw: React.PropTypes.func.isRequired,
-    items: React.PropTypes.any.isRequired
+    items: React.PropTypes.array
   }
 
   state = {
