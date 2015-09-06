@@ -12,14 +12,19 @@ export default class Index extends Component {
   }
 
   render() {
-    const {msg: {home: msg}} = this.props;
+    const {
+      donkey: donkey,
+      msg: {home: msg},
+      actions: {shows: actions},
+      shows: shows
+    } = this.props;
 
     return (
       <DocumentTitle title={msg.title}>
         <div className="page-home">
           <Header msg={msg} />
           <About msg={msg} />
-          <Shows msg={msg} />
+          <Shows actions={actions} donkey={donkey} items={shows.list} msg={msg} />
         </div>
       </DocumentTitle>
     );

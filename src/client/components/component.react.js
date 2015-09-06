@@ -11,6 +11,7 @@ export default class Component extends React.Component {
     router: React.PropTypes.func
   }
 
+
   shouldComponentUpdate(nextProps, nextState) {
     // This hack will be removed with react-router 1.0.0.
     if (this.context.router) {

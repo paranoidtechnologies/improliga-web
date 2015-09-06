@@ -7,7 +7,9 @@ import store from './store';
 import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
 
-const actions = [];
+import * as showsActions from '../home/shows/actions';
+
+const actions = [showsActions];
 
 @flux(store)
 export default class App extends Component {
@@ -23,11 +25,18 @@ export default class App extends Component {
 
   createActions() {
     const {flux, msg} = this.props;
-    const validate = createValidate(msg);
-    this.actions = actions.reduce((actions, {feature, create}) => {
-      const dispatch = (action, payload) => flux.dispatch(action, payload, {feature});
-      const featureActions = create(dispatch, validate, msg[feature]);
-      return {...actions, [feature]: featureActions};
+    const state = () => flux.state.toObject();
+    const validate = createValidate(() => msg);
+
+    this.actions = actions.reduce((actions, {create, feature, inject}) => {
+      const dispatch = (action, payload) => {
+        flux.dispatch(action, payload, {feature});
+      }
+
+      const deps = [dispatch, validate, state];
+      const args = inject ? inject(...deps) : deps;
+      return {...actions, [feature]: create(...args)};
+
     }, {});
   }
 

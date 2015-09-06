@@ -5,17 +5,17 @@ import Dispatcher from './dispatcher';
 export default class Api {
   static timeout = 10000;
   static pending = {};
+  static host = 'api.improvanywhere.org.local';
 
-  abortRequest(key) {
-    if (pending[key]) {
-      pending[key].callback = function(){};
-      pending[key].abort();
-      pending[key] = null;
+  static abortRequests(key) {
+    if (this.pending[key]) {
+      this.pending[key].callback = function(){};
+      this.pending[key].abort();
+      this.pending[key] = null;
     }
   }
 
-
-  dispatch(key, response, params) {
+  static dispatch(key, response, params) {
     var payload = {actionType: key, response: response};
 
     if (params) {
@@ -25,8 +25,7 @@ export default class Api {
     Dispatcher.dispatch(payload);
   }
 
-
-  fetch(url, key, params, callback) {
+  static fetch(url, key, params, callback) {
     if (typeof params === 'undefined' || !params) {
       params = {};
     }
@@ -36,14 +35,13 @@ export default class Api {
     }
 
     this.abortRequests(key);
-    this.dispatch(key, constants.request.PENDING, params);
-    pending[key] = get(url).end(callback);
+    //~ this.dispatch(key, constants.request.PENDING, params);
+    this.pending[key] = this.get(url).end(callback);
   }
 
-
-  get(url) {
+  static get(url) {
     return request
-      .get(url)
+      .get('http://' + this.host + url)
       .set('Accept', 'application/json')
       .timeout(this.TIMEOUT)
       .query();

@@ -1,8 +1,7 @@
 import Event from '../../models/event';
-import {Range, Record} from 'immutable';
+import {Record} from 'immutable';
 import {actions} from './actions';
 
-// Records are good. https://facebook.github.io/immutable-js/docs/#/Record
 const initialState = new (Record({
   list: []
 }));
@@ -16,18 +15,8 @@ export default function(state = initialState, action, payload) {
 
   switch (action) {
 
-    case actions.addTodo:
-      return state
-        .update('list', list => {
-          const newTodo = payload.merge({id: getRandomString()});
-          return list.push(newTodo);
-        })
-        .set('newTodo', new Todo);
-
-    case actions.clearAll:
-      return state
-        .update('list', list => list.clear())
-        .set('newTodo', new Todo);
+    case actions.loadEvents:
+      return state.set('list', payload);
   }
 
   return state;

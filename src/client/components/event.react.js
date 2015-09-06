@@ -6,13 +6,15 @@ export default class Event extends Component {
   state = {};
 
   render() {
-    <div class="ui-event">
-      <div class="ui-event-info">
-        <div class="ui-event-title">{this.state.name}</div>
-        <div class="ui-event-desc"></div>
+    const {name} = this.props;
+
+    return (<div className="ui-event">
+      <div className="ui-event-info">
+        <div className="ui-event-title">{name}</div>
+        <div className="ui-event-desc"></div>
       </div>
 
-      <div class="ui-event-image"></div>
-    </div>
+      <div className="ui-event-image"></div>
+    </div>);
   }
 };

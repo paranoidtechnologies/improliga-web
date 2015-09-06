@@ -1,4 +1,3 @@
-// import Examples from './examples/page.react';
 import App from './app/app.react';
 import Home from './home/index.react';
 import NotFound from './components/notfound.react';
