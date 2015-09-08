@@ -1,11 +1,15 @@
 import Browser from '../../components/browser';
 import Event from '../../components/event.react';
 import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class ShowsBrowser extends Browser {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    items: React.PropTypes.array.isRequired
+    items: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      ImmutablePropTypes.list
+    ])
   }
 
   componentDidMount(next) {

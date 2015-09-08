@@ -1,11 +1,15 @@
 import Component from '../component.react';
 import React from 'react';
 import Item from './list/item.react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class List extends Component {
   static propTypes = {
     draw: React.PropTypes.func.isRequired,
-    items: React.PropTypes.array
+    items: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      ImmutablePropTypes.list
+    ])
   }
 
   state = {

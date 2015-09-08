@@ -10,6 +10,7 @@ export default {
     home: 'Úvod',
     about: 'O Improlize',
     contacts: 'Kontakty',
+    news: 'Novinky',
     media: 'Média o Improlize',
     shows: 'Představení',
     teams: 'Týmy',

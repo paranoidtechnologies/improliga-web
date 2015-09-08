@@ -32,5 +32,20 @@ export default {
       logo: 'Logo Improligy je registrováno jako ochranná známka a nelze ho bez jednorázového a nebo trvalého souhlasu o. s. není legální ho jakkoliv využívat. Tímto způsobem ČILI garantuje divákům kvalitu představení. Trvalý souhlas s použitím obvykle mají všechny týmy, které jsou zveřejněné na webu Improligy.',
       join: 'Do občanského sdružení se může dostat jako fyzická osoba každý, kdo má chuť. Stačí podat přihlášku a zúčastnit se valné hromady. Každý si určuje sám, jak přiloží ruku k dílu.'
     }
+  },
+
+  contact: {
+    title: 'Kontakty',
+    desc: 'Prostě se chci zeptat',
+    email: 'E-mail',
+
+    subject: {
+      novice: 'Chci si vyzkoušet impro',
+      invite: 'Přijeďte si zahrát',
+      cili: 'Chci vstoupit do ČILI',
+      team: 'Mám tým, nevím co s ním',
+      support: 'Mám problém s webem',
+      generic: 'Prostě se chci zeptat'
+    }
   }
 };

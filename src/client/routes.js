@@ -15,6 +15,7 @@ export default (
 
     <Route handler={Home} name="teams" path="/tymy" />
     <Route handler={Home} name="workshops" path="/workshopy" />
+    <Route handler={Home} name="news" path="/novinky" />
     <Route handler={Home} name="contact" path="/kontakty" />
 
     <NotFoundRoute handler={NotFound} name="not-found" />

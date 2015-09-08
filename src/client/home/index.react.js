@@ -4,6 +4,7 @@ import React from 'react';
 import Header from './components/header.react';
 import About from './components/about.react';
 import Shows from './components/shows.react';
+import Contact from './components/contact.react';
 
 export default class Index extends Component {
 
@@ -24,6 +25,7 @@ export default class Index extends Component {
           <Header msg={msg} />
           <About msg={msg} />
           <Shows actions={actions} msg={msg} shows={shows} />
+          <Contact actions={actions} msg={msg.contact} />
         </div>
       </DocumentTitle>
     );

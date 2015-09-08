@@ -20,6 +20,7 @@ export default class Menu extends Component {
             <li><Link to="shows">{msg.shows}</Link></li>
             <li><Link to="teams">{msg.teams}</Link></li>
             <li><Link to="workshops">{msg.workshops}</Link></li>
+            <li><Link to="news">{msg.news}</Link></li>
             <li><Link to="contact">{msg.contacts}</Link></li>
           </ul>
         </div>
