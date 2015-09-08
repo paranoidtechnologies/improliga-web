@@ -30,7 +30,12 @@ var config = {
 // Check out nconf docs for fancier examples
 nconf.defaults(config);
 
-const override = fs.realpathSync(path.join('conf', process.env.IMPROLIGA_ENV + '.json'));
-nconf.file('env', override);
+const env = process.env.IMPROLIGA_ENV;
+
+if (typeof env !== 'undefined') {
+  const override = fs.realpathSync(path.join('conf', process.env.IMPROLIGA_ENV + '.json'));
+  nconf.file('env', override);
+}
+
 
 module.exports = nconf.get();
