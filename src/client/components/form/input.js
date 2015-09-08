@@ -8,13 +8,14 @@ export default class Input extends Component {
     labelAfter: React.PropTypes.bool,
     required: React.PropTypes.bool,
     onKeyUp: React.PropTypes.func,
-    onChange: React.PropTypes.func
+    onChange: React.PropTypes.func,
+    tag: React.PropTypes.string.required,
+    type: React.PropTypes.string.required,
   }
 
   static defaultProps = {
     labelAfter: false,
     required: false,
-    type: 'text'
   };
 
   static counter = 0;
@@ -25,6 +26,7 @@ export default class Input extends Component {
 
   inputId = null;
   prevVal = null;
+
 
   getInputId() {
     const {type} = this.props;
@@ -68,26 +70,37 @@ export default class Input extends Component {
 
   renderInput() {
     const id = this.getInputId();
-    const {type, name} = this.props;
+    const {defaultValue, name, tag, type} = this.props;
     const obj = this;
 
-    return (
-      <input
-        id={id}
-        name={name}
-        onKeyUp={(e) => {
-          obj.onKeyUp(e);
-        }}
-        ref="userInput"
-        type={type} />
-    );
+    return React.createElement(tag, {
+      id: id,
+      name: name,
+      onKeyUp: (e) => {
+        obj.onKeyUp(e);
+      },
+      onChange: (e) => {
+        obj.onChange(e);
+      },
+      ref: "userInput",
+      type: type,
+      value: defaultValue
+    });
   }
 
-  onKeyUp() {
+  onKeyUp(e) {
     this.changed();
 
     if (this.props.onKeyUp) {
-      this.props.onKeyUp.call(this);
+      this.props.onKeyUp.call(this, e);
+    }
+  }
+
+  onChange(e) {
+    this.changed();
+
+    if (this.props.onChange) {
+      this.props.onChange.call(this, e);
     }
   }
 
@@ -126,7 +139,8 @@ export default class Input extends Component {
   validateVisual() {
 
     this.setState({
-      valid: this.isValid()
+      valid: this.isValid(),
+      value: this.val()
     });
   }
 
@@ -152,13 +166,15 @@ export default class Input extends Component {
 
     return (
       <div className={tags}>
-        {htmlLabelBefore}
+        <div className="ui-input-wrapper">
+          {htmlLabelBefore}
 
-        <div className="ui-input-container">
-          {htmlInput}
+          <div className="ui-input-container">
+            {htmlInput}
+          </div>
+
+          {htmlLabelAfter}
         </div>
-
-        {htmlLabelAfter}
       </div>
     );
   }

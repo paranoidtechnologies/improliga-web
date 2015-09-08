@@ -4,6 +4,7 @@ import validator from 'validator';
 
 export default class InputEmail extends Input {
   static defaultProps = {
+    tag: 'input',
     type: 'email'
   };
 

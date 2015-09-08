@@ -35,9 +35,15 @@ export default {
   },
 
   contact: {
-    title: 'Kontakty',
     desc: 'Prostě se chci zeptat',
     email: 'E-mail',
+    message: 'Zpráva',
+    title: 'Kontakty',
+
+    form: {
+      cancel: 'Rozmyslel jsem si to',
+      send: 'Odeslat',
+    },
 
     subject: {
       novice: 'Chci si vyzkoušet impro',
