@@ -45,9 +45,9 @@ export default class ContactForm extends Component {
         </div>
 
         <div className="ui-contact-form-options">
-          {this.subjects.map(function(item) {
+          {this.subjects.map(function(item, key) {
             return (
-              <div className="ui-contact-form-item" onClick={(e) => {obj.select(e, item)}}>
+              <div className="ui-contact-form-item" key={key} onClick={(e) => {obj.select(e, item)}}>
                 <span className="label">{msg.subject[item]}</span>
               </div>
             );
