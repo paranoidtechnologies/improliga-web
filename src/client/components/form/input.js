@@ -1,16 +1,14 @@
 import React from 'react';
 import Component from '../component.react';
 
-var inputCounter = 0;
-
 export default class Input extends Component {
   static propTypes = {
     labelAfter: React.PropTypes.bool,
     required: React.PropTypes.bool,
     onKeyUp: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    tag: React.PropTypes.string.required,
-    type: React.PropTypes.string.required,
+    tag: React.PropTypes.string.isRequired,
+    type: React.PropTypes.string.isRequired
   }
 
   static defaultProps = {
@@ -148,7 +146,7 @@ export default class Input extends Component {
     const {labelAfter, type, name} = this.props;
 
     if (!this.inputId) {
-      this.inputId = ++ inputCounter;
+      this.inputId = name;
     }
 
     const tags = this.getTags().join(' ');
