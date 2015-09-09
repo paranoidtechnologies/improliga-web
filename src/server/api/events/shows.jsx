@@ -13,6 +13,12 @@ export default (req, res, next) => {
   };
 
   fetch(cfg, function(err, data) {
+    if (err) {
+      return res
+        .status(500)
+        .json(err);
+    }
+    
     res.json(data);
   });
 };

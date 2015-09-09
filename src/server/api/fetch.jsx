@@ -8,7 +8,6 @@ const url = '/api/model/{model}/browse';
 export default (config, next) => {
   const dest = 'http://' + host + url.replace('{model}', config.model);
 
-  console.log('fetch ' + dest);
   return request
     .get(dest)
     .query({
@@ -16,10 +15,10 @@ export default (config, next) => {
     })
     .end(function(err, res) {
       if (err) {
-        console.log(err);
-        throw new Error('Unexpected API response');
+        next(err, null);
+        return;
       }
 
-      next(null, res.body);
+      next(err, res.body);
     });
 };
