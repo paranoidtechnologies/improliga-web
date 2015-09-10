@@ -69,6 +69,8 @@ function getPageHtml(Handler, appState, {hostname, needIntlPolyfill}) {
   }
 
   scriptHtml += `
+    <script src="/assets/bower/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
       window._initialState = ${JSON.stringify(appState)};
     </script>

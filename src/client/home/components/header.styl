@@ -2,7 +2,8 @@
 @import '../section.styl'
 
 .site-header
-  background url(/assets/pixmaps/bg/home.jpg) center top no-repeat
+  background-image url(/assets/pixmaps/bg/home.jpg)
+  position relative
 
   .ui-section.home-logo
     min-height 0
@@ -10,3 +11,10 @@
     left 0
     right 0
     width auto
+
+  .ui-site-intro
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+

@@ -12,7 +12,7 @@ export default class Menu extends Component {
     const msg = this.props.msg;
 
     return (
-      <div className="site-menu">
+      <nav className="site-menu">
         <div className="site-menu-center">
           <ul className="site-menu-inner">
             <li><Link to="home">{msg.home}</Link></li>
@@ -24,7 +24,7 @@ export default class Menu extends Component {
             <li><Link to="contact">{msg.contacts}</Link></li>
           </ul>
         </div>
-      </div>
+      </nav>
     );
   }
 }

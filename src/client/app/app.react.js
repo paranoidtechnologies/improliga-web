@@ -1,6 +1,7 @@
 import './styles/page.styl';
 import Component from '../components/component.react';
 import Header from './header.react';
+import Footer from './footer.react';
 import React from 'react';
 import flux from '../lib/flux';
 import store from './store';
@@ -41,11 +42,12 @@ export default class App extends Component {
   }
 
   render() {
+    const {msg} = this.props;
     const props = {...this.props, actions: this.actions};
 
     return (
       <div className="page">
-        <Header msg={this.props.msg} />
+        <Header msg={msg} />
         <RouteHandler {...props} />
       </div>
     );
