@@ -7,4 +7,5 @@ coverage
 dist
 node_modules
 /conf
+/assets/bower
 npm-debug.log
