@@ -27,7 +27,7 @@ export default class Tabman extends Component {
 
     return (
       <div className="ui-tabman">
-        <div className="ui-tabman-buttons" ref="buttons">
+        <div className="row text-center ui-tabman-buttons" ref="buttons">
           {tabs.map(function(tab, key) {
             return (
               <Button
