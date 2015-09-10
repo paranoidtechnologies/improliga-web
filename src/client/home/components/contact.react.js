@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../../components/component.react';
 import ContactForm from '../contact/form';
+import './contact.styl';
 
 export default class Contact extends Component {
   static propTypes = {

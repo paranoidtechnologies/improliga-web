@@ -7,6 +7,7 @@ const url = '/api/model/{model}/browse';
 
 export default (config, next) => {
   const dest = 'http://' + host + url.replace('{model}', config.model);
+  console.log('fetch', dest);
 
   return request
     .get(dest)

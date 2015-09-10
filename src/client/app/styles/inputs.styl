@@ -1,0 +1,31 @@
+@import './vars.styl'
+
+input,
+textarea
+  background white-full
+  color black-fg
+
+  
+.ui-input
+  margin-bottom 10px
+
+  &:last-child
+    margin-bottom 0
+    
+  .ui-input-label,
+  .ui-input-container
+    display inline-block
+    vertical-align top
+
+  .ui-input-label
+    width 80px
+
+.ui-input-email,
+.ui-input-text,
+.ui-input-textarea
+  input,
+  textarea
+    border none
+    border-radius 3px
+    line-height 24px
+    padding 4px 8px
