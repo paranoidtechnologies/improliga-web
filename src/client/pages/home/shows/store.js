@@ -1,4 +1,4 @@
-import Event from '../../models/event';
+import Event from '../../../models/event';
 import {Record} from 'immutable';
 import {actions} from './actions';
 

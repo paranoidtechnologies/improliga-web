@@ -8,7 +8,7 @@ import store from './store';
 import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
 
-import * as showsActions from '../home/shows/actions';
+import * as showsActions from '../pages/home/shows/actions';
 
 const actions = [showsActions];
 

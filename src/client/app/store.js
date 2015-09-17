@@ -1,6 +1,6 @@
 import immutable from 'immutable';
 
-import showsStore from '../home/shows/store';
+import showsStore from '../pages/home/shows/store';
 import intlStore from '../intl/store';
 
 export default function(state, action, payload) {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Component from '../../components/component.react';
-import InputEmail from '../../components/form/input/email';
-import InputHidden from '../../components/form/input/hidden';
-import InputTextarea from '../../components/form/input/textarea';
+import Component from '../components/component.react';
+import InputEmail from '../components/form/input/email';
+import InputHidden from '../components/form/input/hidden';
+import InputTextarea from '../components/form/input/textarea';
 import './form.styl';
 
 export default class ContactForm extends Component {

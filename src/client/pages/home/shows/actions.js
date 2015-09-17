@@ -1,4 +1,4 @@
-import Api from '../../app/api';
+import Api from '../../../app/api';
 
 export const actions = create();
 export const feature = 'shows';

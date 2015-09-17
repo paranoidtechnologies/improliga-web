@@ -1,10 +1,8 @@
 import Component from '../components/component.react';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
-import Header from './components/header.react';
-import About from './components/about.react';
-import Shows from './components/shows.react';
-import Contact from './components/contact.react';
+import Header from './home/header.react';
+import Shows from './home/shows.react';
 
 export default class Index extends Component {
 
@@ -29,7 +27,7 @@ export default class Index extends Component {
 
   render() {
     const {
-      msg: {home: msg},
+      msg: {pages: {home: msg}},
       actions: {shows: actions},
       shows: shows
     } = this.props;
@@ -38,9 +36,7 @@ export default class Index extends Component {
       <DocumentTitle title={msg.title}>
         <div className="page-home">
           <Header msg={msg} ref="el-home" />
-          <About msg={msg} ref="el-about" />
           <Shows actions={actions} msg={msg} ref="el-shows" shows={shows} />
-          <Contact actions={actions} msg={msg.contact} ref="el-contact" />
         </div>
       </DocumentTitle>
     );

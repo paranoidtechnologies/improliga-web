@@ -1,10 +1,12 @@
 export default {
-  title: 'Improliga - divadlo jako hokejový zápas',
-  what: 'Co je Improliga',
+  home: {
+    title: 'Improliga - divadlo jako hokejový zápas',
+    what: 'Co je Improliga',
 
-  site: {
-    title: 'Improliga',
-    desc: 'Divadlo jako hokejový zápas'
+    site: {
+      title: 'Improliga',
+      desc: 'Divadlo jako hokejový zápas'
+    }
   },
 
   about: {

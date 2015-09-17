@@ -1,6 +1,6 @@
 import React from 'react';
-import Component from '../../components/component.react';
-import ContactForm from '../contact/form';
+import Component from '../components/component.react';
+import ContactForm from '../components/contact/form';
 import './contact.styl';
 
 export default class Contact extends Component {

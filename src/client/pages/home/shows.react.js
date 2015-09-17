@@ -1,6 +1,6 @@
 import React from 'react';
 import Component from '../../components/component.react';
-import ShowsBrowser from '../shows/browser';
+import ShowsBrowser from './shows/browser';
 import './shows.styl';
 
 export default class Shows extends Component {
