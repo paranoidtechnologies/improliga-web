@@ -13,12 +13,16 @@ export default class Browser extends Component {
   }
 
   render() {
-    const {draw, header, items} = this.props;
+    const {draw, header, items, msg} = this.props;
 
     var head;
 
     if (header) {
-      head = <Item draw={header} />;
+      var headProps = {
+        msg: msg
+      };
+
+      head = <Item draw={header} item={headProps} />;
     }
 
     return (

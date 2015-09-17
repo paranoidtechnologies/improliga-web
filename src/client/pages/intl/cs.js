@@ -36,6 +36,10 @@ export default {
     }
   },
 
+  shows: {
+    title: 'Představení'
+  },
+
   contact: {
     desc: 'Prostě se chci zeptat',
     email: 'E-mail',

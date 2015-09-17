@@ -16,7 +16,6 @@ export default class Index extends Component {
     const ref = this.refs['el-' + route];
 
     if (ref) {
-        console.log(ref);
       if (ref.findDOMNode) {
         const el = ref.getDOMNode();
 
@@ -27,7 +26,7 @@ export default class Index extends Component {
 
   render() {
     const {
-      msg: {pages: {home: msg}},
+      msg: {pages: msg},
       actions: {shows: actions},
       shows: shows
     } = this.props;
@@ -35,8 +34,8 @@ export default class Index extends Component {
     return (
       <DocumentTitle title={msg.title}>
         <div className="page-home">
-          <Header msg={msg} ref="el-home" />
-          <Shows actions={actions} msg={msg} ref="el-shows" shows={shows} />
+          <Header msg={msg.home} ref="el-home" />
+          <Shows actions={actions} msg={msg.shows} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

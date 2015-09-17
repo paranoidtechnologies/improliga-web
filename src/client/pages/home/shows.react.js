@@ -12,7 +12,7 @@ export default class Shows extends Component {
 
   render() {
     const {
-      msg: {home: msg},
+      msg: msg,
       actions: actions,
       shows: shows
     } = this.props;
