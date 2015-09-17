@@ -12,6 +12,21 @@ export default class Index extends Component {
     msg: React.PropTypes.object.isRequired
   }
 
+  componentDidUpdate() {
+    const routes = this.context.router.getCurrentRoutes();
+    const route = routes[routes.length - 1].name;
+    const ref = this.refs['el-' + route];
+
+    if (ref) {
+        console.log(ref);
+      if (ref.findDOMNode) {
+        const el = ref.getDOMNode();
+
+        console.log(el);
+      }
+    }
+  }
+
   render() {
     const {
       msg: {home: msg},
@@ -22,13 +37,12 @@ export default class Index extends Component {
     return (
       <DocumentTitle title={msg.title}>
         <div className="page-home">
-          <Header msg={msg} />
-          <About msg={msg} />
-          <Shows actions={actions} msg={msg} shows={shows} />
-          <Contact actions={actions} msg={msg.contact} />
+          <Header msg={msg} ref="el-home" />
+          <About msg={msg} ref="el-about" />
+          <Shows actions={actions} msg={msg} ref="el-shows" shows={shows} />
+          <Contact actions={actions} msg={msg.contact} ref="el-contact" />
         </div>
       </DocumentTitle>
     );
   }
-
 }
