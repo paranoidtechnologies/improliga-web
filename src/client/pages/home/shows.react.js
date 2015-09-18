@@ -19,9 +19,10 @@ export default class Shows extends Component {
 
     return (
       <div className="ui-section structure-el-parallax ui-section-shows">
-        <div className="ui-section-inner-wrapper">
+        <div className="container col-md-6">
           <ShowsBrowser actions={actions} items={shows.list} msg={msg} />
         </div>
+        <div className="cleaner" />
       </div>
     );
   }

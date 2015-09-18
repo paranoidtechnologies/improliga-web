@@ -28,7 +28,6 @@ export default class Browser extends Component {
     return (
       <div className="ui-browser">
         {head}
-        <div className="ui-browser-header"></div>
         <div className="ui-browser-filter"></div>
         <div className="ui-browser-pagi ui-browser-pagi-top"></div>
         <List {...{draw, items}} />

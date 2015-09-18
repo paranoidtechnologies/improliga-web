@@ -37,7 +37,9 @@ export default {
   },
 
   shows: {
-    title: 'Představení'
+    title: 'Představení',
+    hottest: 'Zde je seznam nejbližších představení. Pokud chcete vidět seznam všech naplánovaných, přejděte prosím do sekce',
+    sectionShows: 'představení'
   },
 
   contact: {

@@ -1,5 +1,6 @@
 import Component from '../../../components/component.react';
 import React from 'react';
+import {Link} from 'react-router';
 
 export default class ShowsHead {
   static propTypes = {
@@ -10,8 +11,12 @@ export default class ShowsHead {
     const {msg} = this.props;
 
     return (
-      <div className="shows-heading">
-        <h2>{msg.title}</h2>
+      <div className="row shows-heading">
+        <h2 className="text-center">{msg.title}</h2>
+
+        <div class="text-justify">
+          <p>{msg.hottest} <Link to="shows">{msg.sectionShows}</Link>.</p>
+        </div>
       </div>
     );
   }

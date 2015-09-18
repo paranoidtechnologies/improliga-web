@@ -36,6 +36,7 @@ export default class Event extends Component {
           <div className="time">{time_start.format('D. M. YYYY')}</div>
         </div>
       </div>
+      <div className="ui-event-cleaner" />
     </Link>);
   }
 };
