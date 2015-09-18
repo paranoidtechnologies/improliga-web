@@ -16,11 +16,14 @@ export default class Index extends Component {
     const ref = this.refs['el-' + route];
 
     if (ref) {
-      if (ref.findDOMNode) {
-        const el = ref.getDOMNode();
+      const el = React.findDOMNode(ref);
+      const pos = el.getBoundingClientRect().top;
+      const win = global.jQuery(global.window);
+      const body = global.jQuery('body');
+      const move = global.jQuery('html, body');
+      const target = body.scrollTop() + pos;
 
-        console.log(el);
-      }
+      move.stop(true).scrollTop(target);
     }
   }
 
