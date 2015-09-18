@@ -3,6 +3,7 @@ import fetch from '../fetch';
 export default (req, res, next) => {
   const cfg = {
     model: 'Impro.Event',
+    perPage: req.query.perPage,
     filters: [
       {
         attr: 'visibility',
@@ -12,13 +13,13 @@ export default (req, res, next) => {
     ]
   };
 
-  fetch(cfg, function(err, data) {
+  return fetch(cfg, function(err, data) {
     if (err) {
       return res
         .status(500)
         .json(err);
     }
-    
+
     res.json(data);
   });
 };

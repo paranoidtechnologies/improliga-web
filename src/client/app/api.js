@@ -25,13 +25,15 @@ export default class Api {
     }
 
     this.abortRequests(key);
-    this.pending[key] = this.get(url).end(function(err, res) {
-      delete self.pending[key];
-      callback(err, res);
-    });
+    this.pending[key] = this.get(url)
+      .query(params)
+      .end(function(err, res) {
+        delete self.pending[key];
+        callback(err, res);
+      });
   }
 
-  static get(url) {
+  static get(url, params) {
     return request
       .get(url)
       .set('Accept', 'application/json')

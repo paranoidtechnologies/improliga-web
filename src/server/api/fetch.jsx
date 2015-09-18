@@ -7,12 +7,16 @@ const url = '/api/model/{model}/browse';
 
 export default (config, next) => {
   const dest = 'http://' + host + url.replace('{model}', config.model);
-  console.log('fetch', dest);
+
+  if (!config.perPage) {
+    config.perPage = 20;
+  }
 
   return request
     .get(dest)
     .query({
-      filters: JSON.stringify(config.filters)
+      filters: JSON.stringify(config.filters),
+      per_page: config.perPage
     })
     .end(function(err, res) {
       if (err) {
