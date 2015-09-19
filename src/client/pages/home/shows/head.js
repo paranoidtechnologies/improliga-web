@@ -12,11 +12,6 @@ export default class ShowsHead {
 
     return (
       <div className="row shows-heading">
-        <h2 className="text-center">{msg.title}</h2>
-
-        <div class="text-justify">
-          <p>{msg.hottest} <Link to="shows">{msg.sectionShows}</Link>.</p>
-        </div>
       </div>
     );
   }

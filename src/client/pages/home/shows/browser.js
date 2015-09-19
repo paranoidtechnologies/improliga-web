@@ -18,8 +18,7 @@ export default class ShowsBrowser extends Browser {
   }
 
   static defaultProps = {
-    draw: Event,
-    header: ShowsHead
+    draw: Event
   };
 
 }
