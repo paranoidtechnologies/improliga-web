@@ -29,7 +29,7 @@ export default class Index extends Component {
 
   render() {
     const {
-      msg: {pages: msg},
+      msg: msg,
       actions: {shows: actions},
       shows: shows
     } = this.props;
@@ -37,8 +37,8 @@ export default class Index extends Component {
     return (
       <DocumentTitle title={msg.title}>
         <div className="page-home">
-          <Header msg={msg.home} ref="el-home" />
-          <Shows actions={actions} msg={msg.shows} ref="el-shows" shows={shows} />
+          <Header msg={msg.pages.home} ref="el-home" />
+          <Shows actions={actions} msg={msg} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

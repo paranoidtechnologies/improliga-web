@@ -15,6 +15,11 @@ export function create(dispatch, validate) {
           list: res.body.data
         });
       });
+    },
+
+
+    loadCalendarEvents(month) {
+      console.log('load', month);
     }
   };
 }

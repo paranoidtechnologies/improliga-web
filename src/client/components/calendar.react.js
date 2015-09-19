@@ -1,11 +1,16 @@
-import React from 'react';
 import Component from './component.react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import moment from 'moment';
+import React from 'react';
 import Week from './calendar/week.react';
+import './calendar/responsive.styl';
 
 export default class Calendar extends Component {
   static propTypes = {
-    items: React.PropTypes.array,
+    items: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      ImmutablePropTypes.list
+    ]),
     month: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     weekStart: React.PropTypes.number.isRequired
@@ -54,7 +59,7 @@ export default class Calendar extends Component {
         day = 1;
       }
 
-      str.push(<div className="ui-day" key={day}>{msg['day' + day]}</div>);
+      str.push(<div className="cal-cell1 ui-day" key={day}>{msg['day' + day]}</div>);
       day ++;
     }
 
@@ -62,7 +67,7 @@ export default class Calendar extends Component {
   }
 
   renderBody() {
-    const {items, msg, weekStart} = this.props;
+    const {items, month, msg, weekStart} = this.props;
     const first = this.getFirstDay();
     const last = this.getLastDay();
 
@@ -71,7 +76,8 @@ export default class Calendar extends Component {
     let day = first.clone();
 
     while (day.isBefore(last)) {
-      str.push(<Week date={day.clone()} items={items} key={iter} msg={msg} weekStart={weekStart} />);
+      let weekItems = [];
+      str.push(<Week date={day.clone()} items={items} key={iter++} month={month} msg={msg} weekStart={weekStart} />);
       day = day.add(1, 'week');
     }
 
@@ -81,11 +87,11 @@ export default class Calendar extends Component {
   render() {
     return (
       <div className="ui-calendar">
-        <div className="ui-calendar-head" ref="head">
+        <div className="cal-row-fluid cal-row-head ui-calendar-head" ref="head">
           {this.renderHead()}
         </div>
 
-        <div className="ui-calendar-body" ref="body">
+        <div className="cal-month-box ui-calendar-body" ref="body">
           {this.renderBody()}
         </div>
       </div>
