@@ -1,8 +1,8 @@
 import React from 'react';
-import Component from '../components/component.react';
-import InputEmail from '../components/form/input/email';
-import InputHidden from '../components/form/input/hidden';
-import InputTextarea from '../components/form/input/textarea';
+import Component from '../component.react';
+import InputEmail from '../form/input/email';
+import InputHidden from '../form/input/hidden';
+import InputTextarea from '../form/input/textarea';
 import './form.styl';
 
 export default class ContactForm extends Component {
@@ -37,6 +37,8 @@ export default class ContactForm extends Component {
     const {msg} = this.props;
     const state = this.state;
     const obj = this;
+    const msgLoc = msg.pages.contact;
+
 
     const cnameForm = 'ui-form ui-contact-form-cont' + (state.subject ? '':' hidden');
     const cnameOpts = 'ui-contact-form-options' + (state.subject ? ' hidden':'');
@@ -44,10 +46,10 @@ export default class ContactForm extends Component {
     return (
       <div className="ui-contact-form">
         <div className="ui-contact-form-header">
-          <h2>{msg.title}</h2>
+          <h2>{msgLoc.title}</h2>
 
           <div className="desc">
-            <p>{msg.desc}</p>
+            <p>{msgLoc.desc}</p>
           </div>
         </div>
 
@@ -55,7 +57,7 @@ export default class ContactForm extends Component {
           {this.subjects.map(function(item, key) {
             return (
               <div className="ui-contact-form-item" key={key} onClick={(e) => {obj.select(e, item)}}>
-                <span className="label">{msg.subject[item]}</span>
+                <span className="label">{msgLoc.subject[item]}</span>
               </div>
             );
           })}
@@ -64,13 +66,13 @@ export default class ContactForm extends Component {
         <form className={cnameForm} onSubmit={(e) => { this.send(e); }}>
           <fieldset className="ui-form-inputs">
             <InputHidden name="subject" defaultValue={state.subject} />
-            <InputEmail label={msg.email} name="email" />
-            <InputTextarea label={msg.message} name="message" />
+            <InputEmail label={msgLoc.email} name="email" />
+            <InputTextarea label={msgLoc.message} name="message" />
           </fieldset>
 
           <div className="ui-form-buttons">
-            <button type="submit">{msg.form.send}</button>
-            <button type="button" onClick={(e) => { this.select(e, null); }}>{msg.form.cancel}</button>
+            <button type="submit">{msgLoc.form.send}</button>
+            <button type="button" onClick={(e) => { this.select(e, null); }}>{msgLoc.form.cancel}</button>
           </div>
         </form>
       </div>
