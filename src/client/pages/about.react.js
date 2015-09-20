@@ -14,20 +14,20 @@ export default class About extends Component {
       {
         component: Article,
         pass: {
-          heading: msg.about.collective.heading,
-          content: [msg.about.collective.public, msg.about.collective.messaging]
+          heading: msg.pages.about.collective.heading,
+          content: [msg.pages.about.collective.public, msg.pages.about.collective.messaging]
         }
       },
 
       {
         component: Article,
         pass: {
-          heading: msg.about.community.heading,
+          heading: msg.pages.about.community.heading,
           content: [
-            msg.about.community.public,
-            msg.about.community.inner,
-            msg.about.community.messaging,
-            msg.about.community.projects
+            msg.pages.about.community.public,
+            msg.pages.about.community.inner,
+            msg.pages.about.community.messaging,
+            msg.pages.about.community.projects
           ]
         }
       },
@@ -35,12 +35,12 @@ export default class About extends Component {
       {
         component: Article,
         pass: {
-          heading: msg.about.civic.heading,
+          heading: msg.pages.about.civic.heading,
           content: [
-            msg.about.civic.advocate,
-            msg.about.civic.members,
-            msg.about.civic.logo,
-            msg.about.civic.join
+            msg.pages.about.civic.advocate,
+            msg.pages.about.civic.members,
+            msg.pages.about.civic.logo,
+            msg.pages.about.civic.join
           ]
         }
       }
@@ -51,8 +51,8 @@ export default class About extends Component {
         <div className="ui-section-inner-wrapper">
           <div className="row text-center about-intro">
             <div className="col-lg-12">
-              <h2>{msg.about.heading}</h2>
-              <p>{msg.about.desc}</p>
+              <h2>{msg.pages.about.heading}</h2>
+              <p>{msg.pages.about.desc}</p>
             </div>
           </div>
 
