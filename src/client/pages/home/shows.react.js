@@ -25,7 +25,7 @@ export default class Shows extends Component {
       shows: shows,
       showsCalendar: showsCalendar
     } = this.props;
-console.log(msg);
+
     return (
       <section className="ui-section ui-section-shows">
         <h2 className="text-center">{msg.pages.shows.title}</h2>
