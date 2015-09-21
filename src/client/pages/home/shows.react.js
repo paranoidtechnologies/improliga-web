@@ -27,7 +27,7 @@ export default class Shows extends Component {
     } = this.props;
 
     return (
-      <section className="ui-section ui-section-shows">
+      <section className="container ui-section ui-section-shows">
         <h2 className="text-center">{msg.pages.shows.title}</h2>
 
         <div className="text-justify">

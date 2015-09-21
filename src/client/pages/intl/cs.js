@@ -48,7 +48,20 @@ export default {
     message: 'Zpráva',
     title: 'Kontakty',
 
+    club: {
+      title: 'Kontakty',
+      ico: 'IČO',
+      icoFull: 'Identifikační číslo organizace'
+    },
+
+    heads: {
+      title: 'Výkonný výbor',
+      desc: 'Výkonný výbor rozděluje práci a má na starosti produkci projektů, které byly schváleny během valné hromady. Jednou ročně se obměňuje při hlasování na valné hromadě Improligy.'
+    },
+
     form: {
+      title: 'Napište nám',
+      desc: 'Každý den s láskou zpracováváme vaše dotazy a během 24 hodin na ně odpovídáme.',
       cancel: 'Rozmyslel jsem si to',
       send: 'Odeslat',
     },
@@ -58,8 +71,8 @@ export default {
       invite: 'Přijeďte si zahrát',
       cili: 'Chci vstoupit do ČILI',
       team: 'Mám tým, nevím co s ním',
-      support: 'Mám problém s webem',
-      generic: 'Prostě se chci zeptat'
+      support: 'Chci něco změnit na webu',
+      generic: 'Něco jiného'
     }
   }
 };

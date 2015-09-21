@@ -25,11 +25,11 @@ export default class Event extends Component {
     var time_start = moment(start);
 
     return (<Link to="show" params={{showId: id}} className="ui-event">
-      <div className="ui-event-image">
+      <div className="col-xs-4 ui-event-image">
         <Thumb height={thumbHeight} src={image.url} width={thumbWidth} />
       </div>
 
-      <div className="ui-event-info">
+      <div className="col-xs-8 ui-event-info">
         <div className="ui-event-title">{name}</div>
         <div className="ui-event-desc">
           <div className="location"></div>
