@@ -12,7 +12,7 @@ export default class List extends Component {
     ])
   }
 
-  state = {
+  static defaultProps = {
     items: []
   }
 
