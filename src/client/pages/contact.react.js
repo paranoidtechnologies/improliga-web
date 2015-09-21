@@ -13,7 +13,7 @@ export default class Contact extends Component {
     const msg = this.props.msg.pages.contact;
 
     return (
-      <div className="ui-page-contact">
+      <div className="ui-page ui-page-contact">
         <section className="container ui-section-heads">
           <div className="text-center">
             <h1>{msg.club.title}</h1>
@@ -35,9 +35,9 @@ export default class Contact extends Component {
           </div>
 
           <ul className="row list-unstyled">
-            <li className="col-md-4">Vanda Gabrielová</li>
-            <li className="col-md-4">Pavla Sedláčková</li>
-            <li className="col-md-4">Pavel Žák</li>
+            <li className="col-md-4 text-center">Vanda Gabrielová</li>
+            <li className="col-md-4 text-center">Pavla Sedláčková</li>
+            <li className="col-md-4 text-center">Pavel Žák</li>
           </ul>
         </section>
 

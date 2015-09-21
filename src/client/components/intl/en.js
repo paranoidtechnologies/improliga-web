@@ -10,7 +10,5 @@ export default {
   },
 
   menu: {
-    about: 'About Improliga',
-    teams: 'Teams'
   }
 };

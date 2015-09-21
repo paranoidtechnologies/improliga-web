@@ -47,18 +47,16 @@ export default class About extends Component {
     ];
 
     return (
-      <div className="ui-section section-about">
-        <div className="ui-section-inner-wrapper">
-          <div className="row text-center about-intro">
-            <div className="col-lg-12">
-              <h2>{msg.pages.about.heading}</h2>
-              <p>{msg.pages.about.desc}</p>
-            </div>
+      <section className="container ui-page section-about">
+        <div className="row text-center about-intro">
+          <div className="col-lg-12">
+            <h2>{msg.pages.about.heading}</h2>
+            <p>{msg.pages.about.desc}</p>
           </div>
-
-          <Tabman tabs={tabs} />
         </div>
-      </div>
+
+        <Tabman tabs={tabs} />
+      </section>
     );
   }
 };
