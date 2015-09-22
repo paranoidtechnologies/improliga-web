@@ -10,8 +10,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use('/news', fetchNews);
 app.use('/events/shows', fetchShows);
-app.use('/events/news', fetchNews);
 
 app.on('mount', () => {
   console.log('Api is available at %s', app.mountpath);

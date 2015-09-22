@@ -1,4 +1,4 @@
-import Browser from '../../../components/browser';
+import Browser from '../../../components/browser.react';
 import Event from '../../../components/event.react';
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';

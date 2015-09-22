@@ -9,11 +9,13 @@ export default class List extends Component {
     items: React.PropTypes.oneOfType([
       React.PropTypes.array,
       ImmutablePropTypes.list
-    ])
+    ]),
+    page: React.PropTypes.number.isRequired
   }
 
   static defaultProps = {
-    items: []
+    items: [],
+    page: 0
   }
 
   render() {

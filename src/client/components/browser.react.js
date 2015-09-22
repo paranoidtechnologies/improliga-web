@@ -1,7 +1,7 @@
-import Component from '../component.react';
+import Component from './component.react';
 import React from 'react';
-import Item from './list/item.react';
-import List from './list.react';
+import Item from './browser/list/item.react';
+import List from './browser/list.react';
 
 export default class Browser extends Component {
   static propTypes = {
@@ -9,7 +9,8 @@ export default class Browser extends Component {
     desc: React.PropTypes.string,
     draw: React.PropTypes.func.isRequired,
     header: React.PropTypes.object,
-    items: React.PropTypes.any.isRequired
+    items: React.PropTypes.any.isRequired,
+    page: React.PropTypes.number.isRequired
   }
 
   render() {
