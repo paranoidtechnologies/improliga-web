@@ -11,6 +11,7 @@ export default class News extends Component {
   }
 
   render() {
+    const {msg} = this.props;
     const props = {
       actions: this.props.actions,
       items: this.props.news.list,
@@ -20,6 +21,12 @@ export default class News extends Component {
     return (
       <div className="ui-page ui-page-contact">
         <section className="container ui-section-news">
+
+          <div class="row ui-section-intro">
+            <h1>{msg.pages.news.title}</h1>
+            <p>{msg.pages.news.perex}</p>
+          </div>
+
           <NewsList {...props} />
         </section>
       </div>

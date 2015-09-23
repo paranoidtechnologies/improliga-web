@@ -42,6 +42,11 @@ export default {
     sectionShows: 'představení'
   },
 
+  news: {
+    title: 'Novinky',
+    perex: 'Zajímá vás, co Improliga dělá a co se děje?'
+  },
+
   contact: {
     desc: 'Prostě se chci zeptat',
     email: 'E-mail',
