@@ -10,6 +10,7 @@ export default class List extends Component {
       React.PropTypes.array,
       ImmutablePropTypes.list
     ]),
+    msg: React.PropTypes.object,
     page: React.PropTypes.number.isRequired
   }
 
@@ -19,13 +20,13 @@ export default class List extends Component {
   }
 
   render() {
-    const {draw, items} = this.props;
+    const {draw, items, msg} = this.props;
 
     return (
       <div className="ui-browser-list">
         <div className="ui-list-items">
           {items.map(function(item, key) {
-            return <Item {...{draw, item, items, key}} />
+            return <Item {...{draw, item, items, key, msg}} />
           })}
         </div>
       </div>

@@ -31,7 +31,7 @@ export default class Browser extends Component {
         {head}
         <div className="ui-browser-filter"></div>
         <div className="ui-browser-pagi ui-browser-pagi-top"></div>
-        <List {...{draw, items}} />
+        <List {...{draw, items, msg}} />
         <div className="ui-browser-pagi ui-browser-pagi-top"></div>
       </div>
     );

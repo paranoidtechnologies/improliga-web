@@ -15,5 +15,12 @@ export default {
     day5: 'Pátek',
     day6: 'Sobota',
     day7: 'Neděle'
+  },
+
+  format: {
+    date: {
+      exact: 'D. M. YYYY',
+      system: 'YYYY-MM-DDTHH:ii:ss'
+    }
   }
 };

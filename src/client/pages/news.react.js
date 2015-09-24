@@ -22,7 +22,7 @@ export default class News extends Component {
       <div className="ui-page ui-page-contact">
         <section className="container ui-section-news">
 
-          <div class="row ui-section-intro">
+          <div className="row ui-section-intro">
             <h1>{msg.pages.news.title}</h1>
             <p>{msg.pages.news.perex}</p>
           </div>
