@@ -12,6 +12,8 @@ export default (config, next) => {
     config.perPage = 20;
   }
 
+  console.log('fetch', dest);
+
   return request
     .get(dest)
     .query({
