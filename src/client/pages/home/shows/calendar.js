@@ -8,6 +8,6 @@ export default class ShowsCalendar extends Calendar {
   }
 
   componentDidMount(next) {
-    return this.props.actions.loadCalendarEvents(this.props.month);
+    return this.props.actions.loadCalendarEvents(this.props.month.format('YYYY-MM'));
   }
 }

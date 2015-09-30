@@ -18,6 +18,7 @@ export default (config, next) => {
     .get(dest)
     .query({
       filters: JSON.stringify(config.filters),
+      sort: JSON.stringify(config.sort),
       per_page: config.perPage
     })
     .end(function(err, res) {

@@ -6,7 +6,13 @@ export default (req, res, next) => {
   let date = null;
   let cfg = {
     model: 'Impro.Event',
-    perPage: req.query.perPage
+    perPage: req.query.perPage,
+    sort: [
+      {
+        attr: 'start',
+        mode: 'desc'
+      }
+    ]
   };
 
   if (req.query.month) {

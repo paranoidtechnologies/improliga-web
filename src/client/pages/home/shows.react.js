@@ -4,6 +4,7 @@ import ShowsBrowser from './shows/browser';
 import ShowsCalendar from './shows/calendar';
 import './shows.styl';
 import {Link} from 'react-router';
+import moment from 'moment';
 
 export default class Shows extends Component {
   static propTypes = {
@@ -19,6 +20,7 @@ export default class Shows extends Component {
   }
 
   render() {
+    const month = moment();
     const {
       msg: msg,
       actions: actions,
@@ -39,7 +41,7 @@ export default class Shows extends Component {
         </div>
 
         <div className="container col-md-6">
-          <ShowsCalendar actions={actions} items={showsCalendar.list} msg={msg.app.days} />
+          <ShowsCalendar actions={actions} items={showsCalendar.list} month={month} msg={msg.app.days} />
         </div>
         <div className="cleaner" />
       </section>

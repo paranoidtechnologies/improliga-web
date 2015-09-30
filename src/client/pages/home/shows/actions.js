@@ -19,7 +19,15 @@ export function create(dispatch, validate) {
 
 
     loadCalendarEvents(month) {
-      console.log('load', month);
+      const params = {
+        month: month
+      }
+
+      Api.fetch('/api/1/events/shows', 'showsCalendar', params, function(err, res) {
+        dispatch(actions.loadEvents, {
+          list: res.body.data
+        });
+      });
     }
   };
 }
