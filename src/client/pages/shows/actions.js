@@ -1,4 +1,4 @@
-import Api from '../../../app/api';
+import Api from '../../app/api';
 
 export const actions = create();
 export const feature = 'shows';
@@ -8,7 +8,7 @@ export function create(dispatch, validate) {
     loadEvents() {
       let params = {};
 
-      params.perPage = 10;
+      params.perPage = 6;
 
       Api.fetch('/api/1/events/shows', feature, params, function(err, res) {
         dispatch(actions.loadEvents, {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Component from '../../components/component.react';
-import ShowsBrowser from './shows/browser';
-import ShowsCalendar from './shows/calendar';
+import ShowsBrowser from '../shows/browser';
+import ShowsCalendar from '../shows/calendar';
 import './shows.styl';
 import {Link} from 'react-router';
 import moment from 'moment';
@@ -30,19 +30,16 @@ export default class Shows extends Component {
 
     return (
       <section className="container ui-section ui-section-shows">
-        <h2 className="text-center">{msg.pages.shows.title}</h2>
+        <div className="container col-xs-6">
+          <h2>{msg.pages.shows.title}</h2>
 
-        <div className="text-justify">
-          <p>{msg.pages.shows.hottest} <Link to="shows">{msg.pages.shows.sectionShows}</Link>.</p>
-        </div>
+          <div className="text-justify">
+            <p>{msg.pages.shows.hottest} <Link to="shows">{msg.pages.shows.sectionShows}</Link>.</p>
+          </div>
 
-        <div className="container col-md-6">
           <ShowsBrowser actions={actions} items={shows.list} msg={msg.pages.shows} />
         </div>
 
-        <div className="container col-md-6">
-          <ShowsCalendar actions={actions} items={shows.calendar} month={month} msg={msg.app.days} />
-        </div>
         <div className="cleaner" />
       </section>
     );

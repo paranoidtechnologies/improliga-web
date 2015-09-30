@@ -1,8 +1,8 @@
 import React from 'react/addons';
 import {expect} from 'chai';
 import {render} from 'test/utils';
-import {actions, feature} from 'client/pages/home/shows/actions';
-import store, {wakeUpEvent} from 'client/pages/home/shows/store';
+import {actions, feature} from 'client/pages/shows/actions';
+import store, {wakeUpEvent} from 'client/pages/shows/store';
 import {List, Record} from 'immutable';
 import moment from 'moment';
 
