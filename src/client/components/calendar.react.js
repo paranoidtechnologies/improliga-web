@@ -76,7 +76,6 @@ export default class Calendar extends Component {
     let day = first.clone();
 
     while (day.isBefore(last)) {
-      let weekItems = [];
       str.push(<Week date={day.clone()} items={items} key={iter++} month={month} msg={msg} weekStart={weekStart} />);
       day = day.add(1, 'week');
     }

@@ -45,7 +45,15 @@ export default class Week extends Component {
     let day = first.clone();
 
     while (day.isBefore(last)) {
-      str.push(<Day date={day.clone()} items={items} key={iter++} month={month} msg={msg} />);
+      let dayItems = [];
+
+      items.forEach(function(item) {
+        if (item.start.isSame(day, 'day')) {
+          dayItems.push(item);
+        }
+      });
+
+      str.push(<Day date={day.clone()} items={dayItems} key={iter++} month={month} msg={msg} />);
       day = day.add(1, 'day');
     }
 

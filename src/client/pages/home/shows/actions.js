@@ -24,7 +24,7 @@ export function create(dispatch, validate) {
       }
 
       Api.fetch('/api/1/events/shows', 'showsCalendar', params, function(err, res) {
-        dispatch(actions.loadEvents, {
+        dispatch(actions.loadCalendarEvents, {
           list: res.body.data
         });
       });

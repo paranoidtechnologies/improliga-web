@@ -11,12 +11,13 @@ export default class Shows extends Component {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     shows: React.PropTypes.object.isRequired,
-    showsCalendar: React.PropTypes.object.isRequired
   }
 
   static defaultProps = {
-    shows: { list: [] },
-    showsCalendar: { list: [] }
+    shows: {
+      list: [],
+      calendar: []
+    }
   }
 
   render() {
@@ -24,8 +25,7 @@ export default class Shows extends Component {
     const {
       msg: msg,
       actions: actions,
-      shows: shows,
-      showsCalendar: showsCalendar
+      shows: shows
     } = this.props;
 
     return (
@@ -41,7 +41,7 @@ export default class Shows extends Component {
         </div>
 
         <div className="container col-md-6">
-          <ShowsCalendar actions={actions} items={showsCalendar.list} month={month} msg={msg.app.days} />
+          <ShowsCalendar actions={actions} items={shows.calendar} month={month} msg={msg.app.days} />
         </div>
         <div className="cleaner" />
       </section>
