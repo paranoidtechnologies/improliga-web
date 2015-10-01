@@ -4,33 +4,18 @@ import React from 'react';
 import Header from './home/header.react';
 import Shows from './home/shows.react';
 
-export default class Index extends Component {
+export default class Home extends Component {
 
   static propTypes = {
-    msg: React.PropTypes.object.isRequired
-  }
-
-  componentDidUpdate() {
-    const routes = this.context.router.getCurrentRoutes();
-    const route = routes[routes.length - 1].name;
-    const ref = this.refs['el-' + route];
-
-    if (ref) {
-      const el = React.findDOMNode(ref);
-      const pos = el.getBoundingClientRect().top;
-      const win = global.jQuery(global.window);
-      const body = global.jQuery('body');
-      const move = global.jQuery('html, body');
-      const target = body.scrollTop() + pos;
-
-      move.stop(true).scrollTop(target);
-    }
+    actions: React.PropTypes.object.isRequired,
+    msg: React.PropTypes.object.isRequired,
+    shows: React.PropTypes.object.isRequired
   }
 
   render() {
     const {
       msg: msg,
-      actions: {shows: actions},
+      actions: {shows: actions},
       shows: shows
     } = this.props;
 

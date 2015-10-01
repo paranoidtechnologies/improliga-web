@@ -1,6 +1,5 @@
 import chai, {expect} from 'chai';
 import chaiImmutable from 'chai-immutable';
-import immutable from 'immutable';
 import moment from 'moment';
 import {getFilters} from 'server/api/events/shows/filters';
 
@@ -50,5 +49,4 @@ describe('filters', () => {
       getFilters(invalid);
     }).to.throw();
   });
-
 });

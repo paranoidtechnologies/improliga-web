@@ -1,10 +1,8 @@
 import React from 'react';
 import Component from '../../components/component.react';
 import ShowsBrowser from '../shows/browser';
-import ShowsCalendar from '../shows/calendar';
 import './shows.styl';
 import {Link} from 'react-router';
-import moment from 'moment';
 
 export default class Shows extends Component {
   static propTypes = {
@@ -21,10 +19,10 @@ export default class Shows extends Component {
   }
 
   render() {
-    const month = moment();
+    //~ const month = moment();
     const {
       msg: msg,
-      actions: actions,
+      actions: actions,
       shows: shows
     } = this.props;
 

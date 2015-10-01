@@ -6,7 +6,7 @@ export default class Footer extends Component {
     msg: React.PropTypes.object.isRequired
   }
 
-  render() {
+  render() {
     const {msg} = this.props;
 
     return (

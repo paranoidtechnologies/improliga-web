@@ -3,10 +3,13 @@ import Component from '../component.react';
 
 export default class Input extends Component {
   static propTypes = {
+    defaultValue: React.PropTypes.any,
+    label: React.PropTypes.string,
     labelAfter: React.PropTypes.bool,
-    required: React.PropTypes.bool,
-    onKeyUp: React.PropTypes.func,
+    name: React.PropTypes.string,
     onChange: React.PropTypes.func,
+    onKeyUp: React.PropTypes.func,
+    required: React.PropTypes.bool,
     tag: React.PropTypes.string.isRequired,
     type: React.PropTypes.string.isRequired
   }
@@ -18,7 +21,7 @@ export default class Input extends Component {
 
   static counter = 0;
 
-  state = {
+  state = {
     valid: true
   };
 
@@ -28,7 +31,7 @@ export default class Input extends Component {
 
   getInputId() {
     const {type} = this.props;
-    return 'ui-input-' + type + '-' + this.inputId;
+    return 'ui-input-' + type + '-' + this.inputId;
   }
 
   getTags() {
@@ -36,17 +39,17 @@ export default class Input extends Component {
 
     var tags = [
       'ui-input',
-      'ui-input-' + type,
-      'ui-input-named-' + name
+      'ui-input-' + type,
+      'ui-input-named-' + name
     ];
 
-    if (labelAfter) {
+    if (labelAfter) {
       tags.push('ui-input-label-right');
     } else {
       tags.push('ui-input-label-left');
     }
 
-    tags.push('ui-input-' + (this.state.valid ? 'valid':'invalid'));
+    tags.push('ui-input-' + (this.state.valid ? 'valid' : 'invalid'));
 
     return tags;
   }
@@ -66,23 +69,23 @@ export default class Input extends Component {
     );
   }
 
-  renderInput() {
+  renderInput() {
     const id = this.getInputId();
     const {defaultValue, name, tag, type} = this.props;
-    const obj = this;
+    const self = this;
 
     return React.createElement(tag, {
       id: id,
       name: name,
       onKeyUp: (e) => {
-        obj.onKeyUp(e);
+        self.onKeyUp(e);
       },
-      onChange: (e) => {
-        obj.onChange(e);
+      onChange: (e) => {
+        self.onChange(e);
       },
-      ref: "userInput",
+      ref: 'userInput',
       type: type,
-      value: defaultValue
+      value: defaultValue
     });
   }
 
@@ -102,7 +105,7 @@ export default class Input extends Component {
     }
   }
 
-  changed() {
+  changed() {
     this.validateVisual();
 
     if (this.props.onKeyUp) {
@@ -110,12 +113,12 @@ export default class Input extends Component {
     }
   }
 
-  isEmpty() {
+  isEmpty() {
     return !this.val();
   }
 
   val() {
-    if (this.refs.userInput) {
+    if (this.refs.userInput) {
       return this.refs.userInput.getDOMNode().value;
     }
 
@@ -123,18 +126,18 @@ export default class Input extends Component {
   }
 
   isValid() {
-    if (this.props.required && this.isEmpty()) {
+    if (this.props.required && this.isEmpty()) {
       return false;
     }
 
     return this.validate();
   }
 
-  validate() {
+  validate() {
     return true;
   }
 
-  validateVisual() {
+  validateVisual() {
 
     this.setState({
       valid: this.isValid(),
@@ -142,10 +145,10 @@ export default class Input extends Component {
     });
   }
 
-  render() {
-    const {labelAfter, type, name} = this.props;
+  render() {
+    const {labelAfter, name} = this.props;
 
-    if (!this.inputId) {
+    if (!this.inputId) {
       this.inputId = name;
     }
 
@@ -156,7 +159,7 @@ export default class Input extends Component {
     var htmlLabelAfter;
     var htmlLabelBefore;
 
-    if (labelAfter) {
+    if (labelAfter) {
       htmlLabelAfter = htmlLabel;
     } else {
       htmlLabelBefore = htmlLabel;

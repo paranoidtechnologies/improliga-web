@@ -1,6 +1,5 @@
 import Calendar from '../../components/calendar.react';
 import React from 'react';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class ShowsCalendar extends Calendar {
   static propTypes = {

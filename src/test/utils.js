@@ -15,3 +15,12 @@ export function render(Component) {
   shallowRenderer.render(Component);
   return shallowRenderer.getRenderOutput();
 }
+
+
+export function createApiFetch(err, res) {
+  return {
+    fetch: function(url, feature, params, next) {
+      next(err, res);
+    }
+  };
+}

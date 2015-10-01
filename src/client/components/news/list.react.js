@@ -18,7 +18,6 @@ export default class NewsList extends Browser {
   }
 
   componentDidMount(next) {
-    console.log(this.props.items);
     return this.props.actions.news.loadNews();
   }
 }

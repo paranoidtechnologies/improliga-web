@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class Thumb extends Component {
   static propTypes = {
-    alt: React.PropTypes.string,
+    alt: React.PropTypes.string,
     height: React.PropTypes.number,
     src: React.PropTypes.string.isRequired,
     width: React.PropTypes.number
@@ -16,11 +16,11 @@ export default class Thumb extends Component {
   }
 
   render() {
-    const {alt, height, src, width} = this.props;
-    const dest = src + '?width=' + width + '&height=' + height;
+    const {alt, height, src, width} = this.props;
+    const dest = src + '?width=' + width + '&height=' + height;
 
     return (<div className="ui-thumb">
-      <img src={dest} alt={alt} />
+      <img alt={alt} src={dest} />
     </div>);
   }
 };

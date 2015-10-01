@@ -1,5 +1,4 @@
 import Input from '../input';
-import React from 'react';
 import validator from 'validator';
 
 export default class InputEmail extends Input {
@@ -13,6 +12,6 @@ export default class InputEmail extends Input {
   }
 
   validate() {
-    return this.isEmpty() || this.isEmail();
+    return this.isEmpty() || this.isEmail();
   }
 }

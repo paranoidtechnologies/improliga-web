@@ -1,5 +1,4 @@
 import Component from '../../component.react';
-import {Record} from 'immutable';
 import React from 'react';
 
 export default class Item extends Component {

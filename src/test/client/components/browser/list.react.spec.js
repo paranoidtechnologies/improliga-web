@@ -8,7 +8,7 @@ var draw = class Item extends Component {
   render() {
     return <div className="item">item</div>;
   }
-}
+};
 
 describe('List', () => {
   it('require some props', () => {

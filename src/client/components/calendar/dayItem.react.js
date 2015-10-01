@@ -1,5 +1,4 @@
 import Component from '../component.react';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 import Thumb from '../thumb.react';
 import {Link} from 'react-router';
@@ -7,8 +6,8 @@ import {Link} from 'react-router';
 export default class DayItem extends Component {
   static propTypes = {
     id: React.PropTypes.number,
-    name: React.PropTypes.string,
-    image: React.PropTypes.object
+    image: React.PropTypes.object,
+    name: React.PropTypes.string
   }
 
   render() {
@@ -23,7 +22,7 @@ export default class DayItem extends Component {
     }
 
     return (
-      <Link to="show" params={params} className="col-xs-6 day-item event">
+      <Link className="col-xs-6 day-item event" params={params} to="show">
         <div className="day-item-name">{name}</div>
         <div className="day-item-image">
           <Thumb height={40} src={imageUrl} width={40} />

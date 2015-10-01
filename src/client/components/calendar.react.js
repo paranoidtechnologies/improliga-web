@@ -26,7 +26,7 @@ export default class Calendar extends Component {
     const {month, weekStart} = this.props;
     let first = month.clone().startOf('month');
 
-    while (first.isoWeekday() != weekStart) {
+    while (first.isoWeekday() !== weekStart) {
       first.subtract(1, 'day');
     }
 
@@ -37,7 +37,7 @@ export default class Calendar extends Component {
     const {month, weekStart} = this.props;
     let last = month.clone().endOf('month');
 
-    while (last.isoWeekday() != weekStart) {
+    while (last.isoWeekday() !== weekStart) {
       last.add(1, 'day');
     }
 
@@ -60,7 +60,7 @@ export default class Calendar extends Component {
       }
 
       str.push(<div className="cal-cell1 ui-day" key={day}>{msg['day' + day]}</div>);
-      day ++;
+      day++;
     }
 
     return str;

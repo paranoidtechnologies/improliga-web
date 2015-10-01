@@ -12,7 +12,7 @@ export default class Logo extends Component {
     var msg = this.props.msg;
 
     return (
-      <Link to="shows" className="ui-ripple site-logo">
+      <Link className="ui-ripple site-logo" to="shows">
         <div className="ripple site-logo-ripple" />
         <div className="ripple-hover site-logo-ripple-hover" />
         <div className="site-logo-icon" />

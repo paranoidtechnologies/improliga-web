@@ -1,28 +1,11 @@
-import React from 'react/addons';
 import {expect} from 'chai';
-import {render} from 'test/utils';
-import {actions, feature} from 'client/pages/shows/actions';
-import store from 'client/pages/shows/store';
 import {wakeUpEvent} from 'client/lib/events';
-import {List, Record} from 'immutable';
-import Event from 'client/models/event';
 import moment from 'moment';
 
-const momentConst = moment().__proto__.constructor;
+const momentConst = moment().constructor;
 
-describe('Pages, Home, Shows', () => {
-  it('store default', () => {
-    let res = store();
-
-    expect(feature).to.equal('shows');
-    expect(res).to.be.an.instanceof(Record);
-    expect(res.list).to.be.an.instanceof(List);
-    expect(res.list.size).to.equal(0);
-  });
-
-  it('store wakeUpEvent empty', () => {
-    var res;
-
+describe('Event model', () => {
+  it('wakeUpEvent empty', () => {
     expect(function() {
       wakeUpEvent();
     }).to.throw();
@@ -32,8 +15,8 @@ describe('Pages, Home, Shows', () => {
     }).to.not.throw();
   });
 
-  it('store wakeUpEvent start', () => {
-    res = wakeUpEvent({
+  it('wakeUpEvent start', () => {
+    var res = wakeUpEvent({
       start: '2015-01-01',
     });
 
@@ -49,9 +32,8 @@ describe('Pages, Home, Shows', () => {
     expect(res.start.isValid()).to.equal(false);
   });
 
-  it('store wakeUpEvent end', () => {
-
-    res = wakeUpEvent({
+  it('wakeUpEvent end', () => {
+    var res = wakeUpEvent({
       end: '2015-01-01',
     });
 

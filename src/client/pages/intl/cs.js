@@ -47,37 +47,37 @@ export default {
     perex: 'Zajímá vás, co Improliga dělá a co se děje?'
   },
 
-  contact: {
+  contact: {
     desc: 'Prostě se chci zeptat',
-    email: 'E-mail',
-    message: 'Zpráva',
-    title: 'Kontakty',
+    email: 'E-mail',
+    message: 'Zpráva',
+    title: 'Kontakty',
 
-    club: {
+    club: {
       title: 'Kontakty',
-      ico: 'IČO',
+      ico: 'IČO',
       icoFull: 'Identifikační číslo organizace'
     },
 
-    heads: {
+    heads: {
       title: 'Výkonný výbor',
-      desc: 'Výkonný výbor rozděluje práci a má na starosti produkci projektů, které byly schváleny během valné hromady. Jednou ročně se obměňuje při hlasování na valné hromadě Improligy.'
+      desc: 'Výkonný výbor rozděluje práci a má na starosti produkci projektů, které byly schváleny během valné hromady. Jednou ročně se obměňuje při hlasování na valné hromadě Improligy.'
     },
 
-    form: {
-      title: 'Napište nám',
+    form: {
+      title: 'Napište nám',
       desc: 'Každý den s láskou zpracováváme vaše dotazy a během 24 hodin na ně odpovídáme.',
-      cancel: 'Rozmyslel jsem si to',
-      send: 'Odeslat',
+      cancel: 'Rozmyslel jsem si to',
+      send: 'Odeslat',
     },
 
-    subject: {
-      novice: 'Chci si vyzkoušet impro',
+    subject: {
+      novice: 'Chci si vyzkoušet impro',
       invite: 'Přijeďte si zahrát',
       cili: 'Chci vstoupit do ČILI',
       team: 'Mám tým, nevím co s ním',
-      support: 'Chci něco změnit na webu',
-      generic: 'Něco jiného'
+      support: 'Chci něco změnit na webu',
+      generic: 'Něco jiného'
     }
   }
 };

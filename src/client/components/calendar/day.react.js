@@ -37,7 +37,7 @@ export default class Day extends Component {
 
           <div className="events-list">
             {items.map(function(item, key) {
-              return <DayItem id={item.id} image={item.image} key={key} name={item.name} />;
+              return <DayItem id={item.id} image={item.image} key={key} msg={msg} name={item.name} />;
             })}
           </div>
         </div>

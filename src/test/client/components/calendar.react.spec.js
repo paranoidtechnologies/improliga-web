@@ -2,7 +2,7 @@ import Calendar from 'client/components/calendar.react';
 import React from 'react/addons';
 import moment from 'moment';
 import {expect} from 'chai';
-import {log, render} from 'test/utils';
+import {render} from 'test/utils';
 
 const msg = {
   day1: 'mon',
@@ -49,10 +49,10 @@ var testHeadDayStart = function(weekStart) {
     expect(day._store.props.children).to.be.a('string');
     expect(day._store.props.children).to.be.equal(str);
   }
-}
+};
 
 var testFirstLastDate = function(weekStart, month, first, last) {
-  const comp = <Calendar month={moment(month, 'YYYY-MM')} msg={msg} weekStart={weekStart} />
+  const comp = <Calendar month={moment(month, 'YYYY-MM')} msg={msg} weekStart={weekStart} />;
   const ren = render(comp);
 
   expect(ren._store.props.children).to.be.an('array');
@@ -79,9 +79,9 @@ var testFirstLastDate = function(weekStart, month, first, last) {
   expect(lastWeek._store.props.date);
   expect(lastWeek._store.props.date).to.be.an('object');
 
-  lastDay = lastWeek._store.props.date.clone().add(6, 'days');
+  let lastDay = lastWeek._store.props.date.clone().add(6, 'days');
   expect(lastDay.format('YYYY-MM-DD')).to.equal(last);
-}
+};
 
 
 describe('Calendar', () => {

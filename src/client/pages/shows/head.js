@@ -1,15 +1,12 @@
 import Component from '../../components/component.react';
 import React from 'react';
-import {Link} from 'react-router';
 
-export default class ShowsHead {
+export default class ShowsHead extends Component {
   static propTypes = {
     msg: React.PropTypes.object.required
   }
 
   render() {
-    const {msg} = this.props;
-
     return (
       <div className="row shows-heading">
       </div>

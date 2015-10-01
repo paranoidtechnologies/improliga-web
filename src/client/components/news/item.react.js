@@ -1,12 +1,16 @@
 import Component from '../component.react';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
-import moment from 'moment';
 
 export default class NewsItem extends Component {
+  static propTypes = {
+    createdAt: React.PropTypes.object,
+    msg: React.PropTypes.object.isRequired,
+    name: React.PropTypes.string,
+    text: React.PropTypes.string
+  };
+
   render() {
-    const {msg, name, text, created_at} = this.props;
-    const date = moment(created_at, msg.app.format.date.system);
+    const {msg, name, text, createdAt} = this.props;
 
     return (
       <div className="ui-news-item">
@@ -17,7 +21,7 @@ export default class NewsItem extends Component {
         </div>
 
         <div className="footer">
-          <span className="date">{date.format(msg.app.format.date.exact)}</span>
+          <span className="date">{createdAt.format(msg.app.format.date.exact)}</span>
         </div>
       </div>
     );

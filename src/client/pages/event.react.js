@@ -6,7 +6,9 @@ export default class Event extends Component {
 
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
+    event: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    params: React.PropTypes.object.isRequired
   }
 
   static defaultProps = {
@@ -19,7 +21,6 @@ export default class Event extends Component {
 
   render() {
     const {msg, event} = this.props;
-    console.log(this.props);
 
     return (
       <DocumentTitle title={msg.title}>

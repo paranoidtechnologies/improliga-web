@@ -1,6 +1,4 @@
-import moment from 'moment';
-
-export function getFilters(date) {
+export function getFilters(date) {
   var filters = [
     {
       attr: 'visibility',

@@ -24,7 +24,7 @@ export default class Week extends Component {
     const {date, weekStart} = this.props;
     let first = date.clone();
 
-    while (first.isoWeekday() != weekStart) {
+    while (first.isoWeekday() !== weekStart) {
       first.subtract(1, 'day');
     }
 
@@ -36,7 +36,7 @@ export default class Week extends Component {
   }
 
   render() {
-    const {items, month, msg, weekStart} = this.props;
+    const {items, month, msg} = this.props;
     const first = this.getFirstDay();
     const last = this.getLastDay().add(1, 'day');
 
@@ -47,7 +47,7 @@ export default class Week extends Component {
     while (day.isBefore(last)) {
       let dayItems = [];
 
-      items.forEach(function(item) {
+      items.forEach((item) => {
         if (item.start.isSame(day, 'day')) {
           dayItems.push(item);
         }

@@ -1,6 +1,6 @@
 import immutable from 'immutable';
 
-import showsStore from '../pages/shows/store';
+import showsStore from '../components/shows/store';
 import eventsStore from '../components/events/store';
 import newsStore from '../components/news/store';
 import intlStore from '../intl/store';

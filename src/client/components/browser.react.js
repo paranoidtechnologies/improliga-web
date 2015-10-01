@@ -6,10 +6,11 @@ import List from './browser/list.react';
 export default class Browser extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    desc: React.PropTypes.string,
+    desc: React.PropTypes.string,
     draw: React.PropTypes.func.isRequired,
-    header: React.PropTypes.object,
+    header: React.PropTypes.object,
     items: React.PropTypes.any.isRequired,
+    msg: React.PropTypes.object.isRequired,
     page: React.PropTypes.number.isRequired
   }
 

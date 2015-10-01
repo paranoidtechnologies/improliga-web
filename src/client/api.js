@@ -1,10 +1,16 @@
 import request from 'superagent';
 
 export default class Api {
-  static timeout = 10000;
-  static pending = {};
+  timeout = 10000;
+  pending = {};
+  errorCallback = null;
+  error(err, res) {
+    if (this.errorCallback instanceof Function) {
+      this.errorCallback(err, res);
+    }
+  };
 
-  static abortRequests(key) {
+  abortRequests(key) {
     if (this.pending[key]) {
       this.pending[key].callback = function() { };
       this.pending[key].abort();
@@ -12,28 +18,23 @@ export default class Api {
     }
   }
 
-  static fetch(url, key, params, callback) {
+  fetch(url, key, params, callback) {
     const self = this;
 
-    console.log('fetch', url);
     if (typeof params === 'undefined' || !params) {
       params = {};
-    }
-
-    if (typeof callback === 'undefined') {
-      callback = makeDigestFun(key, params);
     }
 
     this.abortRequests(key);
     this.pending[key] = this.get(url)
       .query(params)
-      .end(function(err, res) {
+      .end(function(err, res) {
         delete self.pending[key];
         callback(err, res);
       });
   }
 
-  static get(url, params) {
+  get(url, params) {
     return request
       .get(url)
       .set('Accept', 'application/json')

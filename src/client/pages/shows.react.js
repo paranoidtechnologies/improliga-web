@@ -8,7 +8,8 @@ export default class Shows extends Component {
 
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired
+    msg: React.PropTypes.object.isRequired,
+    shows: React.PropTypes.object.isRequired
   }
 
   render() {

@@ -1,14 +1,14 @@
 import './styles/page.styl';
 import Component from '../components/component.react';
 import Header from './header.react';
-import Footer from './footer.react';
 import React from 'react';
 import flux from '../lib/flux';
 import store from './store';
 import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
+import Api from '../api';
 
-import * as showsActions from '../pages/shows/actions';
+import * as showsActions from '../components/shows/actions';
 import * as eventsActions from '../components/events/actions';
 import * as newsActions from '../components/news/actions';
 
@@ -16,11 +16,12 @@ const actions = [eventsActions, showsActions, newsActions];
 
 @flux(store)
 export default class App extends Component {
-
   static propTypes = {
     flux: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired
   }
+
+  api = new Api();
 
   componentWillMount() {
     this.createActions();
@@ -34,9 +35,9 @@ export default class App extends Component {
     this.actions = actions.reduce((actions, {create, feature, inject}) => {
       const dispatch = (action, payload) => {
         flux.dispatch(action, payload, {feature});
-      }
+      };
 
-      const deps = [dispatch, validate, state];
+      const deps = [this.api, dispatch, validate, state];
       const args = inject ? inject(...deps) : deps;
       return {...actions, [feature]: create(...args)};
 

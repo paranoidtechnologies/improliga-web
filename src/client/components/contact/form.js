@@ -33,15 +33,15 @@ export default class ContactForm extends Component {
 
   }
 
-  render() {
+  render() {
     const {msg} = this.props;
     const state = this.state;
-    const obj = this;
+    const self = this;
     const msgLoc = msg.pages.contact;
 
 
-    const cnameForm = 'ui-form ui-contact-form-cont' + (state.subject ? '':' hidden');
-    const cnameOpts = 'ui-contact-form-options' + (state.subject ? ' hidden':'');
+    const cnameForm = 'ui-form ui-contact-form-cont' + (state.subject ? '' : ' hidden');
+    const cnameOpts = 'ui-contact-form-options' + (state.subject ? ' hidden' : '');
 
     return (
       <div className="ui-contact-form">
@@ -56,7 +56,7 @@ export default class ContactForm extends Component {
         <div className={cnameOpts}>
           {this.subjects.map(function(item, key) {
             return (
-              <div className="col-md-6 ui-contact-form-item" key={key} onClick={(e) => {obj.select(e, item)}}>
+              <div className="col-md-6 ui-contact-form-item" key={key} onClick={(e) => { self.select(e, item); }}>
                 <span className="label">{msgLoc.subject[item]}</span>
               </div>
             );
@@ -65,14 +65,14 @@ export default class ContactForm extends Component {
 
         <form className={cnameForm} onSubmit={(e) => { this.send(e); }}>
           <fieldset className="ui-form-inputs">
-            <InputHidden name="subject" defaultValue={state.subject} />
+            <InputHidden defaultValue={state.subject} name="subject" />
             <InputEmail label={msgLoc.email} name="email" />
             <InputTextarea label={msgLoc.message} name="message" />
           </fieldset>
 
           <div className="ui-form-buttons">
             <button type="submit">{msgLoc.form.send}</button>
-            <button type="button" onClick={(e) => { this.select(e, null); }}>{msgLoc.form.cancel}</button>
+            <button onClick={(e) => { this.select(e, null); }} type="button">{msgLoc.form.cancel}</button>
           </div>
         </form>
       </div>
