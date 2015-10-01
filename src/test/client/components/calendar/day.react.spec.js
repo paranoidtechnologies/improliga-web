@@ -6,33 +6,44 @@ import moment from 'moment';
 
 const msg = {};
 const today = moment();
+const days = [];
+
+const start = moment(2016, 'YYYY').startOf('year');
+let cur = start.clone();
+
+while (cur.isSame(start, 'year')) {
+  days.push(cur.clone());
+  cur.add(1, 'day');
+}
 
 describe('Calendar day', () => {
   it('render empty', () => {
-    const comp = <Day date={today} msg={msg} />;
-    const ren = render(comp);
+    days.forEach((today) => {
+      const comp = <Day date={today} msg={msg} />;
+      const ren = render(comp);
 
-    expect(ren._store).to.be.an('object');
-    expect(ren._store.props).to.be.an('object');
-    expect(ren._store.props.children).to.be.an('object');
+      expect(ren._store).to.be.an('object');
+      expect(ren._store.props).to.be.an('object');
+      expect(ren._store.props.children).to.be.an('object');
 
-    const wrap = ren._store.props.children;
+      const wrap = ren._store.props.children;
 
-    expect(wrap._store).to.be.an('object');
-    expect(wrap._store.props).to.be.an('object');
-    expect(wrap._store.props.children).to.be.an('array');
+      expect(wrap._store).to.be.an('object');
+      expect(wrap._store.props).to.be.an('object');
+      expect(wrap._store.props.children).to.be.an('array');
 
-    const dayNumber = wrap._store.props.children[0];
-    const events = wrap._store.props.children[1];
+      const dayNumber = wrap._store.props.children[0];
+      const events = wrap._store.props.children[1];
 
-    expect(dayNumber._store).to.be.an('object');
-    expect(dayNumber._store.props).to.be.an('object');
-    expect(dayNumber._store.props.children).to.equal(today.format('DD'));
+      expect(dayNumber._store).to.be.an('object');
+      expect(dayNumber._store.props).to.be.an('object');
+      expect(dayNumber._store.props.children).to.equal(today.format('D'));
 
-    expect(events._store).to.be.an('object');
-    expect(events._store.props).to.be.an('object');
-    expect(events._store.props.children).to.be.an('array');
-    expect(events._store.props.children.length).to.equal(0);
+      expect(events._store).to.be.an('object');
+      expect(events._store.props).to.be.an('object');
+      expect(events._store.props.children).to.be.an('array');
+      expect(events._store.props.children.length).to.equal(0);
+    });
   });
 
   it('render items', () => {
