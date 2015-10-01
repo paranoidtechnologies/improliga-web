@@ -14,7 +14,7 @@ export default class NotFound extends Component {
 
     return (
       <DocumentTitle title={msg.notFound.title}>
-        <div className="notfound-page">
+        <div className="ui-page notfound-page">
           <h1>{msg.notFound.header}</h1>
           <p>{msg.notFound.message}</p>
           <Link to="home">{msg.notFound.continueMessage}</Link>
