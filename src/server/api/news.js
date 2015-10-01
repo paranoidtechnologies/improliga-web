@@ -1,6 +1,6 @@
 import fetch from './fetch';
 
-export function fetchNews(req, res, next) {
+export function fetchNews(req, res, next) {
   const cfg = {
     model: 'Impro.News',
     perPage: req.query.perPage,
@@ -13,7 +13,7 @@ export function fetchNews(req, res, next) {
     ]
   };
 
-  return fetch(cfg, function(err, data) {
+  return fetch(cfg, function(err, data) {
     if (err) {
       return res
         .status(500)

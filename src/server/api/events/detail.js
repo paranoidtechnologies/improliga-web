@@ -1,8 +1,7 @@
 import fetch from '../fetch';
-import moment from 'moment';
 
-export default (req, res, next) => {
-  var id = parseInt(req.params.eventId);
+export default (req, res, next) => {
+  var id = parseInt(req.params.eventId, 10);
 
   if (isNaN(id)) {
     res
@@ -11,7 +10,6 @@ export default (req, res, next) => {
     return;
   }
 
-  let date = null;
   let cfg = {
     filters: [
       {
@@ -24,7 +22,7 @@ export default (req, res, next) => {
     perPage: 1,
   };
 
-  return fetch(cfg, function(err, data) {
+  return fetch(cfg, function(err, data) {
     if (err) {
       return res
         .status(500)
