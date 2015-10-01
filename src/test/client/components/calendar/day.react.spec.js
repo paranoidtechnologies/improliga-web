@@ -8,10 +8,10 @@ const msg = {};
 const today = moment();
 const days = [];
 
-const start = moment(2016, 'YYYY').startOf('year');
+const start = moment('2016-01', 'YYYY-MM');
 let cur = start.clone();
 
-while (cur.isSame(start, 'year')) {
+while (cur.isSame(start, 'month')) {
   days.push(cur.clone());
   cur.add(1, 'day');
 }

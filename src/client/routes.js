@@ -3,6 +3,7 @@ import App from './app/app.react';
 import Contact from './pages/contact.react';
 import Home from './pages/home.react';
 import News from './pages/news.react';
+import Event from './pages/event.react';
 import Shows from './pages/shows.react';
 import NotFound from './components/notfound.react';
 import React from 'react';
@@ -15,7 +16,7 @@ export default (
     <Route handler={About} name="about" path="/o-improlize" />
     <Route handler={Contact} name="contact" path="/kontakty" />
     <Route handler={Shows} name="shows" path="/predstaveni" />
-    <Route handler={NotFound} name="show" path="/predstaveni/:showId" />
+    <Route handler={Event} name="show" path="/predstaveni/:showId" />
 
     <Route handler={Home} name="teams" path="/tymy" />
     <Route handler={Home} name="workshops" path="/workshopy" />

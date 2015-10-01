@@ -2,7 +2,7 @@ import fetch from '../fetch';
 import moment from 'moment';
 
 export default (req, res, next) => {
-  var id = parseInt(req.params.showId);
+  var id = parseInt(req.params.eventId);
 
   if (isNaN(id)) {
     res
@@ -23,8 +23,6 @@ export default (req, res, next) => {
     model: 'Impro.Event',
     perPage: 1,
   };
-
-  console.log(cfg);
 
   return fetch(cfg, function(err, data) {
     if (err) {

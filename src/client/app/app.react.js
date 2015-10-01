@@ -9,9 +9,10 @@ import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
 
 import * as showsActions from '../pages/shows/actions';
+import * as eventsActions from '../components/events/actions';
 import * as newsActions from '../components/news/actions';
 
-const actions = [showsActions, newsActions];
+const actions = [eventsActions, showsActions, newsActions];
 
 @flux(store)
 export default class App extends Component {

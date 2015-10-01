@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/news', fetchNews);
-app.use('/events/shows/:showId', fetchEventDetail);
-app.use('/events/shows', fetchShows);
+app.use('/shows', fetchShows);
+app.use('/events/:eventId', fetchEventDetail);
 
 app.on('mount', () => {
   console.log('Api is available at %s', app.mountpath);

@@ -2,8 +2,10 @@ import React from 'react/addons';
 import {expect} from 'chai';
 import {render} from 'test/utils';
 import {actions, feature} from 'client/pages/shows/actions';
-import store, {wakeUpEvent} from 'client/pages/shows/store';
+import store from 'client/pages/shows/store';
+import {wakeUpEvent} from 'client/lib/events';
 import {List, Record} from 'immutable';
+import Event from 'client/models/event';
 import moment from 'moment';
 
 const momentConst = moment().__proto__.constructor;
@@ -31,7 +33,6 @@ describe('Pages, Home, Shows', () => {
   });
 
   it('store wakeUpEvent start', () => {
-
     res = wakeUpEvent({
       start: '2015-01-01',
     });
