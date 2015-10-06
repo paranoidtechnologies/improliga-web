@@ -5,5 +5,7 @@ export default Record({
   name: '',
   desc: '',
   start: null,
-  end: null
+  startTime: null,
+  end: null,
+  endTime: null,
 });
