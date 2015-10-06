@@ -17,6 +17,13 @@ export function render(Component) {
 }
 
 
+export function getInstance(Component) {
+  const shallowRenderer = TestUtils.createRenderer();
+  shallowRenderer.render(Component);
+  return shallowRenderer._instance._instance;
+}
+
+
 export function createApiFetch(err, res) {
   return {
     fetch: function(url, feature, params, next) {
