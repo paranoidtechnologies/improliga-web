@@ -40,7 +40,7 @@ export default (req, res, next) => {
     if (err) {
       let msg = err.message;
 
-      if (!msg) {
+      if (!msg) {
         msg = 'invalid-api-response';
       }
 

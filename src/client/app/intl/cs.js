@@ -20,7 +20,12 @@ export default {
   format: {
     date: {
       exact: 'D. M. YYYY',
-      system: 'YYYY-MM-DDTHH:ii:ss'
+      system: 'YYYY-MM-DDTHH:ii:ssZ'
+    },
+
+    time: {
+      exact: 'HH:mm',
+      system: 'HH:ii:ssZ'
     }
   }
 };

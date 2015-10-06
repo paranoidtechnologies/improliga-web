@@ -17,10 +17,10 @@ describe('Api', () => {
     var res, keys;
 
     res = mock.wakeUp({
-      arg_test: 1,
-      long_arg_test_x: 2,
-      created_at: '2015-01-01T12:42:12+02:00',
-      updated_at: '2015-05-01T12:12:42+04:00'
+      'arg_test': 1,
+      'long_arg_test_x': 2,
+      'created_at': '2015-01-01T12:42:12+02:00',
+      'updated_at': '2015-05-01T12:12:42+04:00'
     });
 
     keys = Object.keys(res);

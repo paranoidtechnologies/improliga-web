@@ -6,8 +6,6 @@ export function create(api, dispatch, validate) {
     loadEventDetail(eventId) {
       let params = {};
 
-      params.perPage = 1;
-
       api.fetch('/api/1/events/' + eventId, feature, params, (err, res) => {
         if (err) {
           api.error(err);

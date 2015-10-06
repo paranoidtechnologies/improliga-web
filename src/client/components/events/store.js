@@ -17,10 +17,8 @@ export default function(state = initialState, action, payload) {
   switch (action) {
 
   case actions.loadEventDetail:
-    if (payload && payload.list && payload.list[0]) {
-      const item = wakeUpEvent(payload.list[0]);
-
-      return state.set('detail', item);
+    if (payload && payload[0]) {
+      return state.set('detail', wakeUpEvent(payload[0]));
     }
   }
 

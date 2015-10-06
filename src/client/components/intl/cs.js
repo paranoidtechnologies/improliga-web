@@ -15,5 +15,11 @@ export default {
     shows: 'Představení',
     teams: 'Týmy',
     workshops: 'Workshopy'
+  },
+
+  event: {
+    detail: {
+      location: 'Umístění'
+    }
   }
 };

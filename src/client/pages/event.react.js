@@ -1,18 +1,16 @@
 import Component from '../components/component.react';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
+import EventDetail from '../components/events/detail.react';
+import NotFound from '../components/notfound.react';
 
 export default class Event extends Component {
 
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    event: React.PropTypes.object.isRequired,
+    events: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired
-  }
-
-  static defaultProps = {
-    event: {}
   }
 
   componentDidMount() {
@@ -20,15 +18,21 @@ export default class Event extends Component {
   }
 
   render() {
-    const {msg, event} = this.props;
+    const {actions, msg, events} = this.props;
+    const event = events.detail;
+    const msgDetail = msg.components.event.detail;
+    const props = {
+      actions: actions,
+      event: event,
+      msg: msgDetail
+    };
+    const title = event ? event.name : '';
+
 
     return (
-      <DocumentTitle title={msg.title}>
+      <DocumentTitle title={title}>
         <div className="ui-page ui-page-show">
-          <section className="container">
-            <h1>{event.name}</h1>
-
-          </section>
+          {event ? <EventDetail {...{props}} /> : <NotFound msg={msg} />}
         </div>
       </DocumentTitle>
     );
