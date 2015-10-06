@@ -20,19 +20,25 @@ export default class Event extends Component {
   render() {
     const {actions, msg, events} = this.props;
     const event = events.detail;
+
+    if (!event) {
+      return <NotFound msg={msg} />;
+    }
+
     const msgDetail = msg.components.event.detail;
+    const title = event.name;
     const props = {
       actions: actions,
       event: event,
+      formatDate: msg.app.format.date.exact,
+      formatTime: msg.app.format.time.exact,
       msg: msgDetail
     };
-    const title = event ? event.name : '';
-
 
     return (
       <DocumentTitle title={title}>
         <div className="ui-page ui-page-show">
-          {event ? <EventDetail {...{props}} /> : <NotFound msg={msg} />}
+          <EventDetail {...props} />
         </div>
       </DocumentTitle>
     );

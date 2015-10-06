@@ -14,7 +14,7 @@ export default class LayoutDateTimeDateDuration extends Component {
     const format = msg.app.format.date.exact;
     const formatTime = msg.app.format.dateTime.exact;
 
-    return (<div className="event-duration-time">
+    return (<div className="event-duration">
       <div className="event-start">
         <span className="event-start-date">{start.format(format)}</span>
         <span className="event-start-time">{startTime.format(formatTime)}</span>

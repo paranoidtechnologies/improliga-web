@@ -11,8 +11,10 @@ export default class LayoutDate extends Component {
     const {msg, start} = this.props;
     const format = msg.app.format.date.exact;
 
-    return (<div className="event-start-time">
-      <span className="event-start-date">{start.format(format)}</span>
+    return (<div className="event-duration">
+      <div className="event-start-time">
+        <span className="event-start-date">{start.format(format)}</span>
+      </div>
     </div>);
   }
 }

@@ -5,14 +5,18 @@ import EventTime from './time.react';
 export default class eventDetail extends Component {
   static propTypes = {
     event: React.PropTypes.object.isRequired,
+    formatDate: React.PropTypes.string,
+    formatTime: React.PropTypes.string,
     msg: React.PropTypes.object.isRequired,
   }
 
   render() {
-    const {event, msg} = this.props;
+    const {event, formatDate, formatTime, msg} = this.props;
     const time = {
       end: event.end,
       endTime: event.endTime,
+      formatDate: formatDate,
+      formatTime: formatTime,
       msg: msg,
       start: event.start,
       startTime: event.startTime
@@ -23,7 +27,7 @@ export default class eventDetail extends Component {
         <h1>{event.name}</h1>
 
         <div className="col-md-6 event-desc">
-          <EventTime {...{time}} />
+          <EventTime {...time} />
           <div className="event-info">
             <div className="event-info-item event-info-location">
               <div className="label">{msg.location}</div>

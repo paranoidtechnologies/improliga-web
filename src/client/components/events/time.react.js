@@ -6,6 +6,8 @@ export default class eventTime extends Component {
   static propTypes = {
     end: React.PropTypes.object,
     endTime: React.PropTypes.object,
+    formatDate: React.PropTypes.string,
+    formatTime: React.PropTypes.string,
     msg: React.PropTypes.object,
     start: React.PropTypes.object,
     startTime: React.PropTypes.object
