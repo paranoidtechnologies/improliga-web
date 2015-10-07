@@ -6,6 +6,8 @@ import moment from 'moment';
 import timeLayouts from 'client/components/events/timeLayouts';
 
 const msg = {};
+const formatDate = 'YYYY-MM-DD';
+const formatTime = 'HH:mm';
 
 describe('Event time', () => {
   it('renders blank', () => {
@@ -26,7 +28,7 @@ describe('Event time', () => {
   });
 
   it('picks date layout provided start date', () => {
-    let comp = <EventTime msg={msg} start={moment()} />;
+    let comp = <EventTime formatDate={formatDate} msg={msg} start={moment()} />;
     let inst = getInstance(comp);
     let part = inst.renderLayout();
 
@@ -34,7 +36,7 @@ describe('Event time', () => {
     expect(part).to.be.an('object');
     expect(part.type).to.equal(timeLayouts.date);
 
-    comp = <EventTime endTime={moment()} msg={msg} start={moment()} />;
+    comp = <EventTime endTime={moment()} formatDate={formatDate} msg={msg} start={moment()} />;
     inst = getInstance(comp);
     part = inst.renderLayout();
 
@@ -44,7 +46,7 @@ describe('Event time', () => {
   });
 
   it('picks time layout provided start dateTime', () => {
-    let comp = <EventTime msg={msg} start={moment()} startTime={moment()} />;
+    let comp = <EventTime formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
     let inst = getInstance(comp);
     let part = inst.renderLayout();
 
@@ -52,7 +54,7 @@ describe('Event time', () => {
     expect(part).to.be.an('object');
     expect(part.type).to.equal(timeLayouts.time);
 
-    comp = <EventTime endTime={moment()} msg={msg} start={moment()} startTime={moment()} />;
+    comp = <EventTime endTime={moment()} formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
     inst = getInstance(comp);
 
     expect(inst.getLayout()).to.equal('time');
@@ -61,7 +63,7 @@ describe('Event time', () => {
   });
 
   it('picks dateDuration layout provided start/end date', () => {
-    const comp = <EventTime end={moment()} msg={msg} start={moment()} />;
+    const comp = <EventTime end={moment()} formatDate={formatDate} msg={msg} start={moment()} />;
     const inst = getInstance(comp);
     const part = inst.renderLayout();
 
@@ -71,7 +73,7 @@ describe('Event time', () => {
   });
 
   it('picks dateTimeDateDuration layout provided start dateTime and end date', () => {
-    const comp = <EventTime end={moment()} msg={msg} start={moment()} startTime={moment()} />;
+    const comp = <EventTime end={moment()} formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
     const inst = getInstance(comp);
     const part = inst.renderLayout();
 
@@ -81,7 +83,7 @@ describe('Event time', () => {
   });
 
   it('picks dateTimeDuration layout provided start dateTime and end dateTime', () => {
-    const comp = <EventTime end={moment()} endTime={moment()} msg={msg} start={moment()} startTime={moment()} />;
+    const comp = <EventTime end={moment()} endTime={moment()} formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
     const inst = getInstance(comp);
     const part = inst.renderLayout();
 

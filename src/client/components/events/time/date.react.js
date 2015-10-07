@@ -3,17 +3,17 @@ import Component from '../../component.react';
 
 export default class LayoutDate extends Component {
   static propTypes = {
+    formatDate: React.PropTypes.string.isRequired,
     msg: React.PropTypes.object.isRequired,
     start: React.PropTypes.object.isRequired
   }
 
   render() {
-    const {msg, start} = this.props;
-    const format = msg.app.format.date.exact;
+    const {formatDate, msg, start} = this.props;
 
     return (<div className="event-duration">
       <div className="event-start-time">
-        <span className="event-start-date">{start.format(format)}</span>
+        <span className="event-start-date">{start.format(formatDate)}</span>
       </div>
     </div>);
   }
