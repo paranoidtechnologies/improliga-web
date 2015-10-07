@@ -10,9 +10,14 @@ export default (config, next) => {
     config.perPage = 20;
   }
 
+  if (!config.join) {
+    config.join = [];
+  }
+
   const dest = 'http://' + host + url.replace('{model}', config.model);
   const query = {
     'filters': JSON.stringify(config.filters),
+    'join': JSON.stringify(config.join),
     'sort': JSON.stringify(config.sort),
     'per_page': config.perPage
   };
