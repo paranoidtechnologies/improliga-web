@@ -18,6 +18,7 @@ export default (req, res, next) => {
         exact: id
       }
     ],
+    join: ['location'],
     model: 'Impro.Event',
     perPage: 1,
   };

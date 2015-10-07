@@ -5,6 +5,7 @@ import {getFilters} from './shows/filters';
 export default (req, res, next) => {
   let date = null;
   let cfg = {
+    join: ['location'],
     model: 'Impro.Event',
     page: req.query.page,
     perPage: req.query.perPage,
