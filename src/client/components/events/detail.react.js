@@ -1,7 +1,6 @@
 import React from 'react';
 import Component from '../component.react';
 import EventTime from './time.react';
-import './detail.styl';
 
 export default class eventDetail extends Component {
   static propTypes = {

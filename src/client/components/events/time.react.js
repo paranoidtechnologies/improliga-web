@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../component.react';
 import timeLayouts from './timeLayouts';
+import './time.styl';
 
 export default class eventTime extends Component {
   static propTypes = {
