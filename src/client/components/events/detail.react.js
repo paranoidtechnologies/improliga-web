@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../component.react';
 import EventTime from './time.react';
+import EventLocation from './location.react';
 
 export default class eventDetail extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ export default class eventDetail extends Component {
 
   render() {
     const {event, formatDate, formatTime, msg} = this.props;
+    const {location} = event;
     const time = {
       end: event.end,
       endTime: event.endTime,
@@ -28,12 +30,7 @@ export default class eventDetail extends Component {
 
         <div className="col-sm-6 event-desc">
           <EventTime {...time} />
-          <div className="event-info">
-            <div className="event-info-item event-info-location">
-              <div className="label">{msg.location}</div>
-              <div className="value">{event.location}</div>
-            </div>
-          </div>
+          {typeof location == 'object' ? <EventLocation {...location} />:'' }
 
           <div className="desc-short">{event.descShort}</div>
           <div className="desc-full">{event.descFull}</div>
