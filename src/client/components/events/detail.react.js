@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../component.react';
 import EventTime from './time.react';
+import './detail.styl';
 
 export default class eventDetail extends Component {
   static propTypes = {
@@ -26,7 +27,7 @@ export default class eventDetail extends Component {
       <section className="container">
         <h1>{event.name}</h1>
 
-        <div className="col-md-6 event-desc">
+        <div className="col-sm-6 event-desc">
           <EventTime {...time} />
           <div className="event-info">
             <div className="event-info-item event-info-location">
@@ -37,6 +38,9 @@ export default class eventDetail extends Component {
 
           <div className="desc-short">{event.descShort}</div>
           <div className="desc-full">{event.descFull}</div>
+        </div>
+
+        <div className="col-sm-6 event-imagery">
         </div>
       </section>
     </div>);
