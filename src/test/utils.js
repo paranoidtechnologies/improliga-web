@@ -31,3 +31,7 @@ export function createApiFetch(err, res) {
     }
   };
 }
+
+export function getChildren(obj) {
+  return obj._store.props.children;
+}
