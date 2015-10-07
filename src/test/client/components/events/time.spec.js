@@ -82,8 +82,18 @@ describe('Event time', () => {
     expect(part.type).to.equal(timeLayouts.dateTimeDateDuration);
   });
 
-  it('picks dateTimeDuration layout provided start dateTime and end dateTime', () => {
+  it('picks dateTimeTimeDuration layout provided start dateTime and end dateTime', () => {
     const comp = <EventTime end={moment()} endTime={moment()} formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
+    const inst = getInstance(comp);
+    const part = inst.renderLayout();
+
+    expect(inst.getLayout()).to.equal('dateTimeTimeDuration');
+    expect(part).to.be.an('object');
+    expect(part.type).to.equal(timeLayouts.dateTimeTimeDuration);
+  });
+
+  it('picks dateTimeDuration layout provided start dateTime and end dateTime', () => {
+    const comp = <EventTime end={moment().clone().add(1, 'day')} endTime={moment()} formatDate={formatDate} formatTime={formatTime} msg={msg} start={moment()} startTime={moment()} />;
     const inst = getInstance(comp);
     const part = inst.renderLayout();
 

@@ -25,10 +25,12 @@ describe('Event date layout', () => {
 
     const elStart = getChildren(res);
     expect(elStart).to.be.an('object');
+    expect(elStart.props.className.split(' ')).to.contain('event-start');
     expect(getChildren(elStart)).to.be.an('object');
 
     const elStartDate = getChildren(elStart);
     expect(elStartDate).to.be.an('object');
+    expect(elStartDate.props.className.split(' ')).to.contain('start-date');
     expect(getChildren(elStartDate)).to.equal(start.format(formatDate));
   });
 });

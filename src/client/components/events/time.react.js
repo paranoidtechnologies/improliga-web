@@ -37,6 +37,10 @@ export default class eventTime extends Component {
 
           if (endTime) {
             layout = 'dateTimeDuration';
+
+            if (start.isSame(end, 'day')) {
+              layout = 'dateTimeTimeDuration';
+            }
           }
         }
       } else if (end) {

@@ -16,12 +16,12 @@ export default class LayoutDateTimeDateDuration extends Component {
 
     return (<div className="event-duration">
       <div className="event-start">
-        <span className="event-start-date">{start.format(formatDate)}</span>
-        <span className="event-start-time">{startTime.format(formatTime)}</span>
+        <span className="start-date">{start.format(formatDate)}</span>
+        <span className="start-time">{startTime.format(formatTime)}</span>
       </div>
       <div className="event-duration-separator">-</div>
       <div className="event-end">
-        <span className="event-end-date">{end.format(formatDate)}</span>
+        <span className="end-date">{end.format(formatDate)}</span>
       </div>
     </div>);
   }

@@ -37,6 +37,9 @@ describe('Event datetime-date duration layout', () => {
     expect(elSep).to.be.an('object');
     expect(elEnd).to.be.an('object');
 
+    expect(elStart.props.className.split(' ')).to.contain('event-start');
+    expect(elEnd.props.className.split(' ')).to.contain('event-end');
+
     expect(getChildren(elStart)).to.be.an('object');
     expect(getChildren(elEnd)).to.be.an('object');
 
@@ -45,6 +48,9 @@ describe('Event datetime-date duration layout', () => {
 
     expect(elStartDate).to.be.an('object');
     expect(elEndDate).to.be.an('object');
+
+    expect(elStartDate.props.className.split(' ')).to.contain('start-date');
+    expect(elEndDate.props.className.split(' ')).to.contain('end-date');
 
     expect(getChildren(elStartDate)).to.equal(start.format(formatDate));
     expect(getChildren(elEndDate)).to.equal(end.format(formatDate));

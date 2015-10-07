@@ -14,7 +14,7 @@ export default class LayoutTime extends Component {
     const {formatDate, formatTime, start, startTime} = this.props;
 
     return (<div className="event-duration">
-      <div className="event-start-time">
+      <div className="event-start">
         <span className="start-date">{start.format(formatDate)}</span>
         <span className="start-time">{startTime.format(formatTime)}</span>
       </div>
