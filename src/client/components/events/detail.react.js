@@ -29,8 +29,10 @@ export default class eventDetail extends Component {
         <h1>{event.name}</h1>
 
         <div className="col-sm-6 event-desc">
-          <EventTime {...time} />
-          {typeof location == 'object' ? <EventLocation {...location} />:'' }
+          <div className="event-details">
+            <EventTime {...time} />
+            {typeof location == 'object' ? <EventLocation {...location} />:null}
+          </div>
 
           <div className="desc-short">{event.descShort}</div>
           <div className="desc-full">{event.descFull}</div>
