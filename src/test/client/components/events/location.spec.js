@@ -7,7 +7,7 @@ import moment from 'moment';
 const msg = {};
 
 describe('Event location', () => {
-  it('renders blank', () => {
+  it('renders default', () => {
     const props = {
       addr: 'foo address',
       msg: msg,
@@ -44,6 +44,24 @@ describe('Event location', () => {
     const link = getChildren(site);
     expect(link._store.props.href).to.equal(props.site);
     expect(getChildren(link)).to.equal(props.site);
+  });
 
+  it('hides site if empty', () => {
+    const props = {
+      addr: 'foo address',
+      msg: msg,
+      name: 'foo location'
+    };
+    const comp = <EventLocation {...props} />;
+    const ren = render(comp);
+    const cont = getChildren(ren);
+
+    expect(cont).to.be.an('array');
+    cont.forEach(function(item) {
+      if (item) {
+        const cname = item._store.props.className.split(' ');
+        expect(cname).to.not.contain('location-site');
+      }
+    });
   });
 });

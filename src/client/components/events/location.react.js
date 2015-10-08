@@ -9,7 +9,7 @@ export default class eventLocation extends Component {
 
   render() {
     const {name, addr, site} = this.props;
-    let elSite = '';
+    let elSite = null;
 
     if (site) {
       elSite = (<div className="location-site">
