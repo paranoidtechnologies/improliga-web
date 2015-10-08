@@ -2,6 +2,7 @@ import React from 'react';
 import Component from '../component.react';
 import EventTime from './time.react';
 import EventLocation from './location.react';
+import EventPrice from './price.react';
 
 export default class eventDetail extends Component {
   static propTypes = {
@@ -23,6 +24,11 @@ export default class eventDetail extends Component {
       start: event.start,
       startTime: event.startTime
     };
+    const price = {
+      msg: msg,
+      price: event.price,
+      priceStudent: event.priceStudent,
+    };
 
     return (<div className="event-detail">
       <section className="container">
@@ -32,6 +38,7 @@ export default class eventDetail extends Component {
           <div className="event-details">
             <EventTime {...time} />
             {typeof location == 'object' ? <EventLocation {...location} />:null}
+            {event.price || event.priceStudent ? <EventPrice {...price} />:null}
           </div>
 
           <div className="desc-short">{event.descShort}</div>

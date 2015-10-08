@@ -8,4 +8,6 @@ export default Record({
   startTime: null,
   end: null,
   endTime: null,
+  price: null,
+  priceStudent: null,
 });
