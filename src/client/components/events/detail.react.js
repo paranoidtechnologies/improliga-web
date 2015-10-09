@@ -36,7 +36,7 @@ export default class eventDetail extends Component {
         <h1>{event.name}</h1>
 
         <div className="col-sm-6 event-desc">
-          <div className="event-details">
+          <div className="text-xs-center text-sm-left event-details">
             <EventTime {...time} />
             {typeof location == 'object' ? <EventLocation {...location} />:null}
             {event.price || event.priceStudent ? <EventPrice {...price} />:null}
