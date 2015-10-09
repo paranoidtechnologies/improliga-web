@@ -3,6 +3,7 @@ import Component from '../component.react';
 import EventTime from './time.react';
 import EventLocation from './location.react';
 import EventPrice from './price.react';
+import './detail.styl';
 
 export default class eventDetail extends Component {
   static propTypes = {
@@ -25,7 +26,7 @@ export default class eventDetail extends Component {
       startTime: event.startTime
     };
     const price = {
-      msg: msg,
+      msg: msg.price,
       price: event.price,
       priceStudent: event.priceStudent,
     };

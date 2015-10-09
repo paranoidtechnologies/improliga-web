@@ -63,6 +63,6 @@ export default class eventTime extends Component {
   }
 
   render() {
-    return (<div className="event-info-item event-time">{this.renderLayout()}</div>);
+    return (<div className="event-info-item event-info-label event-time">{this.renderLayout()}</div>);
   }
 }

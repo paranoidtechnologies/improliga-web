@@ -18,7 +18,7 @@ export default class eventLocation extends Component {
     }
 
     return (<div className="event-info-item event-location">
-      <div className="location-name">{name}</div>
+      <div className="event-info-label location-name">{name}</div>
       <div className="location-addr">{addr}</div>
       {elSite}
     </div>);

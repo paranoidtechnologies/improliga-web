@@ -19,7 +19,13 @@ export default {
 
   event: {
     detail: {
-      location: 'Umístění'
+      location: 'Umístění',
+      price: {
+        crowns: 'Kč',
+        normal: 'Základní',
+        student: 'Studentské',
+        ticketPrice: 'Vstupné'
+      }
     }
   }
 };
