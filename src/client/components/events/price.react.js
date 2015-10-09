@@ -21,17 +21,17 @@ export default class eventPrice extends Component {
 
     if (!isNaN(price)) {
       elPrice = (<div className="price-normal">
-        <span class="level">{msg.normal + ': '}</span>
-        <span class="value">{price ? price:msg.free}</span>
-        {price ? <span class="unit"> {msg.crowns}</span>:null}
+        <span className="level">{msg.normal + ': '}</span>
+        <span className="value">{price ? price : msg.free}</span>
+        {price ? <span className="unit"> {msg.crowns}</span> : null}
       </div>);
     }
 
     if (!isNaN(priceStudent)) {
       elPriceStudent = (<div className="price-student">
-        <span class="level">{msg.student + ': '}</span>
-        <span class="value">{priceStudent ? priceStudent:msg.free}</span>
-        {priceStudent ? <span class="unit"> {msg.crowns}</span>:null}
+        <span className="level">{msg.student + ': '}</span>
+        <span className="value">{priceStudent ? priceStudent : msg.free}</span>
+        {priceStudent ? <span className="unit"> {msg.crowns}</span> : null}
       </div>);
     }
 

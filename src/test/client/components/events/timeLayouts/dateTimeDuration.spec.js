@@ -4,7 +4,6 @@ import React from 'react';
 import moment from 'moment';
 import EventLayoutDateTimeDuration from 'client/components/events/time/dateTimeDuration.react';
 
-const msg = {};
 const formatDateTime = 'YYYY-MM-DD-T-HH:mm:ss';
 const formatDate = 'YYYY-MM-DD';
 const formatTime = 'HH:mm:ss';
@@ -18,7 +17,6 @@ describe('Event datetime duration layout', () => {
       endTime: end,
       formatDate: formatDate,
       formatTime: formatTime,
-      msg: {},
       start: start,
       startTime: start,
     };

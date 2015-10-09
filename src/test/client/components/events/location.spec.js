@@ -2,7 +2,6 @@ import {expect} from 'chai';
 import EventLocation from 'client/components/events/location.react';
 import {render, getChildren} from 'test/utils';
 import React from 'react';
-import moment from 'moment';
 
 const msg = {};
 

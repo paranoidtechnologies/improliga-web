@@ -4,7 +4,10 @@ import './location.styl';
 
 export default class eventLocation extends Component {
   static propTypes = {
+    addr: React.PropTypes.string,
     msg: React.PropTypes.object,
+    name: React.PropTypes.string,
+    site: React.PropTypes.string,
   }
 
   render() {

@@ -6,13 +6,12 @@ export default class LayoutDateTimeDateDuration extends Component {
     end: React.PropTypes.object.isRequired,
     formatDate: React.PropTypes.string.isRequired,
     formatTime: React.PropTypes.string.isRequired,
-    msg: React.PropTypes.object.isRequired,
     start: React.PropTypes.object.isRequired,
     startTime: React.PropTypes.object.isRequired,
   }
 
   render() {
-    const {end, formatDate, formatTime, msg, start, startTime} = this.props;
+    const {end, formatDate, formatTime, start, startTime} = this.props;
 
     return (<div className="event-duration">
       <div className="event-start">

@@ -20,7 +20,7 @@ export default class Shows extends Component {
       <DocumentTitle title={msg.title}>
         <div className="ui-page ui-page-shows">
           <section className="col-sm-4">
-            <ShowsBrowser actions={actions.shows} pass={pass} items={shows.calendar} msg={msg.pages.shows} />
+            <ShowsBrowser actions={actions.shows} items={shows.calendar} msg={msg.pages.shows} pass={pass} />
           </section>
 
           <section className="col-sm-8">

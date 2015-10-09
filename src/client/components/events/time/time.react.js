@@ -3,7 +3,6 @@ import Component from '../../component.react';
 
 export default class LayoutTime extends Component {
   static propTypes = {
-    msg: React.PropTypes.object.isRequired,
     formatDate: React.PropTypes.string,
     formatTime: React.PropTypes.string,
     start: React.PropTypes.object.isRequired,

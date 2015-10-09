@@ -32,7 +32,7 @@ export default class Shows extends Component {
             <p>{msg.pages.shows.hottest} <Link to="shows">{msg.pages.shows.sectionShows}</Link>.</p>
           </div>
 
-          <ShowsBrowser actions={actions} items={shows.list} pass={pass} msg={msg.pages.shows} />
+          <ShowsBrowser actions={actions} items={shows.list} msg={msg.pages.shows} pass={pass} />
         </div>
 
         <div className="cleaner" />

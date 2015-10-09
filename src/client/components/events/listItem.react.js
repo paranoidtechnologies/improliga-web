@@ -41,7 +41,7 @@ export default class EventListItem extends Component {
         <div className="ui-event-title">{name}</div>
         <div className="ui-event-desc">
           <div className="location"></div>
-          {typeof location == 'object' ? <EventLocation {...location} />:null}
+          {typeof location === 'object' ? <EventLocation {...location} /> : null}
           <EventTime {...this.props} />
         </div>
       </div>
