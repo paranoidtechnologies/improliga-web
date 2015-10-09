@@ -1,5 +1,6 @@
 import React from 'react';
 import Component from '../component.react';
+import Thumb from '../thumb.react';
 import EventTime from './time.react';
 import EventLocation from './location.react';
 import EventPrice from './price.react';
@@ -15,7 +16,7 @@ export default class eventDetail extends Component {
 
   render() {
     const {event, formatDate, formatTime, msg} = this.props;
-    const {location} = event;
+    const {image, location} = event;
     const time = {
       end: event.end,
       endTime: event.endTime,
@@ -47,6 +48,9 @@ export default class eventDetail extends Component {
         </div>
 
         <div className="col-sm-6 event-imagery">
+          <div className="event-image">
+            {image ? <Thumb height={640} src={image.url} width={640} /> : null}
+          </div>
         </div>
       </section>
     </div>);
