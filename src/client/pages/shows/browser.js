@@ -1,5 +1,5 @@
 import Browser from '../../components/browser.react';
-import Event from '../../components/event.react';
+import EventListItem from '../../components/events/listItem.react';
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
@@ -17,7 +17,7 @@ export default class ShowsBrowser extends Browser {
   }
 
   static defaultProps = {
-    draw: Event
+    draw: EventListItem
   };
 
 }

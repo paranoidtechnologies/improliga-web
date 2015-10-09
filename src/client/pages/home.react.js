@@ -19,11 +19,16 @@ export default class Home extends Component {
       shows: shows
     } = this.props;
 
+    const pass = {
+      formatDate: msg.app.format.date.exact,
+      formatTime: msg.app.format.time.exact,
+    };
+
     return (
       <DocumentTitle title={msg.title}>
         <div className="page-home">
           <Header msg={msg.pages.home} ref="el-home" />
-          <Shows actions={actions} msg={msg} ref="el-shows" shows={shows} />
+          <Shows actions={actions} msg={msg} pass={pass} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

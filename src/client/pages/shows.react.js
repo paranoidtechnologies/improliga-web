@@ -9,17 +9,18 @@ export default class Shows extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    pass: React.PropTypes.object,
     shows: React.PropTypes.object.isRequired
   }
 
   render() {
-    const {msg, actions, shows} = this.props;
+    const {msg, actions, pass, shows} = this.props;
 
     return (
       <DocumentTitle title={msg.title}>
         <div className="ui-page ui-page-shows">
           <section className="col-sm-4">
-            <ShowsBrowser actions={actions.shows} items={shows.calendar} msg={msg.pages.shows} />
+            <ShowsBrowser actions={actions.shows} pass={pass} items={shows.calendar} msg={msg.pages.shows} />
           </section>
 
           <section className="col-sm-8">

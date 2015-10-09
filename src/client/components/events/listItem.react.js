@@ -1,15 +1,22 @@
-import Component from './component.react';
+import Component from '../component.react';
 import React from 'react';
 import {Link} from 'react-router';
-import Thumb from './thumb.react';
-import './event.styl';
+import Thumb from '../thumb.react';
+import EventLocation from './location.react';
+import EventTime from './time.react';
+import './listItem.styl';
 
-export default class Event extends Component {
+export default class EventListItem extends Component {
   static propTypes = {
+    end: React.PropTypes.object,
+    endTime: React.PropTypes.object,
+    formatDate: React.PropTypes.string,
+    formatTime: React.PropTypes.string,
     id: React.PropTypes.number,
     image: React.PropTypes.number,
     name: React.PropTypes.string,
-    start: React.PropTypes.object.isRequired,
+    start: React.PropTypes.object,
+    startTime: React.PropTypes.object,
     thumbHeight: React.PropTypes.number,
     thumbWidth: React.PropTypes.number
   };
@@ -23,18 +30,19 @@ export default class Event extends Component {
   state = {};
 
   render() {
-    const {id, name, start, image, thumbHeight, thumbWidth} = this.props;
+    const {id, name, image, thumbHeight, thumbWidth} = this.props;
 
     return (<Link className="ui-event" params={{showId: id}} to="show">
       <div className="col-xs-2 ui-event-image">
-        <Thumb height={thumbHeight} src={image.url} width={thumbWidth} />
+        {image ? <Thumb height={thumbHeight} src={image.url} width={thumbWidth} /> : null}
       </div>
 
       <div className="col-xs-10 ui-event-info">
         <div className="ui-event-title">{name}</div>
         <div className="ui-event-desc">
           <div className="location"></div>
-          {start ? <div className="time">{start.format('D. M. YYYY')}</div> : ''}
+          {typeof location == 'object' ? <EventLocation {...location} />:null}
+          <EventTime {...this.props} />
         </div>
       </div>
       <div className="ui-event-cleaner" />

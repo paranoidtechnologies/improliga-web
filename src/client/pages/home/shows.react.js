@@ -8,6 +8,7 @@ export default class Shows extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    pass: React.PropTypes.object,
     shows: React.PropTypes.object.isRequired,
   }
 
@@ -20,11 +21,7 @@ export default class Shows extends Component {
 
   render() {
     //~ const month = moment();
-    const {
-      msg: msg,
-      actions: actions,
-      shows: shows
-    } = this.props;
+    const {msg, actions, shows, pass} = this.props;
 
     return (
       <section className="container ui-section ui-section-shows">
@@ -35,7 +32,7 @@ export default class Shows extends Component {
             <p>{msg.pages.shows.hottest} <Link to="shows">{msg.pages.shows.sectionShows}</Link>.</p>
           </div>
 
-          <ShowsBrowser actions={actions} items={shows.list} msg={msg.pages.shows} />
+          <ShowsBrowser actions={actions} items={shows.list} pass={pass} msg={msg.pages.shows} />
         </div>
 
         <div className="cleaner" />

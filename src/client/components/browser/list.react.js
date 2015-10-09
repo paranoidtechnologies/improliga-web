@@ -1,6 +1,6 @@
 import Component from '../component.react';
 import React from 'react';
-import Item from './list/item.react';
+import Item from './item.react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class List extends Component {
@@ -11,7 +11,8 @@ export default class List extends Component {
       ImmutablePropTypes.list
     ]),
     msg: React.PropTypes.object,
-    page: React.PropTypes.number.isRequired
+    page: React.PropTypes.number.isRequired,
+    pass: React.PropTypes.object,
   }
 
   static defaultProps = {
@@ -20,13 +21,13 @@ export default class List extends Component {
   }
 
   render() {
-    const {draw, items, msg} = this.props;
+    const {draw, items, msg, pass} = this.props;
 
     return (
       <div className="ui-browser-list">
         <div className="ui-list-items">
           {items.map(function(item, key) {
-            return <Item {...{draw, item, items, key, msg}} />;
+            return <Item {...{draw, item, items, key, msg, pass}} />;
           })}
         </div>
       </div>
