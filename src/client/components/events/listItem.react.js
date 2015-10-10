@@ -13,7 +13,8 @@ export default class EventListItem extends Component {
     formatDate: React.PropTypes.string,
     formatTime: React.PropTypes.string,
     id: React.PropTypes.number,
-    image: React.PropTypes.number,
+    image: React.PropTypes.object,
+    location: React.PropTypes.object,
     name: React.PropTypes.string,
     start: React.PropTypes.object,
     startTime: React.PropTypes.object,
@@ -40,8 +41,6 @@ export default class EventListItem extends Component {
       <div className="col-xs-10 ui-event-info">
         <div className="ui-event-title">{name}</div>
         <div className="ui-event-desc">
-          <div className="location"></div>
-          {typeof location === 'object' ? <EventLocation {...location} /> : null}
           <EventTime {...this.props} />
         </div>
       </div>
