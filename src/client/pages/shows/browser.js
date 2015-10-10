@@ -12,10 +12,6 @@ export default class ShowsBrowser extends Browser {
     ])
   }
 
-  componentDidMount(next) {
-    return this.props.actions.loadUpcomingShows();
-  }
-
   static defaultProps = {
     draw: EventListItem
   };

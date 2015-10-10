@@ -12,6 +12,10 @@ export default class Home extends Component {
     shows: React.PropTypes.object.isRequired
   }
 
+  componentDidMount(next) {
+    return this.props.actions.loadUpcomingShows();
+  }
+
   render() {
     const {
       msg: msg,

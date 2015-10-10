@@ -16,6 +16,7 @@ export default (
     <Route handler={About} name="about" path="/o-improlize" />
     <Route handler={Contact} name="contact" path="/kontakty" />
     <Route handler={Shows} name="shows" path="/predstaveni" />
+    <Route handler={Shows} name="showsArchive" path="/predstaveni/archiv/:month" />
     <Route handler={Event} name="show" path="/predstaveni/:showId" />
 
     <Route handler={Home} name="teams" path="/tymy" />

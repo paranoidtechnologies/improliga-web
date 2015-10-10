@@ -4,9 +4,6 @@ import React from 'react';
 export default class ShowsCalendar extends Calendar {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-  }
-
-  componentDidMount(next) {
-    return this.props.actions.loadCalendarEvents(this.props.month.format('YYYY-MM'));
+    month: React.PropTypes.object.isRequired
   }
 }
