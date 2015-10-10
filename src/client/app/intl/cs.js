@@ -17,6 +17,21 @@ export default {
     day7: 'Neděle'
   },
 
+  months: [
+    'leden',
+    'únor',
+    'březen',
+    'duben',
+    'květen',
+    'červen',
+    'červenec',
+    'srpen',
+    'září',
+    'říjen',
+    'listopad',
+    'prosinec'
+  ],
+
   format: {
     date: {
       exact: 'D. M. YYYY',
