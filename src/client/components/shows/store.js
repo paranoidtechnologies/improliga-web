@@ -18,7 +18,7 @@ export default function(state = initialState, action, payload) {
 
   switch (action) {
 
-  case actions.loadEvents:
+  case actions.loadUpcomingShows:
     if (payload && payload.list) {
       payload.list.forEach(function(item, index) {
         wakeUpEvent(item);

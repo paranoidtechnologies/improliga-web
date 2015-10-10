@@ -13,7 +13,7 @@ export default class ShowsBrowser extends Browser {
   }
 
   componentDidMount(next) {
-    return this.props.actions.loadEvents();
+    return this.props.actions.loadUpcomingShows();
   }
 
   static defaultProps = {

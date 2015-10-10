@@ -4,6 +4,11 @@ export function getFilters(date) {
       attr: 'visibility',
       type: 'exact',
       exact: 4
+    },
+    {
+      attr: 'type',
+      type: 'exact',
+      exact: [1, 2, 3, 4]
     }
   ];
   const dateFormat = 'YYYY-MM-DD';

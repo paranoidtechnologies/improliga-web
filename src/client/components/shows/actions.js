@@ -3,14 +3,16 @@ export const feature = 'shows';
 
 export function create(api, dispatch, validate) {
   return {
-    loadEvents(params = {}) {
-      params.perPage = 6;
+    loadUpcomingShows(params = {}) {
+      if (typeof params.perPage === 'undefined') {
+        params.perPage = 6;
+      }
 
-      api.fetch('/api/1/shows', feature, params, function(err, res) {
+      api.fetch('/api/1/shows/upcoming', feature, params, function(err, res) {
         if (err) {
           api.error(err, res);
         } else {
-          dispatch(actions.loadEvents, {
+          dispatch(actions.loadUpcomingShows, {
             list: res.body.data
           });
         }
