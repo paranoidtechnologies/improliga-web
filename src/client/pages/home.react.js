@@ -13,7 +13,7 @@ export default class Home extends Component {
   }
 
   componentDidMount(next) {
-    return this.props.actions.loadUpcomingShows();
+    return this.props.actions.shows.loadUpcomingShows();
   }
 
   render() {

@@ -23,7 +23,6 @@ export default function(state = initialState, action, payload) {
       payload.list.forEach(function(item, index) {
         wakeUpEvent(item);
       });
-      console.log(payload.list);
 
       return state.set('list', payload.list);
     }
