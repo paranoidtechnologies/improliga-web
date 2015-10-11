@@ -78,12 +78,13 @@ export default class Shows extends Component {
             <div className="cleaner" />
           </section>
 
-          <section className="col-sm-5">
-            <ShowsBrowser actions={actions.shows} items={shows.calendar} msg={msg.pages.shows} pass={pass} />
-          </section>
-
           <section className="col-sm-7">
             <ShowsCalendar actions={actions.shows} items={shows.calendar} msg={msg.pages.shows} month={date} />
+            <div className="cleaner" />
+          </section>
+
+          <section className="col-sm-5">
+            <ShowsBrowser actions={actions.shows} items={shows.calendar} msg={msg.pages.shows} pass={pass} />
           </section>
         </div>
       </DocumentTitle>
