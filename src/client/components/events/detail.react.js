@@ -37,14 +37,18 @@ export default class eventDetail extends Component {
         <h1>{event.name}</h1>
 
         <div className="col-sm-6 event-desc">
-          <div className="text-xs-center text-sm-left event-details">
-            <EventTime {...time} />
-            {typeof location === 'object' ? <EventLocation {...location} /> : null}
-            {event.price || event.priceStudent ? <EventPrice {...price} /> : null}
+          <div className="event-info">
+            <div className="text-xs-center text-sm-left event-details">
+              <EventTime {...time} />
+              {typeof location === 'object' ? <EventLocation {...location} /> : null}
+              {event.price || event.priceStudent ? <EventPrice {...price} /> : null}
+            </div>
           </div>
 
-          <div className="desc-short">{event.descShort}</div>
-          <div className="desc-full">{event.descFull}</div>
+          <div className="event-desc">
+            <div className="desc-short">{event.descShort}</div>
+            <div className="desc-full">{event.descFull}</div>
+          </div>
         </div>
 
         <div className="col-sm-6 event-imagery">
