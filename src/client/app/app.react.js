@@ -9,10 +9,11 @@ import {createValidate} from '../validate';
 import Api from '../api';
 
 import * as showsActions from '../components/shows/actions';
+import * as workshopsActions from '../components/workshops/actions';
 import * as eventsActions from '../components/events/actions';
 import * as newsActions from '../components/news/actions';
 
-const actions = [eventsActions, showsActions, newsActions];
+const actions = [eventsActions, showsActions, workshopsActions, newsActions];
 
 @flux(store)
 export default class App extends Component {

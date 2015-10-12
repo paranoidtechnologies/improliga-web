@@ -18,18 +18,17 @@ describe('filters', () => {
     expect(result[0].attr).to.equal('visibility');
     expect(result[0].type).to.equal('exact');
     expect(result[0].exact).to.equal(4);
-    expect(result[1]).to.be.an('object');
-    expect(result[2]).to.be.an('undefined');
+    expect(result[1]).to.be.an('undefined');
 
     result = getFilters(today);
 
     expect(result).to.be.an('array');
-    expect(result[2]).to.be.an('object');
-    expect(result[2].type).to.equal('or');
-    expect(result[2].or).to.be.an('array');
+    expect(result[1]).to.be.an('object');
+    expect(result[1].type).to.equal('or');
+    expect(result[1].or).to.be.an('array');
 
-    const resStart = result[2].or[0];
-    const resEnd = result[2].or[1];
+    const resStart = result[1].or[0];
+    const resEnd = result[1].or[1];
 
     expect(resStart).to.be.an('object');
     expect(resStart.type).to.equal('and');

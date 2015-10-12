@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import {fetchShows, fetchEventDetail} from './events';
+import {fetchShows, fetchWorkshops, fetchEventDetail} from './events';
 import {fetchNews} from './news';
 
 // Create general-purpose API sub-app
@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/news', fetchNews);
 app.use('/shows', fetchShows);
+app.use('/workshops', fetchWorkshops);
 app.use('/events/:eventId', fetchEventDetail);
 
 app.on('mount', () => {

@@ -12,7 +12,7 @@ export default class Workshops extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
-    shows: React.PropTypes.object.isRequired
+    workshops: React.PropTypes.object.isRequired
   }
 
   curMonth = null
@@ -30,7 +30,7 @@ export default class Workshops extends Component {
 
     if (this.curMonth !== mon) {
       this.curMonth = mon;
-      return this.props.actions.shows.loadCalendarWorkshops(mon);
+      return this.props.actions.workshops.loadCalendarWorkshops(mon);
     }
   }
 
@@ -50,7 +50,7 @@ export default class Workshops extends Component {
   }
 
   render() {
-    const {msg, shows} = this.props;
+    const {msg, workshops} = this.props;
     const date = this.getMonth();
     const month = date.month();
     const title = msg.pages.workshops.title + ' ' + msg.app.months[month] + ' ' + date.format('YYYY');
@@ -58,7 +58,7 @@ export default class Workshops extends Component {
     const props = {
       formatDate: msg.app.format.date.exact,
       formatTime: msg.app.format.time.exact,
-      items: shows.calendar,
+      items: workshops.calendar,
       listDraw: EventListItem,
       month: date,
       msg: {
@@ -67,7 +67,8 @@ export default class Workshops extends Component {
         month: date,
         months: msg.app.months,
         list: msg.pages.workshops
-      }
+      },
+      routeArchive: 'workshopsArchive',
     };
 
     return (

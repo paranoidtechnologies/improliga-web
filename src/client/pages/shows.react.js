@@ -30,7 +30,7 @@ export default class Shows extends Component {
 
     if (this.curMonth !== mon) {
       this.curMonth = mon;
-      return this.props.actions.shows.loadCalendarEvents(mon);
+      return this.props.actions.shows.loadCalendarShows(mon);
     }
   }
 
@@ -67,7 +67,8 @@ export default class Shows extends Component {
         month: date,
         months: msg.app.months,
         list: msg.pages.shows
-      }
+      },
+      routeArchive: 'showsArchive'
     };
 
     return (

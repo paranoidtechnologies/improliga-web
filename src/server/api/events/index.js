@@ -1,7 +1,9 @@
 import fetchShows from './shows';
+import fetchWorkshops from './workshops';
 import fetchEventDetail from './detail';
 
 export default {
-  fetchShows: fetchShows,
   fetchEventDetail: fetchEventDetail,
+  fetchShows: fetchShows,
+  fetchWorkshops: fetchWorkshops,
 };

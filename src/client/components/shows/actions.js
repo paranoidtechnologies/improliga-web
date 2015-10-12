@@ -20,7 +20,7 @@ export function create(api, dispatch, validate) {
     },
 
 
-    loadCalendarEvents(month) {
+    loadCalendarShows(month) {
       const params = {
         month: month
       };
@@ -29,7 +29,7 @@ export function create(api, dispatch, validate) {
         if (err) {
           api.error(err, res);
         } else {
-          dispatch(actions.loadCalendarEvents, {
+          dispatch(actions.loadCalendarShows, {
             list: res.body.data
           });
         }

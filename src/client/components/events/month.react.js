@@ -11,11 +11,12 @@ export default class EventMonth extends Component {
     formatDate: React.PropTypes.string.isRequired,
     formatTime: React.PropTypes.string.isRequired,
     listDraw: React.PropTypes.func.isRequired,
-    month: momentObj
+    month: momentObj,
+    routeArchive: React.PropTypes.string.isRequired,
   };
 
   render() {
-    const {formatDate, formatTime, items, listDraw, month, msg, shows} = this.props;
+    const {formatDate, formatTime, items, listDraw, month, msg, routeArchive} = this.props;
     const monthFormat = 'YYYY-MM';
     const prev = month.clone().subtract(1, 'month');
     const next = month.clone().add(1, 'month');
@@ -49,10 +50,10 @@ export default class EventMonth extends Component {
 
       <section className="controls">
         <div className="col-xs-6 text-center">
-          <Link to="showsArchive" params={{month: prev.format(monthFormat)}}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
+          <Link to={routeArchive} params={{month: prev.format(monthFormat)}}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
         </div>
         <div className="col-xs-6 text-center">
-          <Link to="showsArchive" params={{month: next.format(monthFormat)}}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
+          <Link to={routeArchive} params={{month: next.format(monthFormat)}}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
         </div>
         <div className="cleaner" />
       </section>

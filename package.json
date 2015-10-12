@@ -84,6 +84,7 @@
     "validator": "^4.0.0",
     "webpack": "^1.9.5",
     "webpack-dev-server": "^1.7.0",
+    "xtend": "^4.0.0",
     "yargs": "^3.3.1"
   },
   "devDependencies": {

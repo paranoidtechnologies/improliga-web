@@ -9,7 +9,7 @@ export default (req, res, next) => {
       {
         attr: 'type',
         type: 'exact',
-        exact: [1,2,3,4,6]
+        exact: 5
       }
     ]
   };

@@ -19,6 +19,7 @@ export default (
     <Route handler={Shows} name="shows" path="/predstaveni" />
     <Route handler={Shows} name="showsArchive" path="/predstaveni/archiv/:month" />
     <Route handler={Workshops} name="workshops" path="/workshopy" />
+    <Route handler={Workshops} name="workshopsArchive" path="/workshopy/archiv/:month" />
     <Route handler={Event} name="show" path="/predstaveni/:showId" />
 
     <Route handler={Home} name="teams" path="/tymy" />

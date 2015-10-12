@@ -27,7 +27,7 @@ export default function(state = initialState, action, payload) {
       return state.set('list', payload.list);
     }
 
-  case actions.loadCalendarEvents:
+  case actions.loadCalendarShows:
 
     if (payload && payload.list) {
       payload.list.forEach(function(item, index) {

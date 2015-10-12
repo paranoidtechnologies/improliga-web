@@ -1,5 +1,5 @@
 export const actions = create();
-export const feature = 'shows';
+export const feature = 'workshops';
 
 export function create(api, dispatch, validate) {
   return {
