@@ -15,7 +15,8 @@ describe('Event month calendar and list', () => {
         calendar: {},
         list: {},
         months: ['january']
-      }
+      },
+      routeArchive: 'showsArchive'
     };
 
     const comp = <EventMonth {...props} />;
