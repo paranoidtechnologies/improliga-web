@@ -42,6 +42,10 @@ export default {
     sectionShows: 'představení'
   },
 
+  workshops: {
+    title: 'Dílny'
+  },
+
   news: {
     title: 'Novinky',
     perex: 'Zajímá vás, co Improliga dělá a co se děje?'
