@@ -1,8 +1,7 @@
-import ContactForm from 'client/components/contact/form.react';
+import {expect} from 'chai';
 import {getChildren, render} from 'test/utils';
+import ContactForm from 'client/components/contact/form.react';
 import React from 'react/addons';
-
-import moment from 'moment';
 
 describe('Contact form', () => {
   const msg = {
@@ -67,14 +66,13 @@ describe('Contact form', () => {
   it('set subject on option click', () => {
     const comp = <ContactForm {...propsDefault} />;
     const tree = render(comp);
-    const cont = getChildren(tree)
+    const cont = getChildren(tree);
     const optsCont = cont[1];
     const form = cont[2];
     const opts = getChildren(optsCont);
 
     React.addons.TestUtils.Simulate.click(opts[0]);
-
-    console.log(comp.state);
+    expect(form).to.be.an('object');
 
   });
 

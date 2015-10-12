@@ -34,7 +34,7 @@ export default class ContactForm extends Component {
   }
 
   render() {
-    const {msg, subjects} = this.props;
+    const {msg} = this.props;
     const state = this.state;
     const self = this;
 

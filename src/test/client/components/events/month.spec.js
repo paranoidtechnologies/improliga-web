@@ -1,5 +1,6 @@
-import EventMonth from 'client/components/events/month.react';
+import {expect} from 'chai';
 import {getChildren, render} from 'test/utils';
+import EventMonth from 'client/components/events/month.react';
 import React from 'react';
 import moment from 'moment';
 

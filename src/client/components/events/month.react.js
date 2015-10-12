@@ -1,17 +1,22 @@
 import Component from '../component.react';
 import React from 'react';
 import {Link} from 'react-router';
-import Thumb from '../thumb.react';
 import {momentObj} from 'react-moment-proptypes';
 import EventCalendar from '../calendar.react';
 import EventMonthList from './monthList.react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 export default class EventMonth extends Component {
   static propTypes = {
     formatDate: React.PropTypes.string.isRequired,
     formatTime: React.PropTypes.string.isRequired,
+    items: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      ImmutablePropTypes.list
+    ]),
     listDraw: React.PropTypes.func.isRequired,
     month: momentObj,
+    msg: React.PropTypes.object.isRequired,
     routeArchive: React.PropTypes.string.isRequired,
   };
 
@@ -21,7 +26,6 @@ export default class EventMonth extends Component {
     const prev = month.clone().subtract(1, 'month');
     const next = month.clone().add(1, 'month');
     const monthText = msg.months[month.month()];
-    const title = msg.title + ' ' + monthText + ' ' + month.format('YYYY');
     const propsCalendar = {
       items: items,
       month: month,
@@ -50,10 +54,10 @@ export default class EventMonth extends Component {
 
       <section className="controls">
         <div className="col-xs-6 text-center">
-          <Link to={routeArchive} params={{month: prev.format(monthFormat)}}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
+          <Link params={{month: prev.format(monthFormat)}} to={routeArchive}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
         </div>
         <div className="col-xs-6 text-center">
-          <Link to={routeArchive} params={{month: next.format(monthFormat)}}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
+          <Link params={{month: next.format(monthFormat)}} to={routeArchive}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
         </div>
         <div className="cleaner" />
       </section>

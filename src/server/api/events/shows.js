@@ -1,6 +1,3 @@
-import fetch from '../fetch';
-import moment from 'moment';
-import {getFilters} from './shows/filters';
 import browseEvents from './browse';
 
 export default (req, res, next) => {
@@ -9,7 +6,7 @@ export default (req, res, next) => {
       {
         attr: 'type',
         type: 'exact',
-        exact: [1,2,3,4,6]
+        exact: [1, 2, 3, 4, 6]
       }
     ]
   };

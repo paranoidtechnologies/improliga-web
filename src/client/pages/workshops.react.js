@@ -3,7 +3,6 @@ import DocumentTitle from 'react-document-title';
 import EventMonth from '../components/events/month.react';
 import EventListItem from '../components/events/listItem.react';
 import React from 'react';
-import {Link} from 'react-router';
 import moment from 'moment';
 import './shows.styl';
 
@@ -12,7 +11,8 @@ export default class Workshops extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
-    workshops: React.PropTypes.object.isRequired
+    params: React.PropTypes.object.isRequired,
+    workshops: React.PropTypes.object.isRequired,
   }
 
   curMonth = null

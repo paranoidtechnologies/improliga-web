@@ -2,7 +2,6 @@ import Component from '../component.react';
 import React from 'react';
 import {Link} from 'react-router';
 import Thumb from '../thumb.react';
-import EventLocation from './location.react';
 import EventTime from './time.react';
 import './listItem.styl';
 
