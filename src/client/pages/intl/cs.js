@@ -73,15 +73,15 @@ export default {
       desc: 'Každý den s láskou zpracováváme vaše dotazy a během 24 hodin na ně odpovídáme.',
       cancel: 'Rozmyslel jsem si to',
       send: 'Odeslat',
-    },
 
-    subject: {
-      novice: 'Chci si vyzkoušet impro',
-      invite: 'Přijeďte si zahrát',
-      cili: 'Chci vstoupit do ČILI',
-      team: 'Mám tým, nevím co s ním',
-      support: 'Chci něco změnit na webu',
-      generic: 'Něco jiného'
+      subjects: {
+        novice: 'Chci si vyzkoušet impro',
+        invite: 'Přijeďte si zahrát',
+        cili: 'Chci vstoupit do ČILI',
+        team: 'Mám tým, nevím co s ním',
+        support: 'Chci něco změnit na webu',
+        generic: 'Něco jiného'
+      }
     }
   }
 };

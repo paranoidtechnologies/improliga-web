@@ -14,7 +14,7 @@ export default {
     media: 'Média o Improlize',
     shows: 'Představení',
     teams: 'Týmy',
-    workshops: 'Workshopy'
+    workshops: 'Dílny'
   },
 
   event: {
