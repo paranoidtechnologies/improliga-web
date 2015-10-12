@@ -45,7 +45,5 @@ export default function browse(req, res, cfg = {}, next) {
     cfg.filters = cfg.filters.concat(filters);
   }
 
-  console.log(cfg.filters);
-
   return fetch(cfg, next);
 };
