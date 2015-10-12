@@ -1,9 +1,10 @@
 import ContactForm from 'client/components/contact/form.react';
 import {getChildren, render} from 'test/utils';
-import React from 'react';
+import React from 'react/addons';
+
 import moment from 'moment';
 
-describe('Event month calendar and list', () => {
+describe('Contact form', () => {
   const msg = {
     title: 'title',
     cancel: 'cancel',
@@ -11,15 +12,25 @@ describe('Event month calendar and list', () => {
     email: 'email',
     message: 'message',
     send: 'send',
+    subjects: {
+    }
   };
 
-  it('renders blank', () => {
-    const props = {
-      actions: {},
-      msg: msg,
-      subjects: {}
-    };
-    const comp = <ContactForm {...props} />;
+  const propsDefault = {
+    actions: {},
+    msg: msg,
+    subjects: {
+      novice: 'novice',
+      invite: 'invite',
+      cili: 'cili',
+      team: 'team',
+      support: 'support',
+      generic: 'generic'
+    }
+  };
+
+  it('renders', () => {
+    const comp = <ContactForm {...propsDefault} />;
     const tree = render(comp);
 
     const cont = getChildren(tree);
@@ -47,7 +58,29 @@ describe('Event month calendar and list', () => {
       .contain('ui-form')
       .contain('hidden');
 
+    const optItems = getChildren(opts);
 
+    expect(optItems).to.be.an('array');
+    expect(optItems.length).to.equal(6);
+  });
 
+  it('set subject on option click', () => {
+    const comp = <ContactForm {...propsDefault} />;
+    const tree = render(comp);
+    const cont = getChildren(tree)
+    const optsCont = cont[1];
+    const form = cont[2];
+    const opts = getChildren(optsCont);
+
+    React.addons.TestUtils.Simulate.click(opts[0]);
+
+    console.log(comp.state);
+
+  });
+
+  it('show form on subject select', () => {
+  });
+
+  it('hide form on cancel', () => {
   });
 });

@@ -9,7 +9,7 @@ export default class ContactForm extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
-    subject: React.PropTypes.string
+    subject: React.PropTypes.string,
   }
 
   subjects = [
@@ -55,8 +55,8 @@ export default class ContactForm extends Component {
         <div className={cnameOpts}>
           {this.subjects.map(function(item, key) {
             return (
-              <div className="col-md-6 ui-contact-form-item" key={key} onClick={(e) => { self.select(e, item); }}>
-                <span className="label">{subjects[item]}</span>
+              <div className="col-xs-6 form-opt" key={key} onClick={(e) => { self.select(e, item); }}>
+                <span className="label">{msg.subjects[item]}</span>
               </div>
             );
           })}
