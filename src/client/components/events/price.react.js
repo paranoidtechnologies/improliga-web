@@ -36,8 +36,8 @@ export default class eventPrice extends Component {
     }
 
     return (<div className="event-info-item event-price">
-      <div className="col-sm-4 event-info-label price-label">{msg.ticketPrice}</div>
-      <div className="col-sm-8 price-levels">
+      <div className="event-info-label price-label">{msg.ticketPrice}</div>
+      <div className="price-levels">
       {elPrice}
       {elPriceStudent}
       </div>
