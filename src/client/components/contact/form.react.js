@@ -34,10 +34,9 @@ export default class ContactForm extends Component {
   }
 
   render() {
-    const {msg} = this.props;
+    const {msg, subjects} = this.props;
     const state = this.state;
     const self = this;
-    const msgLoc = msg.pages.contact;
 
 
     const cnameForm = 'ui-form ui-contact-form-cont' + (state.subject ? '' : ' hidden');
@@ -46,10 +45,10 @@ export default class ContactForm extends Component {
     return (
       <div className="ui-contact-form">
         <div className="ui-contact-form-header">
-          <h2 className="text-center">{msgLoc.form.title}</h2>
+          <h2 className="text-center">{msg.title}</h2>
 
           <div className="desc">
-            <p>{msgLoc.form.desc}</p>
+            <p>{msg.desc}</p>
           </div>
         </div>
 
@@ -57,7 +56,7 @@ export default class ContactForm extends Component {
           {this.subjects.map(function(item, key) {
             return (
               <div className="col-md-6 ui-contact-form-item" key={key} onClick={(e) => { self.select(e, item); }}>
-                <span className="label">{msgLoc.subject[item]}</span>
+                <span className="label">{subjects[item]}</span>
               </div>
             );
           })}
@@ -66,13 +65,13 @@ export default class ContactForm extends Component {
         <form className={cnameForm} onSubmit={(e) => { this.send(e); }}>
           <fieldset className="ui-form-inputs">
             <InputHidden defaultValue={state.subject} name="subject" />
-            <InputEmail label={msgLoc.email} name="email" />
-            <InputTextarea label={msgLoc.message} name="message" />
+            <InputEmail label={msg.email} name="email" />
+            <InputTextarea label={msg.message} name="message" />
           </fieldset>
 
           <div className="ui-form-buttons">
-            <button type="submit">{msgLoc.form.send}</button>
-            <button onClick={(e) => { this.select(e, null); }} type="button">{msgLoc.form.cancel}</button>
+            <button type="submit">{msg.send}</button>
+            <button onClick={(e) => { this.select(e, null); }} type="button">{msg.cancel}</button>
           </div>
         </form>
       </div>
