@@ -38,9 +38,8 @@ export default class ContactForm extends Component {
     const state = this.state;
     const self = this;
 
-
-    const cnameForm = 'ui-form ui-contact-form-cont' + (state.subject ? '' : ' hidden');
-    const cnameOpts = 'ui-contact-form-options' + (state.subject ? ' hidden' : '');
+    const cnameForm = 'ui-form form-cont' + (state.subject ? '' : ' hidden');
+    const cnameOpts = 'form-options' + (state.subject ? ' hidden' : '');
 
     return (
       <div className="ui-contact-form">
@@ -56,7 +55,7 @@ export default class ContactForm extends Component {
           {this.subjects.map(function(item, key) {
             return (
               <div className="col-xs-6 form-opt" key={key} onClick={(e) => { self.select(e, item); }}>
-                <span className="label">{msg.subjects[item]}</span>
+                <span className="label item-label">{msg.subjects[item]}</span>
               </div>
             );
           })}
@@ -70,8 +69,8 @@ export default class ContactForm extends Component {
           </fieldset>
 
           <div className="ui-form-buttons">
-            <button type="submit">{msg.send}</button>
-            <button onClick={(e) => { this.select(e, null); }} type="button">{msg.cancel}</button>
+            <button className="form-submit" type="submit">{msg.send}</button>
+            <button className="form-cancel" onClick={(e) => { this.select(e, null); }} type="button">{msg.cancel}</button>
           </div>
         </form>
       </div>
