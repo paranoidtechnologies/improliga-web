@@ -1,16 +1,23 @@
+@import './vars.styl'
+
 button,
 .button
-  color #fff
-  background #B82429
-  font-weight bold
+  ui()
+  background button-fg
   border none
-  padding 5px 12px
   border-radius 3px
-  cursor pointer
-  text-decoration none
+  color #fff
   display inline-block
   font-size 14px
+  font-weight bold
   line-height 15px
+  padding 7px 14px
+  text-decoration none
 
-  & hover
-    background #86262A
+  &:hover,
+  &:active
+    background button-hover
+
+
+.ui-button
+  ui-button()

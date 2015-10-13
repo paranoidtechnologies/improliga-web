@@ -54,7 +54,7 @@ export default class ContactForm extends Component {
         <div className={cnameOpts}>
           {this.subjects.map(function(item, key) {
             return (
-              <div className="col-xs-6 form-opt" key={key} onClick={(e) => { self.select(e, item); }}>
+              <div className="col-xs-6 ui-button form-opt" key={key} onClick={(e) => { self.select(e, item); }}>
                 <span className="label item-label">{msg.subjects[item]}</span>
               </div>
             );
