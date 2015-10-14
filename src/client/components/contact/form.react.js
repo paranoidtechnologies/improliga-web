@@ -46,7 +46,7 @@ export default class ContactForm extends Component {
         <div className="ui-contact-form-header">
           <h2 className="text-center">{msg.title}</h2>
 
-          <div className="desc">
+          <div className="text-center form-desc">
             <p>{msg.desc}</p>
           </div>
         </div>

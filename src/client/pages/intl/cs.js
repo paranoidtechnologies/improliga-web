@@ -53,8 +53,6 @@ export default {
 
   contact: {
     desc: 'Prostě se chci zeptat',
-    email: 'E-mail',
-    message: 'Zpráva',
     title: 'Kontakty',
 
     club: {
@@ -69,6 +67,8 @@ export default {
     },
 
     form: {
+      email: 'E-mail',
+      message: 'Zpráva',
       title: 'Napište nám',
       desc: 'Každý den s láskou zpracováváme vaše dotazy a během 24 hodin na ně odpovídáme.',
       cancel: 'Rozmyslel jsem si to',
