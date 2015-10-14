@@ -38,6 +38,11 @@ export default {
       system: 'YYYY-MM-DDTHH:ii:ssZ'
     },
 
+    dateTime: {
+      exact: 'D. M. YYYY H:m',
+      system: 'YYYY-MM-DDTHH:ii:ssZ'
+    },
+
     time: {
       exact: 'HH:mm',
       system: 'HH:ii:ssZ'
