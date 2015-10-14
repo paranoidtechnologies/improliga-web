@@ -3,6 +3,7 @@ import App from './app/app.react';
 import Contact from './pages/contact.react';
 import Home from './pages/home.react';
 import News from './pages/news.react';
+import NewsDetail from './pages/news/detail.react';
 import Event from './pages/event.react';
 import Shows from './pages/shows.react';
 import Workshops from './pages/workshops.react';
@@ -24,6 +25,7 @@ export default (
 
     <Route handler={Home} name="teams" path="/tymy" />
     <Route handler={News} name="news" path="/novinky" />
+    <Route handler={NewsDetail} name="newsDetail" path="/novinky/:newsItemId" />
 
     <NotFoundRoute handler={NotFound} name="not-found" />
   </Route>
