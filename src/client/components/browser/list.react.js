@@ -27,7 +27,7 @@ export default class List extends Component {
       <div className="ui-browser-list">
         <div className="ui-list-items">
           {items.map(function(item, key) {
-            return <Item {...{draw, item, items, key, msg, pass}} />;
+            return <Item key={item.id} {...{draw, item, items, msg, pass}} />;
           })}
         </div>
       </div>

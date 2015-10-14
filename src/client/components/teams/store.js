@@ -3,7 +3,7 @@ import {Record} from 'immutable';
 import {actions} from './actions';
 
 const initialState = new (Record({
-  list: null
+  list: []
 }));
 
 const revive = state => initialState.merge({

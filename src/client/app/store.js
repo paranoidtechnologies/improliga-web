@@ -4,6 +4,7 @@ import showsStore from '../components/shows/store';
 import workshopsStore from '../components/workshops/store';
 import eventsStore from '../components/events/store';
 import newsStore from '../components/news/store';
+import teamsStore from '../components/teams/store';
 import intlStore from '../intl/store';
 
 export default function(state, action, payload) {
@@ -15,8 +16,9 @@ export default function(state, action, payload) {
     .update('intl', (s) => intlStore(s, action, payload))
     .update('news', (s) => newsStore(s, action, payload))
     .update('events', (s) => eventsStore(s, action, payload))
-    .update('workshops', (s) => workshopsStore(s, action, payload))
-    .update('shows', (s) => showsStore(s, action, payload));
+    .update('shows', (s) => showsStore(s, action, payload))
+    .update('teams', (s) => teamsStore(s, action, payload))
+    .update('workshops', (s) => workshopsStore(s, action, payload));
 
   // We can reduce and compose stores. Note we don't need no waitFor.
   state = state

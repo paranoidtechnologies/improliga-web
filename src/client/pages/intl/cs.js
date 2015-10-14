@@ -42,6 +42,10 @@ export default {
     sectionShows: 'představení'
   },
 
+  teams: {
+    title: 'Týmy'
+  },
+
   workshops: {
     title: 'Dílny'
   },

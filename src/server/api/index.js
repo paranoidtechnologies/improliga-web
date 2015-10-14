@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import {fetchShows, fetchWorkshops, fetchEventDetail} from './events';
 import {fetchNewsItemDetail, fetchNews} from './news';
+import {fetchTeamList} from './teams';
 
 // Create general-purpose API sub-app
 const app = express();
@@ -15,6 +16,7 @@ app.use('/news/:newsItemId', fetchNewsItemDetail);
 app.use('/shows', fetchShows);
 app.use('/workshops', fetchWorkshops);
 app.use('/events/:eventId', fetchEventDetail);
+app.use('/teams', fetchTeamList);
 
 app.on('mount', () => {
   console.log('Api is available at %s', app.mountpath);

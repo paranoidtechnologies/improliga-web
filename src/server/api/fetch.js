@@ -6,6 +6,10 @@ const url = '/api/model/{model}/browse';
 
 export default (config, next) => {
 
+  if (!config.page) {
+    config.page = 0;
+  }
+
   if (!config.perPage) {
     config.perPage = 20;
   }
