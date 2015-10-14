@@ -1,34 +1,21 @@
-black-fg = #000
-black-bg = black-fg
-black-dirt-bg = #030303
-black-fade-bg = rgba(0,0,0,.4)
-black-dimm-bg = rgba(0,0,0,.95)
-
-gray-bg = #111
-gray-sep = #333
-
 button-fg = #b82429
 button-hover = #8E1015
 
-white-full = #fff
-white-normal = #dadada
-white-fg = white-normal
-white-dimm = rgba(255,255,255,.8)
-white-dimm-bg = rgba(255,255,255,.75)
+page-bg = #000
+footer-bg = #292929
 
-yellow-fg = #EFC800
-yellow-bg = yellow-fg
+text-normal = #fff
+text-shadow = #000
 
-col-text = white-normal
-col-link = yellow-fg
+link-normal = #EFC800
+link-hover = #fff
 
-col-button-border = rgba(239,200,0,.25)
-col-button-fg = white-normal
+input-bg = text-normal
+input-text-normal = #666
+input-text-active = page-bg
 
-col-button-bg-highlight = rgba(255,255,255,0.05)
-col-button-fg-highlight = white-full
-
-col-section-bg = #111
+button-text-normal = text-normal
+button-text-hover = link-hover
 
 box-padding = 20px 30px
 box-border-radius = 5px
@@ -77,17 +64,6 @@ user-select-none()
   -ms-user-select none
   user-select none
 
-
-dirt()
-  fix-transition(speed-slow)
-
-  background black-dirt-bg
-  border-radius box-border-radius
-  padding 15px
-
-  & hover
-    background gray-bg
-
 ui()
   fix-transition(.2s)
   cursor pointer
@@ -103,15 +79,17 @@ active-ui()
 ui-button()
   ui()
 
-  border-color col-button-border
+  border-color rgba(link-normal, .25)
   border-style solid
-  border-bottom-size 1px
-  color col-button-fg
+  border-width 0
+  border-bottom-width 1px
+  color button-text-normal
   padding 10px 15px
 
-  & hover
-    background col-button-bg-highlight
-    border-color col-button-fg-highlight
-    color col-button-fg-highlight
+  &:active,
+  &:hover
+    background rgba(text-normal, 0.05)
+    border-color button-text-hover
+    color button-text-hover
 
 

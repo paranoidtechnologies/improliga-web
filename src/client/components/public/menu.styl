@@ -2,7 +2,7 @@
 
 .site-menu
   fix-transition()
-  background black-fade-bg
+  background rgba(page-bg,.4)
   left 0
   right 0
   padding 10px 0 0
@@ -14,7 +14,7 @@
     display inline-block
 
   &:hover
-    background black-dimm-bg
+    background rgba(page-bg,.95)
 
   .site-menu-center
     margin 0 auto
@@ -27,7 +27,7 @@
     a
       fix-transition(speed-fast)
       border-bottom 1px solid transparent
-      color white-full
+      color text-normal
       display inline-block
       font-size 14px
       font-weight 500
@@ -35,14 +35,14 @@
       opacity .75
       padding 4px 12px 5px
       text-decoration none
-      text-shadow 0 0 3px #000, 0 0 6px #000
+      text-shadow 0 0 3px text-shadow, 0 0 6px text-shadow
 
       &:hover,
       &.opacity
         opacity 1
 
       &:hover
-        border-color white-full
+        border-color text-normal
 
       &.active
-        border-color white-dimm-bg
+        border-color rgba(text-normal, .75)

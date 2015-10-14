@@ -17,7 +17,7 @@
 
 html,
 body
-  background black-bg
+  background page-bg
   padding 0
   margin 0
   min-width 400px
@@ -29,32 +29,12 @@ body
 .page-home
   height:100%
 
-html
-  background black-bg
-
 body
-  color white-fg
+  color text-normal
   font-family 'Open Sans','sans-serif'
   font-weight 300
   font-size 16px
   line-height 1.5
-
-a
-  fix-transition()
-  color col-link
-  text-decoration none
-
-  img
-    border 2px solid rgba(184,36,21,0.2)
-    opacity .8
-    display block
-
-  &:hover
-    text-decoration underline
-
-    img
-      border-color rgba(184,36,21,0.75)
-      opacity 1
 
 .cleaner
   clear both
@@ -63,7 +43,12 @@ a
 .ui-page
   padding-top 60px
 
+.page-wrapper
+  height 100%
+
+@import './footer.styl'
 @import './text.styl'
+@import './links.styl'
 @import './buttons.styl'
 @import './forms.styl'
 @import './inputs.styl'

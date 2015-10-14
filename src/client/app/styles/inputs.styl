@@ -2,16 +2,21 @@
 
 input,
 textarea
-  background white-full
-  color black-fg
+  background input-bg
+  color input-text-normal
+  font-weight 400
 
-  
+  &:active,
+  &:focus
+    color input-text-active
+
+
 .ui-input
   margin-bottom 10px
 
   &:last-child
     margin-bottom 0
-    
+
   .ui-input-label,
   .ui-input-container
     display inline-block
@@ -26,6 +31,6 @@ textarea
   input,
   textarea
     border none
-    border-radius 3px
+    border-radius 2px
     line-height 24px
     padding 4px 8px
