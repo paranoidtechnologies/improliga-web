@@ -1,5 +1,6 @@
 import './styles/page.styl';
 import Component from '../components/component.react';
+import Footer from './footer.react';
 import Header from './header.react';
 import React from 'react';
 import flux from '../lib/flux';
@@ -51,8 +52,11 @@ export default class App extends Component {
 
     return (
       <div className="page">
-        <Header msg={msg} />
-        <RouteHandler {...props} />
+        <div className="page-wrapper">
+          <Header msg={msg} />
+          <RouteHandler {...props} />
+        </div>
+        <Footer msg={msg.app} />
       </div>
     );
   }
