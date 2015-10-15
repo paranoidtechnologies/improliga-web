@@ -6,7 +6,7 @@ describe('Team store', () => {
   it('responds to team page browse', () => {
     const firstItem = {
       name: 'foo',
-      desc: 'bar'
+      about: 'bar'
     };
 
     const payload = {
@@ -19,6 +19,24 @@ describe('Team store', () => {
     expect(res.list).to.be.an('array');
     expect(res.list.length).to.equal(1);
     expect(res.list[0].name).to.equal(firstItem.name);
-    expect(res.list[0].desc).to.equal(firstItem.desc);
+    expect(res.list[0].about).to.equal(firstItem.about);
+  });
+
+  it('responds to team detail', () => {
+    const firstItem = {
+      name: 'foo',
+      about: 'bar'
+    };
+
+    const payload = {
+      'data':[firstItem]
+    };
+
+    let res = store(undefined, actions.loadTeamDetail, payload);
+
+    expect(res).to.be.an('object');
+    expect(res.detail).to.be.an('object');
+    expect(res.detail.name).to.equal(firstItem.name);
+    expect(res.detail.about).to.equal(firstItem.about);
   });
 });

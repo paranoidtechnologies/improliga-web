@@ -8,8 +8,7 @@ const responseBlank = {
 };
 
 describe('Team actions', () => {
-  it('responds to team list', (done) => {
-
+  it('dispatches team list', (done) => {
     const dispatch = (action) => {
       expect(action).to.equal(actions.loadTeamsPage);
       done();
@@ -17,5 +16,16 @@ describe('Team actions', () => {
 
     expect(actions.loadTeamsPage).to.be.an('function');
     create(createApiFetch(null, responseBlank), dispatch).loadTeamsPage();
+  });
+
+
+  it('dispatches team detail', (done) => {
+    const dispatch = (action) => {
+      expect(action).to.equal(actions.loadTeamDetail);
+      done();
+    };
+
+    expect(actions.loadTeamDetail).to.be.an('function');
+    create(createApiFetch(null, responseBlank), dispatch).loadTeamDetail();
   });
 });
