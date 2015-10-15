@@ -7,6 +7,7 @@ import NewsDetail from './pages/news/detail.react';
 import Event from './pages/event.react';
 import Shows from './pages/shows.react';
 import TeamsPage from './pages/teams.react';
+import TeamDetailPage from './pages/teams/detail.react';
 import Workshops from './pages/workshops.react';
 import NotFound from './components/notfound.react';
 import React from 'react';
@@ -24,6 +25,7 @@ export default (
     <Route handler={Workshops} name="workshopsArchive" path="/workshopy/archiv/:month" />
     <Route handler={Event} name="show" path="/predstaveni/:showId" />
     <Route handler={TeamsPage} name="teams" path="/tymy" />
+    <Route handler={TeamDetailPage} name="teamDetail" path="/tymy/:teamId" />
 
     <Route handler={News} name="news" path="/novinky" />
     <Route handler={NewsDetail} name="newsDetail" path="/novinky/:newsItemId" />

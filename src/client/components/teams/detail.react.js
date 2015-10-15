@@ -2,6 +2,7 @@ import React from 'react';
 import Component from '../component.react';
 import InfoItem from '../static/infoItem.react';
 import Thumb from '../thumb.react';
+import './detail.styl';
 
 export default class TeamDetail extends Component {
   static propTypes = {
@@ -10,22 +11,28 @@ export default class TeamDetail extends Component {
   }
 
   static defaultImage = '/assets/pixmaps/team/default.png';
+  static defaultLogo = '/assets/pixmaps/team/default.png';
 
   render() {
     const {team, msg} = this.props;
     const {about, city, fb, image, mail, name, site} = team;
 
     let imageUrl = image;
+    let logoUrl = image;
 
     if (!imageUrl) {
       imageUrl = this.constructor.defaultImage;
     }
 
-    return (<div className="event-detail">
-      <section className="container">
-        <h1>{name}</h1>
+    if (!logoUrl) {
+      logoUrl = this.constructor.defaultLogo;
+    }
 
-        <div className="col-md-4">
+    return (<div className="team-detail">
+      <section className="container">
+        <h1 class="text-center">{name}</h1>
+
+        <div className="col-sm-4">
           <div className="event-info">
             <div className="text-xs-center text-sm-left event-details">
               <InfoItem label={msg.city} value={city} />
@@ -35,17 +42,17 @@ export default class TeamDetail extends Component {
           </div>
         </div>
 
-        <div className="col-md-8">
-          <Thumb src={imageUrl} />
+        <div className="col-sm-8 team-image">
+          <div className="col-xs-4">
+            <Thumb src={logoUrl} />
+          </div>
+          <div className="col-xs-8">
+            <Thumb src={imageUrl} />
+          </div>
         </div>
 
         <div className="team-desc">
           {about}
-        </div>
-
-        <div className="col-sm-6 event-imagery">
-          <div className="event-image">
-          </div>
         </div>
       </section>
     </div>);
