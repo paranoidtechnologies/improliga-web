@@ -13,7 +13,7 @@ export default {
     news: 'Novinky',
     media: 'Média o Improlize',
     shows: 'Představení',
-    teams: 'Týmy',
+    teams: 'Skupiny',
     workshops: 'Dílny'
   },
 

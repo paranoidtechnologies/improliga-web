@@ -43,7 +43,7 @@ export default {
   },
 
   teams: {
-    title: 'Týmy'
+    title: 'Skupiny'
   },
 
   workshops: {
