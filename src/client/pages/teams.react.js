@@ -2,6 +2,7 @@ import Component from '../components/component.react';
 import DocumentTitle from 'react-document-title';
 import TeamList from '../components/teams/list.react';
 import React from 'react';
+import './teams.styl';
 
 export default class TeamsPage extends Component {
 

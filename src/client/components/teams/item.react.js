@@ -1,6 +1,8 @@
 import Component from '../component.react';
 import React from 'react';
+import Thumb from '../thumb.react';
 import {Link} from 'react-router';
+import './item.styl';
 
 export default class TeamListItem extends Component {
   static propTypes = {
@@ -10,14 +12,28 @@ export default class TeamListItem extends Component {
     text: React.PropTypes.string
   };
 
+  static defaultImage = '/assets/pixmaps/team/default-list.png';
+
   render() {
-    const {id, name, createdAt} = this.props;
+    const {id, image, logo, name, createdAt} = this.props;
+    let headerImage = this.constructor.defaultImage;
+
+    if (image) {
+      headerImage = image.url;
+    }
+
+    if (logo) {
+      headerImage = logo.url;
+    }
 
     return (
-      <div className="ui-team-item">
-        <div className="team-name">
-          {name}
-        </div>
+      <div className="col-lg-2 col-md-3 col-sm-4 col-xs-6 ui-team-item">
+        <Link className="team-inner" to="teams">
+          <div className="team-border">
+            <div className="text-center team-image"><Thumb height={300} src={headerImage} width={300} /></div>
+            <div className="text-center team-name">{name}</div>
+          </div>
+        </Link>
       </div>
     );
   }

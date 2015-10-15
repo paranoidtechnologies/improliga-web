@@ -56,8 +56,8 @@ export default class App extends Component {
         <div className="page-wrapper">
           <Header msg={msg} />
           <RouteHandler {...props} />
+          <Footer msg={msg.app} />
         </div>
-        <Footer msg={msg.app} />
       </div>
     );
   }

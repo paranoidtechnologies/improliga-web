@@ -70,6 +70,8 @@ export default class EventMonth extends Component {
       <section className="col-sm-5">
         <EventMonthList {...propsList} />
       </section>
+
+      <div className="cleaner" />
     </div>);
   }
 };

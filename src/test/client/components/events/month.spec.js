@@ -26,7 +26,7 @@ describe('Event month calendar and list', () => {
     const cont = getChildren(tree);
 
     expect(cont).to.be.an('array');
-    expect(cont.length).to.equal(4);
+    expect(cont.length).to.equal(5);
 
     const title = getChildren(cont[0]);
     const titleCont = getChildren(title);
