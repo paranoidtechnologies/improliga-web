@@ -14,7 +14,7 @@ export default class EventDayList extends List {
 
     return (
       <div className="ui-event-day">
-        <div className="title">{date.format(formatDate)}</div>
+        <h3 className="day-title">{date.format(formatDate)}</h3>
         <div className="ui-list-items">
           {items.map(function(item, key) {
             return <Item key={item.id} {...{draw, item, items, msg, pass}} />;
