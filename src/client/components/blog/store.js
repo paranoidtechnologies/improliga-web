@@ -1,4 +1,4 @@
-import News from '../../models/news';
+import Article from '../../models/article';
 import {Record} from 'immutable';
 import {actions} from './actions';
 
@@ -8,7 +8,7 @@ const initialState = new (Record({
 }));
 
 const revive = state => initialState.merge({
-  list: state.get('list').map(item => new News(item))
+  list: state.get('list').map(item => new Article(item))
 });
 
 export default function(state = initialState, action, payload) {
@@ -16,12 +16,12 @@ export default function(state = initialState, action, payload) {
 
   switch (action) {
 
-  case actions.loadNewsItemDetail:
+  case actions.loadBlogItemDetail:
     if (payload && payload[0]) {
       return state.set('detail', payload[0]);
     }
 
-  case actions.loadNews:
+  case actions.loadBlog:
     return state.set('list', payload ? payload.list : []);
   }
 

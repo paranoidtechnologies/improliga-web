@@ -1,26 +1,26 @@
 import React from 'react';
 import Component from '../component.react';
 
-export default class NewsDetail extends Component {
+export default class BlogDetail extends Component {
   static propTypes = {
     formatDateTime: React.PropTypes.string,
     msg: React.PropTypes.object.isRequired,
-    newsItem: React.PropTypes.object.isRequired,
+    blogItem: React.PropTypes.object.isRequired,
   }
 
   render() {
-    const {newsItem, formatDateTime, msg} = this.props;
-    const {createdAt, name, text} = newsItem;
+    const {blogItem, formatDateTime, msg} = this.props;
+    const {createdAt, name, text} = blogItem;
 
-    return (<div className="news-detail">
+    return (<div className="blog-detail">
       <section className="container">
-        <h1 className="text-center news-heading">{name}</h1>
+        <h1 className="text-center blog-heading">{name}</h1>
 
-        <div className="news-cont">
+        <div className="blog-cont">
           {text}
         </div>
 
-        <div className="news-footer">
+        <div className="blog-footer">
           <div className="created-at">
             <span className="label">{msg.createdAt}</span>
             <span className="value">{createdAt.format(formatDateTime)}</span>

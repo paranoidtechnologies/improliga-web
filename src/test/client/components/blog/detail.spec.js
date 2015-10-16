@@ -1,5 +1,6 @@
-import NewsDetail from 'client/components/news/detail.react';
+import {expect} from 'chai';
 import {getChildren, render} from 'test/utils';
+import BlogDetail from 'client/components/blog/detail.react';
 import React from 'react';
 import moment from 'moment';
 
@@ -16,41 +17,41 @@ const props = {
   msg: {
     createdAt: 'createdAt',
   },
-  newsItem: item
+  blogItem: item
 };
 
-describe('News detail', () => {
+describe('Blog detail', () => {
   it('has heading', () => {
-    const comp = <NewsDetail {...props} />;
+    const comp = <BlogDetail {...props} />;
     const tree = render(comp);
     const cont = getChildren(getChildren(tree));
 
     expect(cont).to.be.an('array');
-    expect(cont[0]._store.props.className.split(' ')).to.be.contain('news-heading');
+    expect(cont[0]._store.props.className.split(' ')).to.be.contain('blog-heading');
 
     const heading = getChildren(cont[0]);
     expect(heading).to.equal(item.name);
   });
 
   it('has content', () => {
-    const comp = <NewsDetail {...props} />;
+    const comp = <BlogDetail {...props} />;
     const tree = render(comp);
     const cont = getChildren(getChildren(tree));
 
     expect(cont).to.be.an('array');
-    expect(cont[1]._store.props.className.split(' ')).to.contain('news-cont');
+    expect(cont[1]._store.props.className.split(' ')).to.contain('blog-cont');
 
     const text = getChildren(cont[1]);
     expect(text).to.equal(item.text);
   });
 
   it('has footer', () => {
-    const comp = <NewsDetail {...props} />;
+    const comp = <BlogDetail {...props} />;
     const tree = render(comp);
     const cont = getChildren(getChildren(tree));
 
     expect(cont).to.be.an('array');
-    expect(cont[2]._store.props.className.split(' ')).to.contain('news-footer');
+    expect(cont[2]._store.props.className.split(' ')).to.contain('blog-footer');
 
     const createdAt = getChildren(cont[2]);
     expect(createdAt._store.props.className.split(' ')).to.contain('created-at');

@@ -1,6 +1,6 @@
 import fetch from './fetch';
 
-export function fetchNews(req, res, next) {
+export function fetchBlog(req, res, next) {
   const cfg = {
     model: 'Impro.News',
     perPage: req.query.perPage,
@@ -24,7 +24,7 @@ export function fetchNews(req, res, next) {
   });
 };
 
-export function fetchNewsItemDetail(req, res, next) {
+export function fetchBlogArticleDetail(req, res, next) {
   const cfg = {
     model: 'Impro.News',
     page: 0,
@@ -39,7 +39,7 @@ export function fetchNewsItemDetail(req, res, next) {
       {
         attr: 'id',
         type: 'exact',
-        exact: req.params.newsItemId
+        exact: parseInt(req.params.newsItemId)
       }
     ]
   };

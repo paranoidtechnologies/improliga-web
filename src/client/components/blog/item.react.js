@@ -2,7 +2,7 @@ import Component from '../component.react';
 import React from 'react';
 import {Link} from 'react-router';
 
-export default class NewsItem extends Component {
+export default class BlogItem extends Component {
   static propTypes = {
     createdAt: React.PropTypes.object,
     msg: React.PropTypes.object.isRequired,
@@ -14,9 +14,9 @@ export default class NewsItem extends Component {
     const {id, msg, name, text, createdAt} = this.props;
 
     return (
-      <div className="ui-news-item">
+      <div className="ui-blog-item">
         <h3>
-          <Link params={{newsItemId: id}} to="newsDetail">{name}</Link>
+          <Link params={{blogItemId: id}} to="blogDetail">{name}</Link>
         </h3>
 
         <div className="content">

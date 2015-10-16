@@ -50,8 +50,8 @@ export default {
     title: 'Dílny'
   },
 
-  news: {
-    title: 'Novinky',
+  blog: {
+    title: 'Blog',
     perex: 'Zajímá vás, co Improliga dělá a co se děje?'
   },
 

@@ -2,8 +2,8 @@ import About from './pages/about.react';
 import App from './app/app.react';
 import Contact from './pages/contact.react';
 import Home from './pages/home.react';
-import News from './pages/news.react';
-import NewsDetail from './pages/news/detail.react';
+import BlogPage from './pages/blog.react';
+import BlogDetail from './pages/blog/detail.react';
 import Event from './pages/event.react';
 import Shows from './pages/shows.react';
 import TeamsPage from './pages/teams.react';
@@ -27,8 +27,8 @@ export default (
     <Route handler={TeamsPage} name="teams" path="/tymy" />
     <Route handler={TeamDetailPage} name="teamDetail" path="/tymy/:teamId" />
 
-    <Route handler={News} name="news" path="/novinky" />
-    <Route handler={NewsDetail} name="newsDetail" path="/novinky/:newsItemId" />
+    <Route handler={BlogPage} name="blog" path="/blog" />
+    <Route handler={BlogDetail} name="blogDetail" path="/blog/:blogItemId" />
 
     <NotFoundRoute handler={NotFound} name="not-found" />
   </Route>

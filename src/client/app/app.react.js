@@ -9,13 +9,13 @@ import {RouteHandler} from 'react-router';
 import {createValidate} from '../validate';
 import Api from '../api';
 
+import * as blogActions from '../components/blog/actions';
 import * as eventsActions from '../components/events/actions';
-import * as newsActions from '../components/news/actions';
 import * as showsActions from '../components/shows/actions';
 import * as teamsActions from '../components/teams/actions';
 import * as workshopsActions from '../components/workshops/actions';
 
-const actions = [eventsActions, newsActions, showsActions, teamsActions, workshopsActions];
+const actions = [blogActions, eventsActions, showsActions, teamsActions, workshopsActions];
 
 @flux(store)
 export default class App extends Component {

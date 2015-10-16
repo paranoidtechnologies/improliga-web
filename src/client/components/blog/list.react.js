@@ -1,9 +1,9 @@
 import Browser from '../browser.react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
-import NewsItem from './item.react';
+import BlogItem from './item.react';
 
-export default class NewsList extends Browser {
+export default class BlogList extends Browser {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     items: React.PropTypes.oneOfType([
@@ -14,10 +14,6 @@ export default class NewsList extends Browser {
   }
 
   static defaultProps = {
-    draw: NewsItem
-  }
-
-  componentDidMount(next) {
-    return this.props.actions.news.loadNews();
+    draw: BlogItem
   }
 }

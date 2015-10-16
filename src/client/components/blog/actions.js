@@ -1,21 +1,21 @@
 export const actions = create();
-export const feature = 'news';
+export const feature = 'blog';
 
 export function create(api, dispatch, validate) {
   return {
-    loadNewsItemDetail(newsItemId) {
+    loadBlogItemDetail(blogItemId) {
       let params = {};
 
-      api.fetch('/api/1/news/' + newsItemId, feature, params, (err, res) => {
+      api.fetch('/api/1/news/' + blogItemId, feature, params, (err, res) => {
         if (err) {
           api.error(err);
         } else {
-          dispatch(actions.loadNewsItemDetail, res.body.data);
+          dispatch(actions.loadBlogItemDetail, res.body.data);
         }
       });
     },
 
-    loadNews() {
+    loadBlog() {
       let params = {};
 
       params.perPage = 5;
@@ -24,7 +24,7 @@ export function create(api, dispatch, validate) {
         if (err) {
           api.error(err);
         } else {
-          dispatch(actions.loadNews, {
+          dispatch(actions.loadBlog, {
             list: res.body.data
           });
         }

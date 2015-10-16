@@ -1,5 +1,5 @@
 import Component from '../components/component.react';
-import Menu from '../components/public/menu.react';
+import Menu from '../components/static/menu.react';
 import React from 'react';
 
 export default class Header extends Component {
