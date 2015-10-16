@@ -6,7 +6,7 @@ export function create(api, dispatch, validate) {
     loadBlogItemDetail(blogItemId) {
       let params = {};
 
-      api.fetch('/api/1/news/' + blogItemId, feature, params, (err, res) => {
+      api.fetch('/news/' + blogItemId, feature, params, (err, res) => {
         if (err) {
           api.error(err);
         } else {
@@ -20,7 +20,7 @@ export function create(api, dispatch, validate) {
 
       params.perPage = 5;
 
-      api.fetch('/api/1/news', feature, params, function(err, res) {
+      api.fetch('/news', feature, params, function(err, res) {
         if (err) {
           api.error(err);
         } else {

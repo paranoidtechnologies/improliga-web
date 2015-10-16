@@ -6,7 +6,7 @@ export function create(api, dispatch, validate) {
     loadTeamsPage() {
       let params = {};
 
-      api.fetch('/api/1/teams', feature, params, (err, res) => {
+      api.fetch('/teams', feature, params, (err, res) => {
         if (err) {
           api.error(err);
         } else {
@@ -19,7 +19,7 @@ export function create(api, dispatch, validate) {
     loadTeamDetail(teamId) {
       let params = {};
 
-      api.fetch('/api/1/teams/' + teamId, 'teamDetail', params, (err, res) => {
+      api.fetch('/teams/' + teamId, 'teamDetail', params, (err, res) => {
         if (err) {
           api.error(err);
         } else {

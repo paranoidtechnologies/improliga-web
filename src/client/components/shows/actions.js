@@ -8,7 +8,7 @@ export function create(api, dispatch, validate) {
         params.perPage = 6;
       }
 
-      api.fetch('/api/1/shows/upcoming', feature, params, function(err, res) {
+      api.fetch('/shows/upcoming', feature, params, function(err, res) {
         if (err) {
           api.error(err, res);
         } else {
@@ -25,7 +25,7 @@ export function create(api, dispatch, validate) {
         month: month
       };
 
-      api.fetch('/api/1/shows', 'showsCalendar', params, function(err, res) {
+      api.fetch('/shows', 'showsCalendar', params, function(err, res) {
         if (err) {
           api.error(err, res);
         } else {

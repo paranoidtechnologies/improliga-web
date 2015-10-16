@@ -5,6 +5,9 @@ export default class Api {
   timeout = 10000;
   pending = {};
   errorCallback = null;
+  version = '1';
+  prefix = '/api';
+
   error(err, res) {
     if (this.errorCallback instanceof Function) {
       this.errorCallback(err, res);
@@ -21,6 +24,7 @@ export default class Api {
 
   fetch(url, key, params, callback) {
     const self = this;
+    url = this.prefix + '/' + this.version + url;
 
     if (typeof params === 'undefined' || !params) {
       params = {};

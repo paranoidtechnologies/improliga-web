@@ -8,7 +8,7 @@ export function create(api, dispatch, validate) {
         month: month
       };
 
-      api.fetch('/api/1/workshops', 'workshopsCalendar', params, function(err, res) {
+      api.fetch('/workshops', 'workshopsCalendar', params, function(err, res) {
         if (err) {
           api.error(err, res);
         } else {
