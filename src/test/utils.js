@@ -24,9 +24,13 @@ export function getInstance(Component) {
 }
 
 
-export function createApiFetch(err, res) {
+export function mockApi(err, res) {
   return {
     fetch: function(url, feature, params, next) {
+      next(err, res);
+    },
+
+    post: function(url, feature, params, next) {
       next(err, res);
     }
   };

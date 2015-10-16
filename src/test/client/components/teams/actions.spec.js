@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {actions, create} from 'client/components/teams/actions';
-import {createApiFetch} from '../../../utils';
+import {mockApi} from '../../../utils';
 
 const responseBlank = {
   body: {
@@ -15,7 +15,7 @@ describe('Team actions', () => {
     };
 
     expect(actions.loadTeamsPage).to.be.an('function');
-    create(createApiFetch(null, responseBlank), dispatch).loadTeamsPage();
+    create(mockApi(null, responseBlank), dispatch).loadTeamsPage();
   });
 
 
@@ -26,6 +26,6 @@ describe('Team actions', () => {
     };
 
     expect(actions.loadTeamDetail).to.be.an('function');
-    create(createApiFetch(null, responseBlank), dispatch).loadTeamDetail();
+    create(mockApi(null, responseBlank), dispatch).loadTeamDetail();
   });
 });
