@@ -39,7 +39,7 @@ export function fetchTeamDetail(req, res, next) {
       {
         attr: 'id',
         type: 'exact',
-        exact: parseInt(req.params.teamId)
+        exact: parseInt(req.params.teamId, 10)
       }
     ]
   };

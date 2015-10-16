@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {getChildren, getInstance, render} from 'test/utils';
+import {getChildren, render} from 'test/utils';
 import ContactForm from 'client/components/contact/form.react';
 import React from 'react/addons';
 

@@ -4,7 +4,7 @@ import React from 'react';
 
 describe('Team detail', () => {
   it('renders blank', () => {
-    const comp = <TeamDetail team={{}} msg={{}} />;
+    const comp = <TeamDetail msg={{}} team={{}} />;
     render(comp);
   });
 });

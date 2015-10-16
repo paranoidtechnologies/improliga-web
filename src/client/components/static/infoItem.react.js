@@ -12,22 +12,22 @@ export default class InfoItem extends Component {
     const {label, type, value} = this.props;
     let val = value;
 
-    if (value === null || typeof value == 'undefined') {
+    if (value === null || typeof value === 'undefined') {
       return null;
     }
 
-    if (type == 'link') {
-      val = <a href={val}>{val}</a>
+    if (type === 'link') {
+      val = <a href={val}>{val}</a>;
     }
 
-    if (type == 'link-email') {
-      val = <a href={'mailto:' + val}>{val}</a>
+    if (type === 'link-email') {
+      val = <a href={'mailto:' + val}>{val}</a>;
     }
 
     return (
       <div className="info-item">
-        <span class="item-label">{label}</span>
-        <span class="item-value">{val}</span>
+        <span className="item-label">{label}</span>
+        <span className="item-value">{val}</span>
       </div>
     );
   }

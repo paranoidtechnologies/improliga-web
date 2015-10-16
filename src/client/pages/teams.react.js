@@ -10,7 +10,7 @@ export default class TeamsPage extends Component {
     actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired,
-    shows: React.PropTypes.object.isRequired
+    teams: React.PropTypes.object.isRequired
   }
 
   componentDidMount() {

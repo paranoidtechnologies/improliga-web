@@ -20,7 +20,6 @@ export default class BlogDetailPage extends Component {
 
   render() {
     const {actions, msg, blog} = this.props;
-    console.log(blog);
     const blogItem = blog.detail;
 
     if (!blogItem) {

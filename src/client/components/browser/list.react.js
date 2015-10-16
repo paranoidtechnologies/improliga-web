@@ -1,7 +1,7 @@
 import Component from '../component.react';
-import React from 'react';
-import Item from './item.react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import Item from './item.react';
+import React from 'react';
 
 export default class List extends Component {
   static propTypes = {

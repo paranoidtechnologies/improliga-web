@@ -6,8 +6,8 @@ import './detail.styl';
 
 export default class TeamDetail extends Component {
   static propTypes = {
-    team: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    team: React.PropTypes.object.isRequired,
   }
 
   static defaultImage = '/assets/pixmaps/team/default.png';
@@ -15,7 +15,7 @@ export default class TeamDetail extends Component {
 
   render() {
     const {team, msg} = this.props;
-    const {about, city, fb, image, mail, name, site} = team;
+    const {about, city, image, mail, name, site} = team;
 
     let imageUrl = image;
     let logoUrl = image;
@@ -30,7 +30,7 @@ export default class TeamDetail extends Component {
 
     return (<div className="team-detail">
       <section className="container">
-        <h1 class="text-center">{name}</h1>
+        <h1 className="text-center">{name}</h1>
 
         <div className="col-sm-4">
           <div className="event-info">

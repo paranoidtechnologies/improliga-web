@@ -3,9 +3,9 @@ import Component from '../component.react';
 
 export default class BlogDetail extends Component {
   static propTypes = {
+    blogItem: React.PropTypes.object.isRequired,
     formatDateTime: React.PropTypes.string,
     msg: React.PropTypes.object.isRequired,
-    blogItem: React.PropTypes.object.isRequired,
   }
 
   render() {

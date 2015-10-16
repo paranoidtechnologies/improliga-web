@@ -39,7 +39,7 @@ export function fetchBlogArticleDetail(req, res, next) {
       {
         attr: 'id',
         type: 'exact',
-        exact: parseInt(req.params.newsItemId)
+        exact: parseInt(req.params.newsItemId, 10)
       }
     ]
   };

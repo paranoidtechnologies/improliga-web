@@ -6,8 +6,8 @@ import './contact.styl';
 export default class BlogPage extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
+    blog: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
-    blog: React.PropTypes.object.isRequired
   }
 
   componentDidMount(next) {

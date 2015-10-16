@@ -1,8 +1,18 @@
-import List from '../browser/list.react';
 import EventDayList from './dayList.react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import List from '../browser/list.react';
 import React from 'react';
 
 export default class EventMonthList extends List {
+  static propTypes = {
+    draw: React.PropTypes.func.isRequired,
+    items: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      ImmutablePropTypes.list
+    ]),
+    msg: React.PropTypes.object,
+    pass: React.PropTypes.object,
+  }
 
   render() {
     const {draw, items, msg, pass} = this.props;
@@ -14,12 +24,12 @@ export default class EventMonthList extends List {
     items.forEach(function(item) {
       const itemDay = item.start.format('YYYY-MM-DD');
 
-      if (!day || day.dateString != itemDay) {
+      if (!day || day.dateString !== itemDay) {
         day = {
           date: item.start.clone(),
           dateString: item.start.format('YYYY-MM-DD'),
           items: [],
-        }
+        };
 
         days.push(day);
       }
