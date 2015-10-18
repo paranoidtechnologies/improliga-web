@@ -10,11 +10,11 @@ const responseBlank = {
 describe('Contact actions', () => {
   it('dispatches contact form reponse', (done) => {
     const dispatch = (action) => {
-      expect(action).to.equal(actions.sendCalendarForm);
+      expect(action).to.equal(actions.sendContactForm);
       done();
     };
 
-    expect(actions.sendCalendarForm).to.be.an('function');
-    create(mockApi(null, responseBlank), dispatch).sendCalendarForm();
+    expect(actions.sendContactForm).to.be.an('function');
+    create(mockApi(null, responseBlank), dispatch).sendContactForm();
   });
 });

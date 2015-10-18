@@ -26,12 +26,24 @@ export function getInstance(Component) {
 
 export function mockApi(err, res) {
   return {
+    delete: function(cfg) {
+      cfg.callback(err, res);
+    },
+
     fetch: function(url, feature, params, next) {
       next(err, res);
     },
 
-    post: function(url, feature, params, next) {
-      next(err, res);
+    get: function(cfg) {
+      cfg.callback(err, res);
+    },
+
+    post: function(cfg) {
+      cfg.callback(err, res);
+    },
+
+    put: function(cfg) {
+      cfg.callback(err, res);
     }
   };
 }

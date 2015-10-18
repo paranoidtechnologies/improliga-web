@@ -15,6 +15,7 @@ export default class Contact extends Component {
     const propsForm = {
       actions: actions,
       msg: msg.pages.contact.form,
+      response: this.props.contact.formResponse,
       subjects: msg.pages.contact.subjects
     };
 

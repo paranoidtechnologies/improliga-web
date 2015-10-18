@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import {getChildren, render} from 'test/utils';
+import {Map} from 'immutable';
 import ContactForm from 'client/components/contact/form.react';
 import React from 'react/addons';
 
@@ -20,11 +21,13 @@ const msg = {
   email: 'email',
   message: 'message',
   send: 'send',
-  subjects: subjects
+  subjects: subjects,
+  response: {}
 };
 
 const propsDefault = {
   actions: {},
+  response: new Map({}),
   msg: msg,
   subjects: subjects
 };
@@ -39,10 +42,12 @@ describe('Contact form', () => {
 
     const header = cont[0];
     const opts = cont[1];
-    const form = cont[2];
+    const rspn = cont[2];
+    const form = cont[3];
 
     expect(header).to.be.an('object');
     expect(opts).to.be.an('object');
+    expect(rspn).to.be.an('object');
     expect(form).to.be.an('object');
 
     const headerCont = getChildren(header);

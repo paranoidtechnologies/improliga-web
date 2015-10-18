@@ -1,14 +1,17 @@
 export const actions = create();
+export const feature = 'contact';
 
 export function create(api, dispatch, validate) {
   return {
-    sendCalendarForm(data) {
-      api.post('/workshops', 'contactForm', {}, function(err, res) {
-        if (err) {
-          api.error(err, res);
-        } else {
-          dispatch(actions.sendCalendarForm, {
-            list: res.body.data
+    sendContactForm(data) {
+      api.post({
+        key: 'contactForm',
+        url: '/contactForm',
+        callback: (err, res) => {
+          dispatch(actions.sendContactForm, {
+            error: res.body ? res.body.message:'unknown',
+            result: res.ok,
+            status: res.status
           });
         }
       });

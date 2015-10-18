@@ -12,7 +12,7 @@ export default class Api {
     if (this.errorCallback instanceof Function) {
       this.errorCallback(err, res);
     }
-  };
+  }
 
   abortRequests(key) {
     if (this.pending[key]) {
@@ -23,28 +23,77 @@ export default class Api {
   }
 
   fetch(url, key, params, callback) {
-    const self = this;
-    url = this.prefix + '/' + this.version + url;
+    return this.send({
+      callback: callback,
+      key: key,
+      method: 'get',
+      params: params,
+      url: url,
+    });
+  }
 
-    if (typeof params === 'undefined' || !params) {
-      params = {};
+  delete(cfg) {
+    cfg.method = 'delete';
+    return this.send(cfg);
+  }
+
+  get(cfg) {
+    cfg.method = 'get';
+    return this.send(cfg);
+  }
+
+  post(cfg) {
+    cfg.method = 'post';
+    return this.send(cfg);
+  }
+
+  prefixUrl(url) {
+    return this.prefix + '/' + this.version + url;
+  }
+
+  put(cfg) {
+    cfg.method = 'put';
+    return this.send(cfg);
+  }
+
+  request(cfg) {
+    const rq = request[cfg.method];
+    const self = this;
+
+    if (!(rq instanceof Function)) {
+      throw new Error('unknown-request-method: ' + cfg.method);
     }
 
-    this.abortRequests(key);
-    this.pending[key] = this.get(url)
-      .query(params)
-      .end(function(err, res) {
-        delete self.pending[key];
+    const inst = rq(cfg.url)
+      .set('Accept', 'application/json')
+      .timeout(this.TIMEOUT)
+      .query(cfg.params);
 
-        if (res && res.body && res.body.data instanceof Array) {
-          res.body.data.forEach((item) => {
-            self.wakeUp(item);
-          });
-        }
+    this.abortRequests(cfg.key);
+    this.pending[cfg.key] = inst;
 
-        callback(err, res);
-      });
+    inst.end(function(err, res) {
+      delete self.pending[cfg.key];
+
+      if (res && res.body && res.body.data instanceof Array) {
+        res.body.data.forEach((item) => {
+          self.wakeUp(item);
+        });
+      }
+
+      cfg.callback(err, res);
+    });
+
+    return inst;
   }
+
+  send(cfg) {
+    cfg.url = this.prefixUrl(cfg.url);
+    cfg.params = cfg.params || {};
+
+    return this.request(cfg);
+  }
+
 
   wakeUp(item) {
     // Convert to camelCase
@@ -74,13 +123,5 @@ export default class Api {
     }
 
     return item;
-  }
-
-  get(url, params) {
-    return request
-      .get(url)
-      .set('Accept', 'application/json')
-      .timeout(this.TIMEOUT)
-      .query();
   }
 };

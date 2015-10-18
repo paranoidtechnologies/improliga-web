@@ -1,5 +1,6 @@
 import React from 'react';
 import Component from '../component.react';
+import ContactFormResponse from './formResponse.react';
 import InputEmail from '../form/input/email';
 import InputHidden from '../form/input/hidden';
 import InputTextarea from '../form/input/textarea';
@@ -8,6 +9,7 @@ import './form.styl';
 export default class ContactForm extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
+    response: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     subject: React.PropTypes.string,
   }
@@ -53,14 +55,14 @@ export default class ContactForm extends Component {
   }
 
   send(e) {
+    e.preventDefault();
+
     if (this.validate()) {
-      console.log('sending');
+      const data = this.getData();
+      this.props.actions.contact.sendContactForm(data);
     } else {
       this.validateVisual();
     }
-
-    e.preventDefault();
-    e.stopPropagation();
   }
 
   validate() {
@@ -88,7 +90,7 @@ export default class ContactForm extends Component {
   }
 
   render() {
-    const {msg} = this.props;
+    const {msg, response} = this.props;
     const state = this.state;
     const self = this;
 
@@ -114,6 +116,8 @@ export default class ContactForm extends Component {
             );
           })}
         </div>
+
+        {response.get('result') === null ? null : <ContactFormResponse msg={msg.response} response={response} />}
 
         <form className={cnameForm} onSubmit={(e) => { this.send(e); }} noValidate>
           <fieldset className="ui-form-inputs">

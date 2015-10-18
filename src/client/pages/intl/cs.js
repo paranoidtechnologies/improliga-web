@@ -78,6 +78,11 @@ export default {
       cancel: 'Rozmyslel jsem si to',
       send: 'Odeslat',
 
+      response: {
+        success: 'Odesláno',
+        unknownError: 'Došlo k neznáme chybě. Zkuste to prosím později.',
+      },
+
       subjects: {
         novice: 'Chci si vyzkoušet impro',
         invite: 'Přijeďte si zahrát',
