@@ -80,7 +80,11 @@ export default class ContactForm extends Component {
   }
 
   validateVisual() {
+    const inputs = this.getInputs();
 
+    for (let name in inputs) {
+      inputs[name].validateVisual();
+    }
   }
 
   render() {
