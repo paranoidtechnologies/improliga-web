@@ -109,4 +109,80 @@ describe('Contact form', () => {
       expect(form.props.className.split(' ')).to.contain('hidden');
     });
   });
+
+  it('creates refs', () => {
+    const comp = <ContactForm {...propsDefault} />;
+    const tree = TestUtils.renderIntoDocument(comp);
+
+    expect(tree.refs.email).to.be.an('object');
+    expect(tree.refs.message).to.be.an('object');
+    expect(tree.refs.subject).to.be.an('object');
+  });
+
+  it('reads data from inputs', () => {
+    const comp = <ContactForm {...propsDefault} />;
+    const tree = TestUtils.renderIntoDocument(comp);
+    const inputs = tree.refs;
+    let data = tree.getData();
+    let inputNodes = {};
+
+    expect(data).to.be.an('object');
+    expect(data).to.have.a.property('email')
+    expect(data).to.have.a.property('message');
+    expect(data).to.have.a.property('subject');
+
+    expect(data).to.deep.equal({
+      email: '',
+      message: '',
+      subject: '',
+    });
+
+    for (let input in inputs) {
+      inputNodes[input] = inputs[input].refs.userInput.getDOMNode();
+    }
+
+    inputNodes.email.value = 'email';
+    inputNodes.message.value = 'message';
+    inputNodes.subject.value = 'subject';
+
+    data = tree.getData();
+
+    expect(data).to.deep.equal({
+      email: 'email',
+      message: 'message',
+      subject: 'subject',
+    });
+  });
+
+  it('validates properly', () => {
+    const comp = <ContactForm {...propsDefault} />;
+    const tree = TestUtils.renderIntoDocument(comp);
+    const inputs = tree.refs;
+    let inputNodes = {};
+
+    for (let input in inputs) {
+      inputNodes[input] = inputs[input].refs.userInput.getDOMNode();
+    }
+
+    expect(tree.state.invalid).to.be.an('array');
+    expect(tree.state.invalid).to.be.empty;
+
+    expect(tree.validate()).to.equal(false);
+    expect(tree.state.invalid).to.contain('email');
+    expect(tree.state.invalid).to.contain('message');
+    expect(tree.state.invalid).to.contain('subject');
+
+    inputNodes.email.value = 'email';
+    inputNodes.message.value = 'message';
+    inputNodes.subject.value = 'subject';
+
+    expect(tree.validate()).to.equal(false);
+    expect(tree.state.invalid).to.contain('email');
+    expect(tree.state.invalid).to.not.contain('message');
+    expect(tree.state.invalid).to.not.contain('subject');
+
+    inputNodes.email.value = 'email@test.com';
+    expect(tree.validate()).to.equal(true);
+    expect(tree.state.invalid).to.be.empty;
+  });
 });

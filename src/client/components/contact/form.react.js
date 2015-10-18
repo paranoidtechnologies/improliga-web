@@ -22,14 +22,64 @@ export default class ContactForm extends Component {
   ];
 
   state = {
+    invalid: [],
     subject:null
   };
+
+  getInputs() {
+    const names = ['email', 'message', 'subject'];
+    let inputs = {};
+
+    for (let i = 0; i < names.length; i++) {
+      inputs[names[i]] = this.refs[names[i]];
+    }
+
+    return inputs;
+  }
+
+  getData() {
+    const inputs = this.getInputs();
+    let data = {};
+
+    for (let name in inputs) {
+      data[name] = inputs[name].val();
+    }
+
+    return data;
+  }
 
   select(e, item) {
     this.setState({subject:item});
   }
 
   send(e) {
+    if (this.validate()) {
+      console.log('sending');
+    } else {
+      this.validateVisual();
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  validate() {
+    const inputs = this.getInputs();
+    let invalid = [];
+
+    for (let name in inputs) {
+      let inputValid = inputs[name].isValid();
+
+      if (!inputValid) {
+        invalid.push(name);
+      }
+    }
+
+    this.state.invalid = invalid;
+    return invalid.length === 0;
+  }
+
+  validateVisual() {
 
   }
 
@@ -61,11 +111,11 @@ export default class ContactForm extends Component {
           })}
         </div>
 
-        <form className={cnameForm} onSubmit={(e) => { this.send(e); }}>
+        <form className={cnameForm} onSubmit={(e) => { this.send(e); }} noValidate>
           <fieldset className="ui-form-inputs">
-            <InputHidden defaultValue={state.subject} name="subject" />
-            <InputEmail label={msg.email} name="email" />
-            <InputTextarea label={msg.message} name="message" />
+            <InputHidden defaultValue={state.subject} name="subject" ref="subject" required={true} />
+            <InputEmail label={msg.email} name="email" noValidate ref="email" required={true} />
+            <InputTextarea label={msg.message} name="message" ref="message" required={true} />
           </fieldset>
 
           <div className="ui-form-buttons">
