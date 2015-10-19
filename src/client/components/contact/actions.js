@@ -5,6 +5,7 @@ export function create(api, dispatch, validate) {
   return {
     sendContactForm(data) {
       api.post({
+        data: data,
         key: 'contactForm',
         url: '/contactForm',
         callback: (err, res) => {
