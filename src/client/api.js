@@ -67,6 +67,8 @@ export default class Api {
     const inst = rq(cfg.url)
       .set('Accept', 'application/json')
       .timeout(this.TIMEOUT)
+      .type('form')
+      .send(cfg.data)
       .query(cfg.params);
 
     this.abortRequests(cfg.key);
@@ -89,6 +91,7 @@ export default class Api {
 
   send(cfg) {
     cfg.url = this.prefixUrl(cfg.url);
+    cfg.data = cfg.data || {};
     cfg.params = cfg.params || {};
 
     return this.request(cfg);
