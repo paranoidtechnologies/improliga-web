@@ -9,8 +9,8 @@ import './form.styl';
 export default class ContactForm extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
-    response: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    response: React.PropTypes.object.isRequired,
     store: React.PropTypes.object.isRequired,
     subject: React.PropTypes.string,
   }
@@ -52,7 +52,7 @@ export default class ContactForm extends Component {
   }
 
   select(e, item) {
-    const {actions} = this.props
+    const {actions} = this.props;
     actions.setSubject(item);
   }
 
@@ -120,11 +120,11 @@ export default class ContactForm extends Component {
 
         {response.get('result') === null ? null : <ContactFormResponse msg={msg.response} response={response} />}
 
-        <form className={cnameForm} onSubmit={(e) => { this.send(e); }} noValidate>
+        <form className={cnameForm} noValidate onSubmit={(e) => { this.send(e); }}>
           <fieldset className="ui-form-inputs">
-            <InputHidden defaultValue={subject} name="subject" ref="subject" required={true} />
-            <InputEmail label={msg.email} name="email" noValidate ref="email" required={true} />
-            <InputTextarea label={msg.message} name="message" ref="message" required={true} />
+            <InputHidden defaultValue={subject} name="subject" ref="subject" required />
+            <InputEmail label={msg.email} name="email" noValidate ref="email" required />
+            <InputTextarea label={msg.message} name="message" ref="message" required />
           </fieldset>
 
           <div className="ui-form-buttons">

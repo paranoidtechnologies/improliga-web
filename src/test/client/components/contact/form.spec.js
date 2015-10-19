@@ -135,7 +135,7 @@ describe('Contact form', () => {
     expect(optsCont.props.className.split(' ')).to.not.contain('hidden');
     expect(form.props.className.split(' ')).to.contain('hidden');
 
-    comp = <ContactForm {...propsDefault} subject='novice' />;
+    comp = <ContactForm {...propsDefault} subject="novice" />;
     tree = TestUtils.renderIntoDocument(comp);
     optsCont = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-options');
     form = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-cont');
@@ -161,7 +161,7 @@ describe('Contact form', () => {
     let inputNodes = {};
 
     expect(data).to.be.an('object');
-    expect(data).to.have.a.property('email')
+    expect(data).to.have.a.property('email');
     expect(data).to.have.a.property('message');
     expect(data).to.have.a.property('subject');
 

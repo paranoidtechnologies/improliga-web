@@ -1,7 +1,7 @@
 import {actions} from 'client/components/contact/actions';
 import {expect} from 'chai';
 import store from 'client/components/contact/store';
-import {List, Record} from 'immutable';
+import {Record} from 'immutable';
 
 describe('Contact form store', () => {
   it('stores sendContactForm', () => {

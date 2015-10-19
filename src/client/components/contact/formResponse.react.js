@@ -3,8 +3,8 @@ import Component from '../component.react';
 
 export default class ContactFormFesponse extends Component {
   static propTypes = {
-    response: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    response: React.PropTypes.object.isRequired,
   }
 
 
@@ -18,18 +18,16 @@ export default class ContactFormFesponse extends Component {
 
     if (result === null || typeof result === 'undefined') {
       cname.push('response-null');
+    } else if (result) {
+      cname.push('response-success');
+      message = msg.success;
     } else {
-      if (result) {
-        cname.push('response-success');
-        message = msg.success;
-      } else {
-        cname.push('response-error');
+      cname.push('response-error');
 
-        if (error && msg[error]) {
-          message = msg[error];
-        } else {
-          message = msg.unknownError;
-        }
+      if (error && msg[error]) {
+        message = msg[error];
+      } else {
+        message = msg.unknownError;
       }
     }
 

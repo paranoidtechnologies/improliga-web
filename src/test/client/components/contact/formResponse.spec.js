@@ -4,8 +4,6 @@ import {Map} from 'immutable';
 import ContactFormResponse from 'client/components/contact/formResponse.react';
 import React from 'react/addons';
 
-const TestUtils = React.addons.TestUtils;
-
 const msg = {
   specificError: 'specificError',
   unknownError: 'unknownError',
@@ -15,10 +13,10 @@ const msg = {
 describe('Contact form response', () => {
 
   it('renders success', () => {
-    const comp = <ContactFormResponse msg={msg} response={new Map({
+    const comp = (<ContactFormResponse msg={msg} response={new Map({
       error: null,
       result: true
-    })} />;
+    })} />);
 
     const tree = render(comp);
     const cname = tree._store.props.className.split(' ');
@@ -33,10 +31,10 @@ describe('Contact form response', () => {
   });
 
   it('renders specific error', () => {
-    const comp = <ContactFormResponse msg={msg} response={new Map({
+    const comp = (<ContactFormResponse msg={msg} response={new Map({
       error: 'specificError',
       result: false
-    })} />;
+    })} />);
 
     const tree = render(comp);
     const cname = tree._store.props.className.split(' ');
@@ -50,10 +48,10 @@ describe('Contact form response', () => {
   });
 
   it('renders unknown error with unrecognized error info', () => {
-    const comp = <ContactFormResponse msg={msg} response={new Map({
+    const comp = (<ContactFormResponse msg={msg} response={new Map({
       error: 'errorFoo',
       result: false
-    })} />;
+    })} />);
 
     const tree = render(comp);
     const message = getChildren(tree);
@@ -63,10 +61,10 @@ describe('Contact form response', () => {
   });
 
   it('renders unknown error with no error info', () => {
-    const comp = <ContactFormResponse msg={msg} response={new Map({
+    const comp = (<ContactFormResponse msg={msg} response={new Map({
       error: null,
       result: false
-    })} />;
+    })} />);
 
     const tree = render(comp);
     const message = getChildren(tree);

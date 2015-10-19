@@ -9,8 +9,8 @@ export function create(api, dispatch, validate) {
         url: '/contactForm',
         callback: (err, res) => {
           dispatch(actions.sendContactForm, {
-            error: res.body ? res.body.message:'unknown',
-            result: res.ok,
+            error: res.body ? res.body.message : 'unknown',
+            result: !err && res.ok,
             status: res.status
           });
         }

@@ -6,18 +6,19 @@ import './contact.styl';
 export default class Contact extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
+    contact: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired
   }
 
   render() {
-    const {actions, msg} = this.props;
+    const {actions, contact, msg} = this.props;
     const msgContact = msg.pages.contact;
     const propsForm = {
       actions: actions.contact,
-      msg: msg.pages.contact.form,
-      response: this.props.contact.formResponse,
-      subject: this.props.contact.formSubject,
-      subjects: msg.pages.contact.subjects,
+      msg: msgContact.form,
+      response: contact.formResponse,
+      subject: contact.formSubject,
+      subjects: msgContact.subjects,
     };
 
     return (
