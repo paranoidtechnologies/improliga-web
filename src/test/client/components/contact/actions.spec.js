@@ -17,4 +17,15 @@ describe('Contact actions', () => {
     expect(actions.sendContactForm).to.be.an('function');
     create(mockApi(null, responseBlank), dispatch).sendContactForm();
   });
+
+  it('dispatches contact form subject store', (done) => {
+    const dispatch = (action, data) => {
+      expect(action).to.equal(actions.setSubject);
+      expect(data).to.equal('foo');
+      done();
+    };
+
+    expect(actions.setSubject).to.be.an('function');
+    create(null, dispatch).setSubject('foo');
+  });
 });

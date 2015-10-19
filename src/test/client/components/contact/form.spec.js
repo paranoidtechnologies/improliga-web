@@ -25,10 +25,19 @@ const msg = {
   response: {}
 };
 
+const store = {
+  subject: null
+};
+
 const propsDefault = {
-  actions: {},
+  actions: {
+    setSubject: function(subject) {
+      store.subject = subject;
+    }
+  },
   response: new Map({}),
   msg: msg,
+  store: store,
   subjects: subjects
 };
 
@@ -71,7 +80,7 @@ describe('Contact form', () => {
     expect(optItems.length).to.equal(6);
   });
 
-  it('sets subject on option click and shows/hides form on cancel', () => {
+  it('sets subject on option click and cancel', () => {
     const comp = <ContactForm {...propsDefault} />;
     const tree = TestUtils.renderIntoDocument(comp);
     const optsCont = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-options');
@@ -98,21 +107,41 @@ describe('Contact form', () => {
 
       // Select an option
       TestUtils.Simulate.click(item);
-      expect(optsCont.props.className.split(' ')).to.contain('hidden');
-      expect(form.props.className.split(' ')).to.not.contain('hidden');
 
-      const hidden = TestUtils.findRenderedDOMComponentWithClass(tree, 'ui-input-hidden');
-      expect(TestUtils.isCompositeComponent(hidden));
+      //~ const hidden = TestUtils.findRenderedDOMComponentWithClass(tree, 'ui-input-hidden');
+      //~ expect(TestUtils.isCompositeComponent(hidden));
 
-      const hiddenInput = TestUtils.findRenderedDOMComponentWithTag(hidden, 'input');
-      expect(TestUtils.isDOMComponent(hiddenInput));
-      expect(hiddenInput.props.value).to.equal(itemLabel.props.children);
+      //~ const hiddenInput = TestUtils.findRenderedDOMComponentWithTag(hidden, 'input');
+      //~ expect(TestUtils.isDOMComponent(hiddenInput));
+      //~ expect(hiddenInput.props.value).to.equal(itemLabel.props.children);
+      expect(store.subject).to.equal(itemLabel.props.children);
 
       // Cancel button
       TestUtils.Simulate.click(cancel);
-      expect(optsCont.props.className.split(' ')).to.not.contain('hidden');
-      expect(form.props.className.split(' ')).to.contain('hidden');
+      expect(store.subject).to.equal(null);
+      //~ expect(optsCont.props.className.split(' ')).to.not.contain('hidden');
+      //~ expect(form.props.className.split(' ')).to.contain('hidden');
     });
+  });
+
+  it('renders form visible if subject is not empty', () => {
+    let comp = <ContactForm {...propsDefault} />;
+    let tree = TestUtils.renderIntoDocument(comp);
+    let optsCont = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-options');
+    let form = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-cont');
+
+    expect(TestUtils.isDOMComponent(optsCont));
+    expect(TestUtils.isDOMComponent(form));
+    expect(optsCont.props.className.split(' ')).to.not.contain('hidden');
+    expect(form.props.className.split(' ')).to.contain('hidden');
+
+    comp = <ContactForm {...propsDefault} subject='novice' />;
+    tree = TestUtils.renderIntoDocument(comp);
+    optsCont = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-options');
+    form = TestUtils.findRenderedDOMComponentWithClass(tree, 'form-cont');
+
+    expect(optsCont.props.className.split(' ')).to.contain('hidden');
+    expect(form.props.className.split(' ')).to.not.contain('hidden');
   });
 
   it('creates refs', () => {

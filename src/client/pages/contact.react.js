@@ -13,10 +13,11 @@ export default class Contact extends Component {
     const {actions, msg} = this.props;
     const msgContact = msg.pages.contact;
     const propsForm = {
-      actions: actions,
+      actions: actions.contact,
       msg: msg.pages.contact.form,
       response: this.props.contact.formResponse,
-      subjects: msg.pages.contact.subjects
+      subject: this.props.contact.formSubject,
+      subjects: msg.pages.contact.subjects,
     };
 
     return (

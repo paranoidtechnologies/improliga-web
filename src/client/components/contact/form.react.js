@@ -11,6 +11,7 @@ export default class ContactForm extends Component {
     actions: React.PropTypes.object.isRequired,
     response: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
+    store: React.PropTypes.object.isRequired,
     subject: React.PropTypes.string,
   }
 
@@ -51,7 +52,8 @@ export default class ContactForm extends Component {
   }
 
   select(e, item) {
-    this.setState({subject:item});
+    const {actions} = this.props
+    actions.setSubject(item);
   }
 
   send(e) {
@@ -59,7 +61,7 @@ export default class ContactForm extends Component {
 
     if (this.validate()) {
       const data = this.getData();
-      this.props.actions.contact.sendContactForm(data);
+      this.props.actions.sendContactForm(data);
     } else {
       this.validateVisual();
     }
@@ -90,12 +92,11 @@ export default class ContactForm extends Component {
   }
 
   render() {
-    const {msg, response} = this.props;
-    const state = this.state;
+    const {msg, response, subject} = this.props;
     const self = this;
 
-    const cnameForm = 'ui-form form-cont' + (state.subject ? '' : ' hidden');
-    const cnameOpts = 'form-options' + (state.subject ? ' hidden' : '');
+    const cnameForm = 'ui-form form-cont' + (subject ? '' : ' hidden');
+    const cnameOpts = 'form-options' + (subject ? ' hidden' : '');
 
     return (
       <div className="ui-contact-form">
@@ -121,7 +122,7 @@ export default class ContactForm extends Component {
 
         <form className={cnameForm} onSubmit={(e) => { this.send(e); }} noValidate>
           <fieldset className="ui-form-inputs">
-            <InputHidden defaultValue={state.subject} name="subject" ref="subject" required={true} />
+            <InputHidden defaultValue={subject} name="subject" ref="subject" required={true} />
             <InputEmail label={msg.email} name="email" noValidate ref="email" required={true} />
             <InputTextarea label={msg.message} name="message" ref="message" required={true} />
           </fieldset>

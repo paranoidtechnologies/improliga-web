@@ -48,4 +48,10 @@ describe('Contact form store', () => {
     expect(res.formResponse.get('status')).to.equal(200);
     expect(res.formResponse.get('result')).to.equal(true);
   });
+
+  it('stores subject', () => {
+    const res = store(undefined, actions.setSubject, 'foo');
+
+    expect(res.formSubject).to.equal('foo');
+  });
 });

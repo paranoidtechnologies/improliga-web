@@ -15,6 +15,10 @@ export function create(api, dispatch, validate) {
           });
         }
       });
+    },
+
+    setSubject(subject) {
+      dispatch(actions.setSubject, subject);
     }
   };
 }
