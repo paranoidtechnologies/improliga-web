@@ -7,7 +7,7 @@ export function create(api, dispatch, validate) {
       api.post({
         data: data,
         key: 'contactForm',
-        url: '/contactForm',
+        url: '/feedback',
         callback: (err, res) => {
           dispatch(actions.sendContactForm, {
             error: res.body ? res.body.message : 'unknown',

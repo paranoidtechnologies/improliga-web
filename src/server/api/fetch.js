@@ -4,26 +4,30 @@ const config = require('../config');
 const host = config.api.host;
 const url = '/api/model/{model}/browse';
 
-export default (config, next) => {
+export default (cfg, next) => {
 
-  if (!config.page) {
-    config.page = 0;
+  if (typeof cfg.page == 'undefined') {
+    cfg.page = 0;
+  } else {
+    cfg.page = parseInt(cfg.page);
   }
 
-  if (!config.perPage) {
-    config.perPage = 20;
+  if (typeof cfg.perPage == 'undefined') {
+    cfg.perPage = 20;
+  } else {
+    cfg.perPage = parseInt(cfg.perPage);
   }
 
-  if (!config.join) {
-    config.join = [];
+  if (!cfg.join) {
+    cfg.join = [];
   }
 
-  const dest = 'http://' + host + url.replace('{model}', config.model);
+  const dest = 'http://' + host + url.replace('{model}', cfg.model);
   const query = {
-    'filters': JSON.stringify(config.filters),
-    'join': JSON.stringify(config.join),
-    'sort': JSON.stringify(config.sort),
-    'per_page': config.perPage
+    'filters': JSON.stringify(cfg.filters),
+    'join': JSON.stringify(cfg.join),
+    'sort': JSON.stringify(cfg.sort),
+    'per_page': cfg.perPage
   };
 
   console.log('fetch', dest);

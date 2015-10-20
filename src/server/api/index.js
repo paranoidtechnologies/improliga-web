@@ -4,6 +4,7 @@ import express from 'express';
 import {fetchShows, fetchWorkshops, fetchEventDetail} from './events';
 import {fetchBlog, fetchBlogArticleDetail} from './blog';
 import {fetchTeamDetail, fetchTeamList} from './teams';
+import {saveFeedback} from './contact';
 
 // Create general-purpose API sub-app
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.post('/feedback', saveFeedback);
 app.use('/news/:newsItemId', fetchBlogArticleDetail);
 app.use('/news', fetchBlog);
 app.use('/shows', fetchShows);
