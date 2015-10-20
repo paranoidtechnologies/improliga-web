@@ -63,9 +63,9 @@ module.exports = function(isDevelopment) {
         {
           exclude: /node_modules/,
           loaders: isDevelopment ? [
-            'react-hot', 'babel-loader'
+            'react-hot', 'babel-istanbul-instrumenter'
           ] : [
-            'babel-loader'
+            'babel-istanbul-instrumenter'
           ],
           test: /\.js$/
         }
