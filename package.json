@@ -7,7 +7,7 @@
   "scripts": {
     "coveralls": "./node_modules/.bin/coveralls < coverage/phantomjs/lcov.info",
     "postinstall": "gulp build --production",
-    "start": "node src/server",
+    "start": "gulp -p start",
     "test": "gulp test && npm run-script coveralls"
   },
   "engines": {
