@@ -1,7 +1,6 @@
 'use strict';
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NotifyPlugin = require('./notifyplugin');
 var constants = require('./constants');
 var path = require('path');
 var webpack = require('webpack');
