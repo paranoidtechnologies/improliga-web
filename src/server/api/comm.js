@@ -1,7 +1,5 @@
 import request from 'superagent';
 
-const config = require('../config');
-const host = config.api.host;
 const url = '/api/model/{model}/browse';
 
 
@@ -53,7 +51,7 @@ export function purify(cfg) {
     cfg.join = [];
   }
 
-  cfg.url = 'http://' + host + url.replace('{model}', cfg.model);
+  cfg.url = 'http://' + cfg.host + url.replace('{model}', cfg.model);
   cfg.query = {
     'filters': JSON.stringify(cfg.filters),
     'join': JSON.stringify(cfg.join),
@@ -62,4 +60,12 @@ export function purify(cfg) {
   };
 
   return cfg;
+};
+
+
+export default {
+  apiRequest: apiRequest,
+  get: get,
+  post: post,
+  purify: purify
 };

@@ -1,4 +1,4 @@
-import fetch from '../fetch';
+import {get} from '../comm';
 import moment from 'moment';
 import {getFilters} from './shows/filters';
 import xtend from 'xtend';
@@ -7,8 +7,10 @@ export default function browse(req, res, cfg = {}, next) {
   let date = null;
   let filters;
   cfg = xtend(cfg, {
+    host: req.serverConfig.api.host,
     join: ['location'],
     model: 'Impro.Event',
+    next: next,
     page: req.query.page,
     perPage: req.query.perPage,
     sort: [
@@ -45,5 +47,5 @@ export default function browse(req, res, cfg = {}, next) {
     cfg.filters = cfg.filters.concat(filters);
   }
 
-  return fetch(cfg, next);
+  return get(cfg);
 };

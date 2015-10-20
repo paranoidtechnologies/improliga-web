@@ -1,4 +1,4 @@
-//~ import fetch from './fetch';
+//~ import {get} from './comm';
 
 export function saveFeedback(req, res, next) {
   const cfg = {

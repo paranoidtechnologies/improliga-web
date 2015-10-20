@@ -1,7 +1,8 @@
-import fetch from './fetch';
+import {get} from './comm';
 
-export function fetchBlog(req, res, next) {
-  const cfg = {
+export function fetchBlog(req, res) {
+  return get({
+    host: req.serverConfig.api.host,
     model: 'Impro.News',
     perPage: req.query.perPage,
     filters: [
@@ -10,22 +11,22 @@ export function fetchBlog(req, res, next) {
         type: 'exact',
         exact: 4
       }
-    ]
-  };
+    ],
+    next: (err, data) => {
+      if (err) {
+        return res
+          .status(500)
+          .json(err);
+      }
 
-  return fetch(cfg, function(err, data) {
-    if (err) {
-      return res
-        .status(500)
-        .json(err);
+      res.json(data);
     }
-
-    res.json(data);
   });
 };
 
-export function fetchBlogArticleDetail(req, res, next) {
-  const cfg = {
+export function fetchBlogArticleDetail(req, res) {
+  return get({
+    host: req.serverConfig.api.host,
     model: 'Impro.News',
     page: 0,
     perPage: 1,
@@ -41,16 +42,15 @@ export function fetchBlogArticleDetail(req, res, next) {
         type: 'exact',
         exact: parseInt(req.params.newsItemId, 10)
       }
-    ]
-  };
+    ],
+    next: (err, data) => {
+      if (err) {
+        return res
+          .status(500)
+          .json(err);
+      }
 
-  return fetch(cfg, function(err, data) {
-    if (err) {
-      return res
-        .status(500)
-        .json(err);
+      res.json(data);
     }
-
-    res.json(data);
   });
 };

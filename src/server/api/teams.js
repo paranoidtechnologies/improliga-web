@@ -1,7 +1,8 @@
-import fetch from './fetch';
+import {get} from './comm';
 
 export function fetchTeamList(req, res, next) {
-  const cfg = {
+  return get({
+    host: req.serverConfig.api.host,
     model: 'Impro.Team',
     page: req.query.page,
     perPage: req.query.perPage,
@@ -11,22 +12,22 @@ export function fetchTeamList(req, res, next) {
         type: 'exact',
         exact: 4
       }
-    ]
-  };
+    ],
+    next: (err, data) => {
+      if (err) {
+        return res
+          .status(500)
+          .json(err);
+      }
 
-  return fetch(cfg, function(err, data) {
-    if (err) {
-      return res
-        .status(500)
-        .json(err);
+      res.json(data);
     }
-
-    res.json(data);
   });
 };
 
 export function fetchTeamDetail(req, res, next) {
   const cfg = {
+    host: req.serverConfig.api.host,
     model: 'Impro.Team',
     page: 0,
     perPage: 1,
@@ -41,16 +42,17 @@ export function fetchTeamDetail(req, res, next) {
         type: 'exact',
         exact: parseInt(req.params.teamId, 10)
       }
-    ]
+    ],
+    next: (err, data) => {
+      if (err) {
+        return res
+          .status(500)
+          .json(err);
+      }
+
+      res.json(data);
+    }
   };
 
-  return fetch(cfg, function(err, data) {
-    if (err) {
-      return res
-        .status(500)
-        .json(err);
-    }
-
-    res.json(data);
-  });
+  return get(cfg);
 };

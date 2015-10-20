@@ -1,5 +1,6 @@
 import api from './api';
 import config from './config';
+import serverConfig from './lib/config';
 import errorHandler from './lib/errorhandler';
 import express from 'express';
 import frontend from './frontend';
@@ -7,6 +8,8 @@ import {Server} from 'http';
 
 const app = express();
 const server = Server(app);
+
+app.use(serverConfig);
 
 // Load API.
 app.use('/api/1', api);
