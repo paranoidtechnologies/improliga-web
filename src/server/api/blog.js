@@ -1,7 +1,7 @@
-import {get} from './comm';
+import {browse} from './comm';
 
 export function fetchBlog(req, res) {
-  return get({
+  return browse({
     host: req.serverConfig.api.host,
     model: 'Impro.News',
     perPage: req.query.perPage,
@@ -25,7 +25,7 @@ export function fetchBlog(req, res) {
 };
 
 export function fetchBlogArticleDetail(req, res) {
-  return get({
+  return browse({
     host: req.serverConfig.api.host,
     model: 'Impro.News',
     page: 0,

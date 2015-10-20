@@ -1,9 +1,9 @@
-import {get} from '../comm';
+import {browse} from '../comm';
 import moment from 'moment';
 import {getFilters} from './shows/filters';
 import xtend from 'xtend';
 
-export default function browse(req, res, cfg = {}, next) {
+export default function browseEvents(req, res, cfg = {}, next) {
   let date = null;
   let filters;
   cfg = xtend(cfg, {
@@ -47,5 +47,5 @@ export default function browse(req, res, cfg = {}, next) {
     cfg.filters = cfg.filters.concat(filters);
   }
 
-  return get(cfg);
+  return browse(cfg);
 };

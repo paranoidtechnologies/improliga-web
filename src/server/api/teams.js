@@ -1,7 +1,7 @@
-import {get} from './comm';
+import {browse} from './comm';
 
 export function fetchTeamList(req, res, next) {
-  return get({
+  return browse({
     host: req.serverConfig.api.host,
     model: 'Impro.Team',
     page: req.query.page,
@@ -54,5 +54,5 @@ export function fetchTeamDetail(req, res, next) {
     }
   };
 
-  return get(cfg);
+  return browse(cfg);
 };

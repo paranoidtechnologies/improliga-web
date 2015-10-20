@@ -1,4 +1,4 @@
-import {get} from '../comm';
+import {browse} from '../comm';
 
 export default (req, res, next) => {
   var id = parseInt(req.params.eventId, 10);
@@ -10,7 +10,7 @@ export default (req, res, next) => {
     return;
   }
 
-  return get({
+  return browse({
     host: req.serverConfig.api.host,
     filters: [
       {
