@@ -1,7 +1,6 @@
 'use strict';
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 var NotifyPlugin = require('./notifyplugin');
 var constants = require('./constants');
 var path = require('path');
@@ -41,6 +40,10 @@ module.exports = function(isDevelopment) {
     cache: isDevelopment,
     debug: isDevelopment,
     devtool: isDevelopment ? devtools : '',
+    node :{
+      fs: 'empty'
+    },
+
     entry: {
       app: isDevelopment ? [
         'webpack-dev-server/client?http://localhost:8888',
@@ -53,18 +56,25 @@ module.exports = function(isDevelopment) {
       ]
     },
     module: {
-      loaders: [{
-        loader: 'url-loader?limit=100000',
-        test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
-      }, {
-        exclude: /node_modules/,
-        loaders: isDevelopment ? [
-          'react-hot', 'babel-loader'
-        ] : [
-          'babel-loader'
-        ],
-        test: /\.js$/
-      }].concat(stylesLoaders())
+      loaders: [
+        {
+          loader: 'url-loader?limit=100000',
+          test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
+        },
+        {
+          exclude: /node_modules/,
+          loaders: isDevelopment ? [
+            'react-hot', 'babel-loader'
+          ] : [
+            'babel-loader'
+          ],
+          test: /\.js$/
+        },
+        {
+          loader: 'json-loader',
+          test: /\.json$/,
+        }
+      ].concat(stylesLoaders())
     },
     output: isDevelopment ? {
       path: constants.BUILD_DIR,
@@ -76,6 +86,7 @@ module.exports = function(isDevelopment) {
       filename: '[name].js',
       chunkFilename: '[name]-[chunkhash].js'
     },
+
     plugins: (function() {
       var plugins = [
         new webpack.DefinePlugin({
@@ -85,41 +96,45 @@ module.exports = function(isDevelopment) {
           }
         })
       ];
-      if (isDevelopment) plugins.push(
-        NotifyPlugin,
-        new webpack.HotModuleReplacementPlugin(),
-        // Tell reloader to not reload if there is an error.
-        new webpack.NoErrorsPlugin()
-      );
-      else plugins.push(
-        // Render styles into separate cacheable file to prevent FOUC and
-        // optimize for critical rendering path.
-        new ExtractTextPlugin('app.css', {
-          allChunks: true
-        }),
-        new NyanProgressPlugin(),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          // keep_fnames prevents function name mangling.
-          // Function names are useful. Seeing a readable error stack while
-          // being able to programmatically analyse it is priceless. And yes,
-          // we don't need infamous FLUX_ACTION_CONSTANTS with function name.
-          // It's ES6 standard polyfilled by Babel.
-          /* eslint-disable camelcase */
-          compress: {
-            keep_fnames: true,
-            screw_ie8: true,
-            warnings: false // Because uglify reports irrelevant warnings.
-          },
-          mangle: {
-            keep_fnames: true
-          }
-          /* eslint-enable camelcase */
-        })
-      );
+
+      if (isDevelopment) {
+        plugins.push(
+          NotifyPlugin,
+          new webpack.HotModuleReplacementPlugin(),
+          // Tell reloader to not reload if there is an error.
+          new webpack.NoErrorsPlugin()
+        );
+      } else {
+        plugins.push(
+          // Render styles into separate cacheable file to prevent FOUC and
+          // optimize for critical rendering path.
+          new ExtractTextPlugin('app.css', {
+            allChunks: true
+          }),
+          new webpack.optimize.DedupePlugin(),
+          new webpack.optimize.OccurenceOrderPlugin(),
+          new webpack.optimize.UglifyJsPlugin({
+            // keep_fnames prevents function name mangling.
+            // Function names are useful. Seeing a readable error stack while
+            // being able to programmatically analyse it is priceless. And yes,
+            // we don't need infamous FLUX_ACTION_CONSTANTS with function name.
+            // It's ES6 standard polyfilled by Babel.
+            /* eslint-disable camelcase */
+            compress: {
+              keep_fnames: true,
+              screw_ie8: true,
+              warnings: false // Because uglify reports irrelevant warnings.
+            },
+            mangle: {
+              keep_fnames: true
+            }
+            /* eslint-enable camelcase */
+          })
+        );
+      }
       return plugins;
     })(),
+
     resolve: {
       extensions: ['', '.js', '.json'],
       modulesDirectories: ['src', 'node_modules'],
