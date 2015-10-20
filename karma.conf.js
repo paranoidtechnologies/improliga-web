@@ -1,18 +1,20 @@
 /* eslint-env node */
 
+var coverageReporter = {
+  type: process.env.CONTINUOUS_INTEGRATION ? 'lcov' : 'html',
+  dir: 'coverage/',
+  subdir: function(browser) {
+    return browser.toLowerCase().split(/[ /-]/)[0];
+  }
+};
+
 module.exports = function(config) {
 
   config.set({
     // autoWatch, it works enabled or not. Probably defined by singleRun.
     basePath: '',
     browsers: ['PhantomJS'],
-    coverageReporter: process.env.CONTINUOUS_INTEGRATION ? {
-      type: 'lcov',
-      dir: 'coverage/'
-    } : {
-      type: 'html',
-      dir: 'coverage/'
-    },
+    coverageReporter: coverageReporter,
     customLaunchers: {
       ChromeSmall: {
         base: 'Chrome',
@@ -50,5 +52,4 @@ module.exports = function(config) {
       noInfo: true
     }
   });
-
 };
