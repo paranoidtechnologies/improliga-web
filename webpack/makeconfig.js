@@ -69,10 +69,6 @@ module.exports = function(isDevelopment) {
             'babel-loader'
           ],
           test: /\.js$/
-        },
-        {
-          loader: 'json-loader',
-          test: /\.json$/,
         }
       ].concat(stylesLoaders())
     },
@@ -99,7 +95,6 @@ module.exports = function(isDevelopment) {
 
       if (isDevelopment) {
         plugins.push(
-          NotifyPlugin,
           new webpack.HotModuleReplacementPlugin(),
           // Tell reloader to not reload if there is an error.
           new webpack.NoErrorsPlugin()
@@ -146,5 +141,4 @@ module.exports = function(isDevelopment) {
   };
 
   return config;
-
 };
