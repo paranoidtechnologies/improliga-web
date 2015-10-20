@@ -1,5 +1,7 @@
 # Improliga website
 
+[![Build Status](https://travis-ci.org/just-paja/improliga-web.svg?branch=master)](https://travis-ci.org/just-paja/improliga-web)
+
 ## Install
 
 You need to have `Node.js` installed with `npm`. Once you clone the repository, just do `npm install` and you should be set and ready to go.
