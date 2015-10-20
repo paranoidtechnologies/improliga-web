@@ -10,19 +10,20 @@ describe('Site menu', () => {
     const comp = <SiteMenu msg={{msg}} />;
     const tree = render(comp);
 
-    //~ expect(tree).to.be.an('object');
-    //~ expect(tree._store.props.className.split(' ')).to.contain('site-menu');
-//~
-    //~ const center = getChildren(tree);
-    //~ expect(center).to.be.an('object');
-    //~ expect(center._store.props.className.split(' ')).to.contain('site-menu-center');
-//~
-    //~ const inner = getChildren(center);
-    //~ expect(inner).to.be.an('object');
-    //~ expect(inner._store.props.className.split(' ')).to.contain('site-menu-inner');
+    expect(tree).to.be.an('object');
+    expect(tree._store.props.className.split(' ')).to.contain('site-menu');
 
-    //~ const listItems = getChildren(inner);
-    //~ expect(listItems).to.be.an('array');
-    //~ expect(listItems.length).to.equal(7);
+    const fluid = getChildren(tree);
+    expect(fluid).to.be.an('object');
+    expect(fluid._store.props.className.split(' ')).to.contain('container-fluid');
+
+    const parts = getChildren(fluid);
+    expect(parts).to.be.an('array');
+
+    const header = parts[0];
+    const nav = parts[1];
+    expect(header._store.props.className.split(' ')).to.contain('navbar-inverse');
+    expect(nav._store.props.className.split(' ')).to.contain('navbar-collapse');
   });
 });
+
