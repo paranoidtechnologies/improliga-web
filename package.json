@@ -5,9 +5,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "coveralls": "./node_modules/.bin/coveralls < coverage/phantomjs/lcov.info",
     "postinstall": "gulp build --production",
     "start": "node src/server",
-    "test": "gulp test"
+    "test": "gulp test && npm run-script coveralls"
   },
   "engines": {
     "iojs": ">= 2.2.x",
@@ -27,6 +28,7 @@
     "classnames": "^2.1.1",
     "compression": "^1.4.0",
     "cors": "^2.6.0",
+    "coveralls.io": "^2.1.0",
     "css-loader": "^0.15.2",
     "del": "^1.1.1",
     "eslint": "^1.0.0",
