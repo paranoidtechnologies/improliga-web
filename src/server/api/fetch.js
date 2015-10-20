@@ -6,16 +6,16 @@ const url = '/api/model/{model}/browse';
 
 export default (cfg, next) => {
 
-  if (typeof cfg.page == 'undefined') {
+  if (typeof cfg.page === 'undefined') {
     cfg.page = 0;
   } else {
-    cfg.page = parseInt(cfg.page);
+    cfg.page = parseInt(cfg.page, 10);
   }
 
-  if (typeof cfg.perPage == 'undefined') {
+  if (typeof cfg.perPage === 'undefined') {
     cfg.perPage = 20;
   } else {
-    cfg.perPage = parseInt(cfg.perPage);
+    cfg.perPage = parseInt(cfg.perPage, 10);
   }
 
   if (!cfg.join) {
