@@ -1,4 +1,4 @@
-import fetch from './fetch';
+//~ import fetch from './fetch';
 
 export function saveFeedback(req, res, next) {
   const cfg = {
@@ -8,5 +8,5 @@ export function saveFeedback(req, res, next) {
   console.log(req.body);
 
 
-  res.send('ok, accepted');
+  res.send('ok, accepted', cfg);
 };
