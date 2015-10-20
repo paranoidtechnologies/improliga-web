@@ -1,6 +1,7 @@
 # Improliga website
 
 [![Build Status](https://travis-ci.org/just-paja/improliga-web.svg?branch=master)](https://travis-ci.org/just-paja/improliga-web)
+[![Coverage Status](https://coveralls.io/repos/just-paja/improliga-web/badge.svg?branch=master&service=github)](https://coveralls.io/github/just-paja/improliga-web?branch=master)
 
 ## Install
 
