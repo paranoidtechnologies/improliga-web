@@ -67,7 +67,6 @@ export default class Api {
     const inst = rq(cfg.url)
       .set('Accept', 'application/json')
       .timeout(this.TIMEOUT)
-      .type('form')
       .send(cfg.data)
       .query(cfg.params);
 
