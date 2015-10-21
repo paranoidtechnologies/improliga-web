@@ -22,7 +22,7 @@ export function preloadEventDetail(req, res, next) {
       }
 
       if (body.total > 0) {
-        res.eventDetail = new Record(body.data[0]);
+        res.eventDetail = body.data[0];
         next();
       } else {
         res
