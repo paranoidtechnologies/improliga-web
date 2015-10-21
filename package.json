@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "coveralls": "./node_modules/.bin/coveralls < coverage/phantomjs/lcov.info",
+    "post_install": "./node_modules/.bin/bower install",
     "start": "gulp -p start",
     "test": "gulp test && npm run-script coveralls"
   },
@@ -22,6 +23,7 @@
     "babel-loader": "^5.0.0",
     "bluebird": "^2.9.9",
     "body-parser": "^1.12.4",
+    "bower": "^1.6.3",
     "chai": "^3.0.0",
     "chai-immutable": "^1.1.1",
     "classnames": "^2.1.1",
