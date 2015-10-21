@@ -1,5 +1,4 @@
 import {browse} from '../api/comm';
-import {Record} from 'immutable';
 
 export function preloadEventDetail(req, res, next) {
   browse({
@@ -22,7 +21,7 @@ export function preloadEventDetail(req, res, next) {
       }
 
       if (body.total > 0) {
-        res.eventDetail = new Record(body.data[0]);
+        res.eventDetail = body.data[0];
         next();
       } else {
         res
