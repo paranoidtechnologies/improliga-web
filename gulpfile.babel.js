@@ -9,6 +9,7 @@ import webpackDevServer from './webpack/devserver';
 import yargs from 'yargs';
 import {Server as KarmaServer} from 'karma';
 
+let env = 'development';
 const args = yargs
   .alias('p', 'production')
   .argv;
@@ -22,7 +23,18 @@ const runKarma = ({singleRun}, done) => {
 };
 
 gulp.task('env', () => {
-  const env = args.production ? 'production' : 'development';
+  if (typeof process.env.NODE_ENV !== 'undefined') { // eslint-disable-line no-undef
+    env = process.env.NODE_ENV; // eslint-disable-line no-undef
+  }
+
+  if (args.production) {
+    env = 'production';
+  }
+
+  if (env === 'production') {
+    args.production = true;
+  }
+
   process.env.NODE_ENV = env; // eslint-disable-line no-undef
 });
 
