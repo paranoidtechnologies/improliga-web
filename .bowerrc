@@ -1,3 +1,4 @@
 {
-  "directory":"assets/bower"
+  "directory": "assets/bower",
+  "interactive": false
 }
