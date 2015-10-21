@@ -7,9 +7,13 @@ const initialState = new (Record({
   detail: null
 }));
 
-const revive = state => initialState.merge({
-  detail: new Event(wakeUpEvent(state))
-});
+const revive = state => {
+  if (state.get('detail')) {
+    state = state.set('detail', new Event(wakeUpEvent(state.get('detail'))));
+  }
+
+  return initialState.merge(state);
+};
 
 export default function(state = initialState, action, payload) {
   if (!action) state = revive(state);
@@ -18,7 +22,7 @@ export default function(state = initialState, action, payload) {
 
   case actions.loadEventDetail:
     if (payload && payload[0]) {
-      return state.set('detail', wakeUpEvent(payload[0]));
+      return state.set('detail', new Event(wakeUpEvent(payload[0])));
     }
   }
 

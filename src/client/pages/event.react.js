@@ -26,10 +26,10 @@ export default class Event extends Component {
     }
 
     const msgDetail = msg.components.event.detail;
-    const title = event.name;
+    const title = event.get('name');
     const props = {
       actions: actions,
-      event: event,
+      event: event.toJS(),
       formatDate: msg.app.format.date.exact,
       formatTime: msg.app.format.time.exact,
       msg: msgDetail

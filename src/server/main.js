@@ -6,6 +6,7 @@ import errorHandler from './lib/errorhandler';
 import express from 'express';
 import frontend from './frontend';
 import {Server} from 'http';
+import {preloadEventDetail} from './frontend/preload';
 
 const app = express();
 const server = Server(app);
@@ -17,6 +18,9 @@ app.use('/api/1', api);
 
 // Elastic beanstalk health check
 app.use('/health', healthCheck);
+
+// Preload detail data
+app.use('/predstaveni/:eventId', preloadEventDetail);
 
 // Load react-js frontend.
 app.use(frontend);

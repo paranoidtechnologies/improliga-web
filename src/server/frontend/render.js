@@ -11,7 +11,14 @@ import stateMerger from '../lib/merger';
 import useragent from 'useragent';
 
 export default function render(req, res, ...customStates) {
+  if (res.eventDetail) {
+    initialState.events = {
+      detail: res.eventDetail
+    };
+  }
+
   const appState = immutable.fromJS(initialState).mergeWith(stateMerger, ...customStates).toJS();
+
   return renderPage(req, res, appState);
 }
 

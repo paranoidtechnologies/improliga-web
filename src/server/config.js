@@ -27,7 +27,6 @@ var config = {
 
 // Use above config as a default one
 // Multiple other providers are available like loading config from json and more
-// Check out nconf docs for fancier examples
 nconf.defaults(config);
 
 const env = process.env.IMPROLIGA_ENV;

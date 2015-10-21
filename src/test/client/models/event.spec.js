@@ -7,10 +7,6 @@ const momentConst = moment().constructor;
 describe('Event model', () => {
   it('wakeUpEvent empty', () => {
     expect(function() {
-      wakeUpEvent();
-    }).to.throw();
-
-    expect(function() {
       wakeUpEvent({});
     }).to.not.throw();
   });
