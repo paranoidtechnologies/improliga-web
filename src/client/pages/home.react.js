@@ -29,7 +29,7 @@ export default class Home extends Component {
     };
 
     return (
-      <DocumentTitle title={msg.title}>
+      <DocumentTitle title={msg.pages.home.title}>
         <div className="page-home">
           <Header msg={msg.pages.home} ref="el-home" />
           <Shows actions={actions} msg={msg} pass={pass} ref="el-shows" shows={shows} />
