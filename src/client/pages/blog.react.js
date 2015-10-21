@@ -1,3 +1,4 @@
+import DocumentTitle from 'react-document-title';
 import React from 'react';
 import Component from '../components/component.react';
 import BlogList from '../components/blog/list.react';
@@ -23,17 +24,19 @@ export default class BlogPage extends Component {
     };
 
     return (
-      <div className="ui-page ui-page-contact">
-        <section className="container ui-section-news">
+      <DocumentTitle title={msg.pages.blog.title}>
+        <div className="ui-page ui-page-contact">
+          <section className="container ui-section-news">
 
-          <div className="row ui-section-intro">
-            <h1>{msg.pages.blog.title}</h1>
-            <p>{msg.pages.blog.perex}</p>
-          </div>
+            <div className="row ui-section-intro">
+              <h1>{msg.pages.blog.title}</h1>
+              <p>{msg.pages.blog.perex}</p>
+            </div>
 
-          <BlogList {...props} />
-        </section>
-      </div>
+            <BlogList {...props} />
+          </section>
+        </div>
+      </DocumentTitle>
     );
   }
 };
