@@ -1,4 +1,6 @@
 export default {
+  subtitle: 'Improliga',
+
   contact: {
     name: 'Česká improvizační liga',
     addr: 'Přemyšlenská 1102, 182 00 Praha 8',

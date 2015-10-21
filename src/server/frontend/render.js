@@ -88,7 +88,7 @@ function getPageHtml(Handler, appState, {hostname, needIntlPolyfill}) {
         ga('create','${config.googleAnalyticsId}');ga('send','pageview');
       </script>`;
 
-  const title = DocumentTitle.rewind();
+  const title = DocumentTitle.rewind() + ' :: ' + appState.intl.messages.app.subtitle;
 
   return '<!DOCTYPE html>' + React.renderToStaticMarkup(
     <Html
