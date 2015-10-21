@@ -1,5 +1,6 @@
 import api from './api';
 import config from './config';
+import {healthCheck} from './lib/health';
 import serverConfig from './lib/config';
 import errorHandler from './lib/errorhandler';
 import express from 'express';
@@ -13,6 +14,9 @@ app.use(serverConfig);
 
 // Load API.
 app.use('/api/1', api);
+
+// Elastic beanstalk health check
+app.use('/health', healthCheck);
 
 // Load react-js frontend.
 app.use(frontend);
