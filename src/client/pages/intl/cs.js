@@ -10,7 +10,7 @@ export default {
   },
 
   about: {
-    heading: 'O Improlize',
+    title: 'O Improlize',
     desc: 'Na to co je to Improliga se dá koukat z více pohledů, proto je lepší přečíst si každý z nich zvlášť.',
 
     collective: {

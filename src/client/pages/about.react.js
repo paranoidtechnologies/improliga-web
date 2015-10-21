@@ -1,3 +1,4 @@
+import DocumentTitle from 'react-document-title';
 import Component from '../components/component.react';
 import React from 'react';
 import Tabman from '../components/tabman.react';
@@ -47,16 +48,18 @@ export default class About extends Component {
     ];
 
     return (
-      <section className="container ui-page section-about">
-        <div className="row text-center about-intro">
-          <div className="col-lg-12">
-            <h2>{msg.pages.about.heading}</h2>
-            <p>{msg.pages.about.desc}</p>
+      <DocumentTitle title={msg.pages.about.title}>
+        <section className="container ui-page section-about">
+          <div className="row text-center about-intro">
+            <div className="col-lg-12">
+              <h2>{msg.pages.about.title}</h2>
+              <p>{msg.pages.about.desc}</p>
+            </div>
           </div>
-        </div>
 
-        <Tabman tabs={tabs} />
-      </section>
+          <Tabman tabs={tabs} />
+        </section>
+      </DocumentTitle>
     );
   }
 };
