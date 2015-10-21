@@ -16,13 +16,13 @@ var config = {
   isProduction: process.env.NODE_ENV === 'production',
   piping: {
     // Ignore webpack custom loaders on server. TODO: Reuse index.js config.
-    ignore: /(\/\.|~$|\.(css|less|sass|scss|styl))/,
+    ignore: /(\/\.|~$|\.(css|styl))/,
     // Hook ensures always fresh server response even for client file change.
     hook: true
   },
   port: process.env.PORT || 8000,
   version: require('../../package').version,
-  webpackStylesExtensions: ['css', 'less', 'sass', 'scss', 'styl']
+  webpackStylesExtensions: ['css', 'styl']
 };
 
 // Use above config as a default one
