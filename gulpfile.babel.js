@@ -15,16 +15,6 @@ const args = yargs
   .alias('p', 'production')
   .argv;
 
-const runEslint = () => {
-  return gulp.src([
-    'gulpfile.babel.js',
-    'src/**/*.js',
-    'webpack/*.js'
-  ])
-  .pipe(eslint())
-  .pipe(eslint.format());
-};
-
 const runKarma = ({singleRun}, done) => {
   const server = new KarmaServer({
     configFile: path.join(__dirname, 'karma.conf.js'), // eslint-disable-line no-undef
@@ -53,12 +43,13 @@ gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
-  return runEslint();
-});
+  const src = [
+    'gulpfile.babel.js',
+    'src/**/*.js',
+    'webpack/*.js'
+  ];
 
-gulp.task('eslint-ci', () => {
-  // Exit process with an error code (1) on lint error for CI build.
-  return runEslint().pipe(eslint.failAfterError());
+  return gulp.src(src).pipe(eslint()).pipe(eslint.format());
 });
 
 gulp.task('karma-ci', (done) => {

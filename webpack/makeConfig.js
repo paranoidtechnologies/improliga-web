@@ -81,7 +81,14 @@ export default function makeConfig(isDevelopment) {
           },
           test: /\.js$/
         }
-      ].concat(stylesLoaders())
+      ].concat(stylesLoaders()),
+      postLoaders: [
+        {
+          test: /\.js$/,
+          exclude: /(test|node_modules)\//,
+          loader: 'istanbul-instrumenter'
+        }
+      ]
     },
     node :{
       fs: 'empty'
