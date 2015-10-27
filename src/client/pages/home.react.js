@@ -1,26 +1,30 @@
 import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Header from './home/header.react';
 import Shows from './home/shows.react';
+
+const {object, string} = PropTypes;
 
 export default class Home extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    shows: React.PropTypes.object.isRequired
+    actions: object.isRequired,
+    lang: string.isRequired,
+    msg: object.isRequired,
+    shows: object.isRequired
   }
 
   componentDidMount(next) {
-    return this.props.actions.shows.loadUpcomingShows();
+    return this.props.actions.loadUpcomingShows();
   }
 
   render() {
     const {
-      msg: msg,
+      lang,
+      msg,
       actions: {shows: actions},
-      shows: shows
+      shows
     } = this.props;
 
     const pass = {
@@ -31,8 +35,8 @@ export default class Home extends Component {
     return (
       <DocumentTitle title={msg.pages.home.title}>
         <div className="page-home">
-          <Header msg={msg.pages.home} ref="el-home" />
-          <Shows actions={actions} msg={msg} pass={pass} ref="el-shows" shows={shows} />
+          <Header lang={lang} msg={msg.pages.home} ref="el-home" />
+          <Shows actions={actions} lang={lang} msg={msg} pass={pass} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

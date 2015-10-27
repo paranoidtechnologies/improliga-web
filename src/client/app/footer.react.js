@@ -1,14 +1,15 @@
 import React from 'react';
 import Component from 'react-pure-render/component';
-import {Link} from 'react-router';
+import Link from '../static/link.react';
 
 export default class Footer extends Component {
   static propTypes = {
+    lang: React.PropTypes.string.isRequired,
     msg: React.PropTypes.object.isRequired
   }
 
   render() {
-    const {msg} = this.props;
+    const {lang, msg} = this.props;
 
     return (
       <footer className="ui-container ui-contact-static">
@@ -18,7 +19,7 @@ export default class Footer extends Component {
           <div className="desc">
             <address>{msg.contact.addr}</address>
             <a href={msg.contact.mail}>{msg.contact.mail}</a>&nbsp;|&nbsp;
-            <Link to="contact">Kontakty</Link>
+            <Link lang={lang} to="contact">Kontakty</Link>
           </div>
         </div>
       </footer>

@@ -7,6 +7,9 @@ import RouterHandler from '../../common/components/RouterHandler.react';
 import mapDispatchToProps from '../../common/app/mapDispatchToProps';
 import mapStateToProps from '../../common/app/mapStateToProps';
 import {connect} from 'react-redux';
+import util from 'util';
+
+const {object} = PropTypes;
 
 // // logRenderTime is useful for app with huge UI to check render performance.
 // import logRenderTime from '../lib/logRenderTime';
@@ -16,20 +19,35 @@ import {connect} from 'react-redux';
 export default class App extends Component {
 
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    msg: PropTypes.object.isRequired,
+    actions: object.isRequired,
+    children: object.isRequired,
+    intl: object.isRequired,
+    location: object.isRequired,
+    msg: object.isRequired,
   }
 
   render() {
-    const {location: {pathname}, msg} = this.props;
+    const {intl, location: {pathname}, msg} = this.props;
+    const lang = intl.selectedLanguage;
+    const objProps = this.props;
+    let props = {};
+
+    for (let key in objProps) {
+      props[key] = objProps[key];
+    }
+
+    props.lang = lang;
+
+    if (!lang) {
+      throw new Error('undefined lang');
+    }
 
     return (
       <div className="page" data-pathname={pathname}>
         <div className="page-wrapper">
-          <Header msg={msg} pathname={pathname} />
-          <RouterHandler {...this.props} />
-          <Footer msg={msg} />
+          <Header lang={lang} msg={msg} pathname={pathname} />
+          <RouterHandler {...props} />
+          <Footer lang={lang} msg={msg} />
         </div>
       </div>
     );

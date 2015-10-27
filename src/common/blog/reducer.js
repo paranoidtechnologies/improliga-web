@@ -1,6 +1,6 @@
 import Article from './article';
 import {List, Record} from 'immutable';
-import {actions} from './actions';
+import {LOAD_BLOG, LOAD_BLOG_ITEM} from './actions';
 
 const initialState = new (Record({
   detail: null,
@@ -16,7 +16,7 @@ export default function blogReducer(state = initialState, action, payload) {
 
   switch (action) {
 
-    case actions.loadBlogItemDetail: {
+    case LOAD_BLOG_ITEM: {
       let data = null;
 
       if (payload && payload[0]) {
@@ -26,7 +26,7 @@ export default function blogReducer(state = initialState, action, payload) {
       return state.set('detail', data);
     }
 
-    case actions.loadBlog: {
+    case LOAD_BLOG: {
       let data = null;
 
       if (payload) {

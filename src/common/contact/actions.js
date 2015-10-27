@@ -1,25 +1,22 @@
-export const actions = create();
-export const feature = 'contact';
+export const SET_SUBJECT = 'SET_SUBJECT';
+export const SEND_CONTACT_FORM = 'SEND_CONTACT_FORM';
 
-export function create(api, dispatch, validate) {
+export function sendContactForm(data) {
+  const send = {
+    data: data,
+    key: 'contactForm',
+    url: '/feedback',
+  };
+
+  return ({post}) => ({
+    type: SEND_CONTACT_FORM,
+    promise: post(send).then(response => response.json())
+  });
+}
+
+export function setSubject(subject) {
   return {
-    sendContactForm(data) {
-      api.post({
-        data: data,
-        key: 'contactForm',
-        url: '/feedback',
-        callback: (err, res) => {
-          dispatch(actions.sendContactForm, {
-            error: res.body ? res.body.message : 'unknown',
-            result: !err && res.ok,
-            status: res.status
-          });
-        }
-      });
-    },
-
-    setSubject(subject) {
-      dispatch(actions.setSubject, subject);
-    }
+    type: SET_SUBJECT,
+    payload: subject
   };
 }

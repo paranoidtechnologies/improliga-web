@@ -1,5 +1,5 @@
 import {Map, Record} from 'immutable';
-import {actions} from './actions';
+import {SEND_CONTACT_FORM, SET_SUBJECT} from './actions';
 
 const initialState = new (Record({
   formSubject: null,
@@ -20,7 +20,7 @@ export default function contactReducer(state = initialState, action, payload) {
 
   switch (action) {
 
-    case actions.sendContactForm: {
+    case SEND_CONTACT_FORM: {
       return state.set('formResponse', new Map({
         error: payload.message,
         result: payload.status >= 200 && payload.status < 300,
@@ -28,7 +28,7 @@ export default function contactReducer(state = initialState, action, payload) {
       }));
     }
 
-    case actions.setSubject: {
+    case SET_SUBJECT: {
       return state.set('formSubject', payload);
     }
   }

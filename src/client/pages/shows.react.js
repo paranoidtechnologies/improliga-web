@@ -53,11 +53,11 @@ export default class Shows extends Component {
     const {msg, shows} = this.props;
     const date = this.getMonth();
     const month = date.month();
-    const title = msg.pages.shows.title + ' ' + msg.app.months[month] + ' ' + date.format('YYYY');
+    const title = msg.pages.shows.title + ' ' + msg.months[month] + ' ' + date.format('YYYY');
 
     const props = {
-      formatDate: msg.app.format.date.exact,
-      formatTime: msg.app.format.time.exact,
+      formatDate: msg.format.date.exact,
+      formatTime: msg.format.time.exact,
       items: shows.calendar,
       listDraw: EventListItem,
       month: date,
@@ -65,7 +65,7 @@ export default class Shows extends Component {
         title: msg.pages.shows.title,
         calendar: msg.pages.shows,
         month: date,
-        months: msg.app.months,
+        months: msg.months,
         list: msg.pages.shows
       },
       routeArchive: 'showsArchive'

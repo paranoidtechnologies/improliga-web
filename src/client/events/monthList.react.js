@@ -1,9 +1,9 @@
+import Component from 'react-pure-render/component';
 import EventDayList from './dayList.react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import List from '../browser/list.react';
 import React from 'react';
 
-export default class EventMonthList extends List {
+export default class EventMonthList extends Component {
   static propTypes = {
     draw: React.PropTypes.func.isRequired,
     items: React.PropTypes.oneOfType([

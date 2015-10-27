@@ -1,10 +1,10 @@
-import {actions} from 'common/contact/actions';
+import * as actions from 'common/contact/actions';
 import {expect} from 'chai';
 import store from 'common/contact/reducer';
 import {Record} from 'immutable';
 
-describe('Contact form store', () => {
-  it('stores sendContactForm', () => {
+describe('Contact form reducer', () => {
+  it('stores form response', () => {
     const payload = {
       name: 'foo'
     };
@@ -17,7 +17,7 @@ describe('Contact form store', () => {
     expect(res.formResponse.get('status')).to.equal(null);
     expect(res.formResponse.get('result')).to.equal(null);
 
-    res = store(undefined, actions.sendContactForm, payload);
+    res = store(undefined, actions.SEND_CONTACT_FORM, payload);
     expect(res).to.be.an('object');
 
     expect(res.formResponse).to.be.an('object');
@@ -27,8 +27,8 @@ describe('Contact form store', () => {
     expect(res.formResponse.get('status')).to.be.an('undefined');
   });
 
-  it('stores response errors', () => {
-    const res = store(undefined, actions.sendContactForm, {
+  it('stores form response errors', () => {
+    const res = store(undefined, actions.SEND_CONTACT_FORM, {
       message: 'not-found',
       status: 404,
     });
@@ -39,7 +39,7 @@ describe('Contact form store', () => {
   });
 
   it('stores response success', () => {
-    const res = store(undefined, actions.sendContactForm, {
+    const res = store(undefined, actions.SEND_CONTACT_FORM, {
       message: 'ok',
       status: 200,
     });
@@ -50,7 +50,7 @@ describe('Contact form store', () => {
   });
 
   it('stores subject', () => {
-    const res = store(undefined, actions.setSubject, 'foo');
+    const res = store(undefined, actions.SET_SUBJECT, 'foo');
 
     expect(res.formSubject).to.equal('foo');
   });

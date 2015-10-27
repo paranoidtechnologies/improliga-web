@@ -1,7 +1,7 @@
 import {List} from 'immutable';
 import {Event, wakeUpEvent} from '../events/event';
 import {Record} from 'immutable';
-import {actions} from './actions';
+import {LOAD_UPCOMING, LOAD_CALENDAR} from './actions';
 
 const initialState = new (Record({
   list: [],
@@ -18,7 +18,7 @@ export default function showsReducer(state = initialState, action, payload) {
 
   switch (action) {
 
-    case actions.loadUpcomingShows: {
+    case LOAD_UPCOMING: {
       let data;
 
       if (payload.list) {
@@ -29,7 +29,7 @@ export default function showsReducer(state = initialState, action, payload) {
       return state.set('list', new List(data));
     }
 
-    case actions.loadCalendarShows: {
+    case LOAD_CALENDAR: {
       let data;
 
       if (payload.list) {

@@ -1,5 +1,4 @@
 import {expect} from 'chai';
-import {feature} from 'common/shows/actions';
 import store from 'common/shows/reducer';
 import {List, Record} from 'immutable';
 
@@ -7,7 +6,6 @@ describe('Show store', () => {
   it('stores default', () => {
     let res = store();
 
-    expect(feature).to.equal('shows');
     expect(res).to.be.an.instanceof(Record);
     expect(res.list).to.be.an.instanceof(List);
     expect(res.list.size).to.equal(0);

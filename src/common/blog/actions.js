@@ -1,34 +1,19 @@
-export const actions = create();
-export const feature = 'blog';
+export const LOAD_BLOG = 'LOAD_BLOG';
+export const LOAD_BLOG_ITEM = 'LOAD_BLOG_ITEM';
 
-export function create(api, dispatch, validate) {
-  return {
-    loadBlogItemDetail(blogItemId) {
-      let params = {};
 
-      api.fetch('/news/' + blogItemId, feature, params, (err, res) => {
-        if (err) {
-          api.error(err);
-        } else {
-          dispatch(actions.loadBlogItemDetail, res.body.data);
-        }
-      });
-    },
+export function loadBlog() {
+  return ({fetch}) => ({
+    type: [LOAD_BLOG],
+    promise: fetch('/news').then(response => response.json())
+  });
+}
 
-    loadBlog() {
-      let params = {};
+export function loadBlogItem(blogItemId) {
+  let params = {};
 
-      params.perPage = 5;
-
-      api.fetch('/news', feature, params, function(err, res) {
-        if (err) {
-          api.error(err);
-        } else {
-          dispatch(actions.loadBlog, {
-            list: res.body.data
-          });
-        }
-      });
-    }
-  };
+  return ({fetch}) => ({
+    type: [LOAD_BLOG_ITEM],
+    promise: fetch('/news/' + blogItemId).then(response => response.json())
+  });
 }

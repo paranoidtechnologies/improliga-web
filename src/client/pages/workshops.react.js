@@ -53,11 +53,11 @@ export default class Workshops extends Component {
     const {msg, workshops} = this.props;
     const date = this.getMonth();
     const month = date.month();
-    const title = msg.pages.workshops.title + ' ' + msg.app.months[month] + ' ' + date.format('YYYY');
+    const title = msg.pages.workshops.title + ' ' + msg.months[month] + ' ' + date.format('YYYY');
 
     const props = {
-      formatDate: msg.app.format.date.exact,
-      formatTime: msg.app.format.time.exact,
+      formatDate: msg.format.date.exact,
+      formatTime: msg.format.time.exact,
       items: workshops.calendar,
       listDraw: EventListItem,
       month: date,
@@ -65,7 +65,7 @@ export default class Workshops extends Component {
         title: msg.pages.workshops.title,
         calendar: msg.pages.workshops,
         month: date,
-        months: msg.app.months,
+        months: msg.months,
         list: msg.pages.workshops
       },
       routeArchive: 'workshopsArchive',

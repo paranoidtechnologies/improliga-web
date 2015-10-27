@@ -1,39 +1,28 @@
-export const actions = create();
-export const feature = 'shows';
+export const LOAD_UPCOMING = 'LOAD_UPCOMING';
+export const LOAD_CALENDAR = 'LOAD_CALENDAR';
 
-export function create(api, dispatch, validate) {
-  return {
-    loadUpcomingShows(params = {}) {
-      if (typeof params.perPage === 'undefined') {
-        params.perPage = 6;
-      }
+export function loadUpcomingShows(params = {}) {
+  if (typeof params.perPage === 'undefined') {
+    params.perPage = 6;
+  }
 
-      api.fetch('/shows/upcoming', feature, params, function(err, res) {
-        if (err) {
-          api.error(err, res);
-        } else {
-          dispatch(actions.loadUpcomingShows, {
-            list: res.body.data
-          });
-        }
-      });
-    },
+  return ({fetch}) => ({
+    type: [LOAD_UPCOMING],
 
-
-    loadCalendarShows(month) {
-      const params = {
-        month: month
-      };
-
-      api.fetch('/shows', 'showsCalendar', params, function(err, res) {
-        if (err) {
-          api.error(err, res);
-        } else {
-          dispatch(actions.loadCalendarShows, {
-            list: res.body.data
-          });
-        }
-      });
+    payload: {
+      promise: fetch('/shows/upcoming').then(response => response.json())
     }
+  });
+}
+
+
+export function loadCalendarShows(month) {
+  const params = {
+    month: month
   };
+
+  return ({fetch}) => ({
+    type: [LOAD_CALENDAR],
+    payload: fetch('/shows').then(response => response.json())
+  });
 }

@@ -6,7 +6,6 @@ import {Link} from 'react-router';
 
 export default class Shows extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
     msg: React.PropTypes.object.isRequired,
     pass: React.PropTypes.object,
     shows: React.PropTypes.object.isRequired,

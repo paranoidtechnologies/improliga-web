@@ -1,23 +1,24 @@
 import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import Link from '../static/link.react';
 
 export default class NotFound extends Component {
 
   static propTypes = {
-    msg: React.PropTypes.object.isRequired
+    lang: PropTypes.string.isRequired,
+    msg: PropTypes.object.isRequired,
   }
 
   render() {
-    const {msg} = this.props;
+    const {lang, msg} = this.props;
 
     return (
       <DocumentTitle title={msg.notFound.title}>
         <div className="ui-page notfound-page">
           <h1>{msg.notFound.header}</h1>
           <p>{msg.notFound.message}</p>
-          <Link to="home">{msg.notFound.continueMessage}</Link>
+          <Link lang={lang} to="home">{msg.notFound.continueMessage}</Link>
         </div>
       </DocumentTitle>
     );

@@ -1,9 +1,9 @@
-import Browser from '../browser/browser.react';
+import Component from 'react-pure-render/component';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import React from 'react';
 import BlogItem from './item.react';
 
-export default class BlogList extends Browser {
+export default class BlogList extends Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired,
     items: React.PropTypes.oneOfType([
@@ -13,7 +13,15 @@ export default class BlogList extends Browser {
     msg: React.PropTypes.object.isRequired
   }
 
-  static defaultProps = {
-    draw: BlogItem
+  render() {
+    const {items, msg} = this.props;
+
+    return (
+      <div className="ui-browser-list">
+        {items.map(function(item, key) {
+          return <BlogItem {...{item, msg, pass}} key={item.id} />;
+        })}
+      </div>
+    );
   }
 }

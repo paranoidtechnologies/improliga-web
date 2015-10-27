@@ -7,7 +7,7 @@ const msg = {};
 
 describe('Site menu', () => {
   it('renders', () => {
-    const comp = <SiteMenu msg={{msg}} />;
+    const comp = <SiteMenu lang="cs" msg={{msg}} />;
     const tree = render(comp);
 
     expect(tree).to.be.an('object');

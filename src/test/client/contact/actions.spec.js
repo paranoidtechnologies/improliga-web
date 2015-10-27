@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {actions, create} from 'common/contact/actions';
+import * as actions from 'common/contact/actions';
 import {mockApi} from 'test/utils';
 
 const responseBlank = {
@@ -8,24 +8,21 @@ const responseBlank = {
 };
 
 describe('Contact actions', () => {
-  it('dispatches contact form reponse', (done) => {
-    const dispatch = (action) => {
-      expect(action).to.equal(actions.sendContactForm);
-      done();
-    };
-
+  it('send contact form exists', () => {
     expect(actions.sendContactForm).to.be.an('function');
-    create(mockApi(null, responseBlank), dispatch).sendContactForm();
   });
 
-  it('dispatches contact form subject store', (done) => {
-    const dispatch = (action, data) => {
-      expect(action).to.equal(actions.setSubject);
-      expect(data).to.equal('foo');
-      done();
-    };
+  it('set contact form subject exists', () => {
+    expect(actions.sendContactForm).to.be.an('function');
+  });
 
+  it('set contact form dispatches', () => {
     expect(actions.setSubject).to.be.an('function');
-    create(null, dispatch).setSubject('foo');
+
+    const res = actions.setSubject('foo');
+
+    expect(res).to.be.an('object');
+    expect(res.type).to.equal(actions.SET_SUBJECT);
+    expect(res.payload).to.equal('foo');
   });
 });
