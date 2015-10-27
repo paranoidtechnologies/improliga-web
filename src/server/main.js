@@ -5,7 +5,6 @@ import serverConfig from './lib/config';
 import errorHandler from './lib/errorhandler';
 import express from 'express';
 import frontend from './frontend';
-import {Server} from 'http';
 import {preloadEventDetail} from './frontend/preload';
 
 const app = express();

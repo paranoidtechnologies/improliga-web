@@ -12,7 +12,7 @@ export default class Html extends Component {
   }
 
   render() {
-    const {appCssHash, bodyHtml, isProduction, title, version} = this.props;
+    const {googleAnalyticsId, appCssHash, bodyHtml, isProduction, title, version} = this.props;
 
     // Only for production. For dev, it's handled by webpack with livereload.
     const linkStyles = isProduction &&

@@ -3,11 +3,10 @@ import bg from 'gulp-bg';
 import eslint from 'gulp-eslint';
 import fs from 'fs';
 import gulp from 'gulp';
-import makeWebpackConfig from './webpack/makeconfig';
 import path from 'path';
 import runSequence from 'run-sequence';
+import shell from 'gulp-shell';
 import webpackBuild from './webpack/build';
-import webpackDevServer from './webpack/devserver';
 import yargs from 'yargs';
 import {Server as KarmaServer} from 'karma';
 
@@ -50,12 +49,7 @@ gulp.task('env', () => {
   process.env.NODE_ENV = env; // eslint-disable-line no-undef
 });
 
-gulp.task('build-webpack-production', webpackBuild(makeWebpackConfig(false)));
-gulp.task('build-webpack-dev', webpackDevServer(makeWebpackConfig(true)));
-gulp.task('build-webpack', [args.production
-  ? 'build-webpack-production'
-  : 'build-webpack-dev'
-]);
+gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
@@ -75,15 +69,22 @@ gulp.task('karma-dev', (done) => {
   runKarma({singleRun: false}, done);
 });
 
-gulp.task('test', (done) => {
-  runSequence('eslint', 'karma-ci', 'build-webpack-production', done);
+gulp.task('karma', (done) => {
+  runSequence(process.env.NODE_ENV === 'production' ? 'karma-ci':'karma-dev', done);
 });
+
+gulp.task('test', (done) => {
+  runSequence('env', 'eslint', 'karma', done);
+});
+
+gulp.task('server-hot', bg('node', './webpack/server'));
+gulp.task('server-nodemon', bg('node_modules/.bin/nodemon', 'src/server'));
 
 gulp.task('server', ['env', 'build'], bg('node', 'src/server'));
 
 // Run karma configured for TDD.
-gulp.task('tdd', (done) => {
-  runSequence('server', 'karma-dev', done);
+gulp.task('tdd', ['env'], (done) => {
+  runSequence('server-hot', 'server-nodemon', 'karma-dev', done);
 });
 
 gulp.task('default', ['server']);

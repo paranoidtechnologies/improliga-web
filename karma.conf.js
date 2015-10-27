@@ -47,7 +47,7 @@ module.exports = function(config) {
     ] : [
       'progress', 'coverage', 'beep'
     ],
-    webpack: require('./webpack/makeconfig')(true),
+    webpack: require('./webpack/makeConfig')(true),
     webpackServer: {
       noInfo: true
     }

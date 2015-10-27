@@ -7,7 +7,9 @@ import {bindActionCreators} from 'redux';
 
 const actions = [
   blogActions,
+  eventsActions,
   showsActions,
+  workshopsActions,
 ];
 
 export default function mapDispatchToProps(dispatch) {

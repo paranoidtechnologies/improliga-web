@@ -1,6 +1,6 @@
 var hashFile = require('hash-file');
 var fs = require('fs');
-var Immutable = require('immutable')
+var Immutable = require('immutable');
 var path = require('path');
 var pack = require('../../package.json');
 var isProduction = process.env.NODE_ENV === 'production';
@@ -10,10 +10,10 @@ var env = process.env.IMPROLIGA_ENV;
 
 var getAssetHash = function(filePath) {
   if (!isProduction) return '';
+
   try {
     return hashFile.sync(filePath);
-  }
-  catch (e) {
+  } catch (e) {
     return '';
   }
 };

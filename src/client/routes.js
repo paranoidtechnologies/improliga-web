@@ -21,16 +21,23 @@ export default function createRoutes(getState) {
 
       <Route component={About} name="about" path="/o-improlize" />
       <Route component={Contact} name="contact" path="/kontakty" />
-      <Route component={Shows} name="shows" path="/predstaveni" />
-      <Route component={Shows} name="showsArchive" path="/predstaveni/archiv/:month" />
-      <Route component={Workshops} name="workshops" path="/workshopy" />
-      <Route component={Workshops} name="workshopsArchive" path="/workshopy/archiv/:month" />
-      <Route component={Event} name="show" path="/predstaveni/:showId" />
-      <Route component={TeamsPage} name="teams" path="/tymy" />
-      <Route component={TeamDetailPage} name="teamDetail" path="/tymy/:teamId" />
-      <Route component={BlogPage} name="blog" path="/blog" />
-      <Route component={BlogDetail} name="blogDetail" path="/blog/:blogItemId" />
-      <Route path="*" component={NotFound} />
+      <Route component={Shows} name="shows" path="/predstaveni">
+        <Route component={Shows} name="showsArchive" path="/predstaveni/archiv/:month" />
+        <Route component={Event} name="show" path="/predstaveni/:showId" />
+      </Route>
+      <Route component={Workshops} name="workshops" path="/workshopy">
+        <Route component={Workshops} name="workshopsArchive" path="/workshopy/archiv/:month" />
+      </Route>
+
+      <Route component={TeamsPage} name="teams" path="/tymy">
+        <Route component={TeamDetailPage} name="teamDetail" path="/tymy/:teamId" />
+      </Route>
+
+      <Route component={BlogPage} name="blog" path="/blog">
+        <Route component={BlogDetail} name="blogDetail" path="/blog/:blogItemId" />
+      </Route>
+
+      <Route component={NotFound} path="*" />
     </Route>
   );
 
