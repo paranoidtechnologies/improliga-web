@@ -92,13 +92,14 @@
     "karma-mocha": "^0.2.0",
     "karma-mocha-reporter": "^1.1.1",
     "karma-notify-reporter": "^0.1.1",
-    "karma-phantomjs2-launcher": "^0.3.2",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-phantomjs-shim": "^1.1.1",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.2.5",
     "nock": "^2.15.0",
     "node-notifier": "^4.1.0",
-    "phantomjs": "^1.9.17",
+    "phantomjs": "^1.9.18",
     "react-hot-loader": "^1.1.4"
   }
 }
