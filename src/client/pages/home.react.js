@@ -3,13 +3,15 @@ import DocumentTitle from 'react-document-title';
 import React, {PropTypes} from 'react';
 import Header from './home/header.react';
 import Shows from './home/shows.react';
+import fetch from '../../common/components/fetch';
+import {loadUpcomingShows} from '../../common/shows/actions';
 
 const {object, string} = PropTypes;
 
+@fetch(loadUpcomingShows)
 export default class Home extends Component {
 
   static propTypes = {
-    actions: object.isRequired,
     lang: string.isRequired,
     msg: object.isRequired,
     shows: object.isRequired
