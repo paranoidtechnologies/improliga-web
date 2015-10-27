@@ -54,7 +54,7 @@ export default function makeConfig(isDevelopment) {
         },
         {
           exclude: /node_modules/,
-          loader: 'babel',
+          loader: isDevelopment ? 'babel-istanbul-instrumenter' : 'babel',
           query: {
             stage: 0,
             env: {
@@ -82,13 +82,6 @@ export default function makeConfig(isDevelopment) {
           test: /\.js$/
         }
       ].concat(stylesLoaders()),
-      postLoaders: [
-        {
-          test: /\.js$/,
-          exclude: /(test|node_modules)\//,
-          loader: 'istanbul-instrumenter'
-        }
-      ]
     },
     node :{
       fs: 'empty'
