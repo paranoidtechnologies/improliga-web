@@ -1,0 +1,57 @@
+@import '../app/styles/vars.styl'
+
+.site-menu
+  fix-transition()
+  background rgba(page-bg,.4)
+  left 0
+  right 0
+  position fixed
+  top 0
+  z-index 666
+
+  &:hover
+    background rgba(page-bg,.95)
+
+  .navbar-brand
+    padding 5px 0 5px 15px
+    width 90px
+
+  .menu-logo,
+  .logo-image
+    height 64px
+    width 64px
+
+  .logo-label
+    display none
+
+  .logo-image
+    background-image url(/assets/pixmaps/ui/menu-logo.png)
+    display block
+
+  .site-menu-inner
+    margin 0 auto
+    padding 10px 0 0
+    text-align center
+
+    a
+      fix-transition(speed-fast)
+      border-bottom 1px solid transparent
+      color text-normal
+      display inline-block
+      font-size 14px
+      font-weight 500
+      margin-right 5px
+      opacity .75
+      padding 4px 12px 5px
+      text-decoration none
+      text-shadow 0 0 3px text-shadow, 0 0 6px text-shadow
+
+      &:hover,
+      &.opacity
+        opacity 1
+
+      &:hover
+        border-color text-normal
+
+      &.active
+        border-color rgba(text-normal, .75)

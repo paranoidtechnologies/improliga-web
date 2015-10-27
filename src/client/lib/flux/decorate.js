@@ -1,4 +1,4 @@
-import Component from '../../components/component.react';
+import Component from 'react-pure-render/component';
 import Flux from './flux';
 import React from 'react';
 

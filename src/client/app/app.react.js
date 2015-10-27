@@ -1,63 +1,35 @@
 import './styles/page.styl';
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import Footer from './footer.react';
 import Header from './header.react';
-import React from 'react';
-import flux from '../lib/flux';
-import store from './store';
-import {RouteHandler} from 'react-router';
-import {createValidate} from '../validate';
-import Api from '../api';
+import React, {PropTypes} from 'react';
+import RouterHandler from '../../common/components/RouterHandler.react';
+import mapDispatchToProps from '../../common/app/mapDispatchToProps';
+import mapStateToProps from '../../common/app/mapStateToProps';
+import {connect} from 'react-redux';
 
-import * as blogActions from '../components/blog/actions';
-import * as contactActions from '../components/contact/actions';
-import * as eventsActions from '../components/events/actions';
-import * as showsActions from '../components/shows/actions';
-import * as teamsActions from '../components/teams/actions';
-import * as workshopsActions from '../components/workshops/actions';
+// // logRenderTime is useful for app with huge UI to check render performance.
+// import logRenderTime from '../lib/logRenderTime';
 
-const actions = [blogActions, contactActions, eventsActions, showsActions, teamsActions, workshopsActions];
-
-@flux(store)
+@connect(mapStateToProps, mapDispatchToProps)
+// @logRenderTime
 export default class App extends Component {
+
   static propTypes = {
-    flux: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired
-  }
-
-  api = new Api();
-
-  componentWillMount() {
-    this.createActions();
-  }
-
-  createActions() {
-    const {flux, msg} = this.props;
-    const state = () => flux.state.toObject();
-    const validate = createValidate(() => msg);
-
-    this.actions = actions.reduce((actions, {create, feature, inject}) => {
-      const dispatch = (action, payload) => {
-        flux.dispatch(action, payload, {feature});
-      };
-
-      const deps = [this.api, dispatch, validate, state];
-      const args = inject ? inject(...deps) : deps;
-      return {...actions, [feature]: create(...args)};
-
-    }, {});
+    children: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    msg: PropTypes.object.isRequired,
   }
 
   render() {
-    const {msg} = this.props;
-    const props = {...this.props, actions: this.actions};
+    const {location: {pathname}, msg} = this.props;
 
     return (
-      <div className="page">
+      <div className="page" data-pathname={pathname}>
         <div className="page-wrapper">
-          <Header msg={msg} />
-          <RouteHandler {...props} />
-          <Footer msg={msg.app} />
+          <Header msg={msg} pathname={pathname} />
+          <RouterHandler {...this.props} />
+          <Footer msg={msg} />
         </div>
       </div>
     );

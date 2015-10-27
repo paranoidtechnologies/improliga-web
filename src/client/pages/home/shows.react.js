@@ -1,5 +1,5 @@
+import Component from 'react-pure-render/component';
 import React from 'react';
-import Component from '../../components/component.react';
 import ShowsBrowser from '../shows/browser';
 import './shows.styl';
 import {Link} from 'react-router';

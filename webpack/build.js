@@ -22,12 +22,13 @@ module.exports = function(webpackConfig) {
         throw new gutil.PluginError('webpack', buildError);
 
       gutil.log('[webpack]', stats.toString({
+        children: false,
         colors: true,
         version: false,
         hash: false,
         timings: false,
         chunks: false,
-        chunkModules: false
+        chunkModules: false,
       }));
 
       callback();

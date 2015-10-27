@@ -1,5 +1,7 @@
+/* eslint-disable no-undef, no-console */
 import bg from 'gulp-bg';
 import eslint from 'gulp-eslint';
+import fs from 'fs';
 import gulp from 'gulp';
 import makeWebpackConfig from './webpack/makeconfig';
 import path from 'path';
@@ -13,6 +15,16 @@ let env = 'development';
 const args = yargs
   .alias('p', 'production')
   .argv;
+
+const runEslint = () => {
+  return gulp.src([
+    'gulpfile.babel.js',
+    'src/**/*.js',
+    'webpack/*.js'
+  ])
+  .pipe(eslint())
+  .pipe(eslint.format());
+};
 
 const runKarma = ({singleRun}, done) => {
   const server = new KarmaServer({
@@ -47,15 +59,12 @@ gulp.task('build-webpack', [args.production
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
-  return gulp.src([
-    'gulpfile.babel.js',
-    'src/**/*.js',
-    'webpack/*.js',
-    '!**/__tests__/*.*'
-  ])
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failOnError());
+  return runEslint();
+});
+
+gulp.task('eslint-ci', () => {
+  // Exit process with an error code (1) on lint error for CI build.
+  return runEslint().pipe(eslint.failAfterError());
 });
 
 gulp.task('karma-ci', (done) => {

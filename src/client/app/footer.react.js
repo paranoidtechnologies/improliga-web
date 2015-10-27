@@ -1,5 +1,5 @@
 import React from 'react';
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import {Link} from 'react-router';
 
 export default class Footer extends Component {

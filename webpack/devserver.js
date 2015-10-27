@@ -5,6 +5,7 @@
 var gutil = require('gulp-util');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
+var constants = require('./constants');
 
 module.exports = function(webpackConfig) {
   return function(callback) {
@@ -19,6 +20,7 @@ module.exports = function(webpackConfig) {
       // Remove console.log mess during watch.
       stats: {
         assets: false,
+        children: false,
         colors: true,
         version: false,
         hash: false,
@@ -28,7 +30,7 @@ module.exports = function(webpackConfig) {
       }
     // Why '0.0.0.0' and 'localhost'? Because it works for remote machines.
     // https://github.com/webpack/webpack-dev-server/issues/151#issuecomment-104643642
-    }).listen(8888, '0.0.0.0', function(err) {
+    }).listen(constants.HOT_RELOAD_PORT, '0.0.0.0', function(err) {
       // Callback is called only once, can't be used to catch compilation errors.
       if (err)
         throw new gutil.PluginError('webpack-dev-server', err);

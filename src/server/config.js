@@ -1,40 +1,44 @@
-var nconf = require('nconf');
+var hashFile = require('hash-file');
 var fs = require('fs');
+var Immutable = require('immutable')
 var path = require('path');
+var pack = require('../../package.json');
+var isProduction = process.env.NODE_ENV === 'production';
 
-// Specifying an env delimiter allows you to override below config when shipping to production server
-// by e.g. defining piping__ignore or version variables.
-nconf.env('__');
+var Map = Immutable.Map;
+var env = process.env.IMPROLIGA_ENV;
 
-var config = {
+var getAssetHash = function(filePath) {
+  if (!isProduction) return '';
+  try {
+    return hashFile.sync(filePath);
+  }
+  catch (e) {
+    return '';
+  }
+};
+
+var config = new Map({
   api: {
     host: 'api.improvanywhere.org'
   },
-  appLocales: ['en', 'cs'],
-  defaultLocale: 'cs',
-  googleAnalyticsId: 'UA-XXXXXXX-X',
-  isProduction: process.env.NODE_ENV === 'production',
-  piping: {
-    // Ignore webpack custom loaders on server. TODO: Reuse index.js config.
-    ignore: /(\/\.|~$|\.(css|styl))/,
-    // Hook ensures always fresh server response even for client file change.
-    hook: true
+  assetsHashes: {
+    appCss: getAssetHash('build/app.css'),
+    appJs: getAssetHash('build/app.js')
   },
+  googleAnalyticsId: 'UA-XXXXXXX-X',
+  isProduction: isProduction,
   port: process.env.PORT || 8000,
-  version: require('../../package').version,
+  version: pack.version,
   webpackStylesExtensions: ['css', 'styl']
-};
-
-// Use above config as a default one
-// Multiple other providers are available like loading config from json and more
-nconf.defaults(config);
-
-const env = process.env.IMPROLIGA_ENV;
+});
 
 if (typeof env !== 'undefined') {
-  const override = fs.realpathSync(path.join('conf', process.env.IMPROLIGA_ENV + '.json'));
-  nconf.file('env', override);
+  var overridePath = fs.realpathSync(path.join('conf', env + '.json'));
+  var override = require(overridePath);
+
+  config = config.merge(override);
 }
 
 
-module.exports = nconf.get();
+module.exports = config.toJS();

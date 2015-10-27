@@ -1,8 +1,8 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
-import EventDetail from '../components/events/detail.react';
-import NotFound from '../components/notfound.react';
+import EventDetail from '../events/detail.react';
+import NotFound from './notfound.react';
 
 export default class Event extends Component {
 

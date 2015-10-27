@@ -1,33 +1,27 @@
-// import favicon from 'serve-favicon';
 import compression from 'compression';
-import config from '../config';
-import esteHeaders from '../lib/estemiddleware';
+import device from 'express-device';
+import esteMiddleware from '../lib/esteMiddleware';
 import express from 'express';
-import intlMiddleware from '../lib/intlmiddleware';
+// import favicon from 'serve-favicon';
 import render from './render';
 
 const app = express();
 
-app.use(esteHeaders());
+app.use(esteMiddleware());
 app.use(compression());
 
-// app.use(favicon('assets/img/favicon.ico'))
-app.use('/build', express.static('build'));
-app.use('/assets', express.static('assets'));
+// app.use(favicon('assets/img/favicon.ico'));
 
-// Intl
+// Serve the static assets. We can cache them as they include hashes.
+app.use('/assets/img', express.static('../assets/img', {maxAge: '200d'}));
+app.use('/_assets', express.static('build', {maxAge: '200d'}));
+
+// Intl.
 app.use('/node_modules/intl/dist', express.static('node_modules/intl/dist'));
 app.use('/node_modules/intl/locale-data', express.static('node_modules/intl/locale-data'));
 
-// Load translations, fallback to defaultLocale if no translation is available.
-app.use(intlMiddleware({
-  defaultLocale: config.defaultLocale
-}));
-
-// Load state extras for current user.
-app.get('*', (req, res, next) => {
-  render(req, res, req.userState, {intl: req.intl}).catch(next);
-});
+app.use(device.capture());
+app.get('*', render);
 
 app.on('mount', () => {
   console.log('App is available at %s', app.mountpath);

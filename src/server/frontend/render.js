@@ -2,107 +2,125 @@ import DocumentTitle from 'react-document-title';
 import Html from './html.react';
 import Promise from 'bluebird';
 import React from 'react';
-import Router from 'react-router';
+import ReactDOMServer from 'react-dom/server';
 import config from '../config';
-import immutable from 'immutable';
-import initialState from '../initialstate';
-import routes from '../../client/routes';
-import stateMerger from '../lib/merger';
+import configureStore from '../../common/configureStore';
+import createRoutes from '../../client/routes';
+import serialize from 'serialize-javascript';
 import useragent from 'useragent';
+import {HOT_RELOAD_PORT} from '../../../webpack/constants';
+import {IntlProvider} from 'react-intl';
+import {Provider} from 'react-redux';
+import {RoutingContext, match} from 'react-router';
+import {createMemoryHistory} from 'history';
 
-export default function render(req, res, ...customStates) {
-  if (res.eventDetail) {
-    initialState.events = {
-      detail: res.eventDetail
-    };
-  }
+export default function render(req, res, next) {
+  const initialState = {
+    device: {
+      isMobile: ['phone', 'tablet'].indexOf(req.device.type) > -1
+    }
+  };
+  const store = configureStore({initialState});
 
-  const appState = immutable.fromJS(initialState).mergeWith(stateMerger, ...customStates).toJS();
+  // Fetch logged in user here because routes may need it. Remember we can use
+  // store.dispatch method.
 
-  return renderPage(req, res, appState);
-}
+  const routes = createRoutes(() => store.getState());
+  const location = createMemoryHistory().createLocation(req.url);
 
-function renderPage(req, res, appState) {
-  return new Promise((resolve, reject) => {
+  match({routes, location}, (error, redirectLocation, renderProps) => {
 
-    const router = Router.create({
-      routes,
-      location: req.originalUrl,
-      onError: reject,
-      onAbort: (abortReason) => {
-        // Some requireAuth higher order component requested redirect.
-        if (abortReason.constructor.name === 'Redirect') {
-          const {to, params, query} = abortReason;
-          const path = router.makePath(to, params, query);
-          res.redirect(path);
-          resolve();
-          return;
-        }
-        reject(abortReason);
-      }
-    });
+    if (redirectLocation) {
+      res.redirect(301, redirectLocation.pathname + redirectLocation.search);
+      return;
+    }
 
-    router.run((Handler, routerState) => {
-      const ua = useragent.is(req.headers['user-agent']);
-      const html = getPageHtml(Handler, appState, {
-        hostname: req.hostname,
-        // TODO: Remove once Safari and IE without Intl will die.
-        needIntlPolyfill: ua.safari || (ua.ie && ua.version < '11')
-      });
-      const notFound = routerState.routes.some(route => route.name === 'not-found');
-      const status = notFound ? 404 : 200;
-      res.status(status).send(html);
-      resolve();
-    });
+    if (error) {
+      next(error);
+      return;
+    }
 
+    // // Not possible with * route.
+    // if (renderProps == null) {
+    //   res.send(404, 'Not found');
+    //   return;
+    // }
+
+    fetchComponentData(store.dispatch, req, renderProps)
+      .then(() => renderPage(store, renderProps, req))
+      .then(html => res.send(html))
+      .catch(next);
   });
 }
 
-function getPageHtml(Handler, appState, {hostname, needIntlPolyfill}) {
-  const appHtml = `<div id="app">${
-    React.renderToString(<Handler initialState={appState} />)
-  }</div>`;
+function fetchComponentData(dispatch, req, {components, location, params}) {
+  const fetchActions = components.reduce((actions, component) => {
+    return actions.concat(component.fetchAction || []);
+  }, []);
+  const promises = fetchActions.map(action => dispatch(action(
+    {location, params}
+  )));
 
-  const appScriptSrc = config.isProduction
-    ? '/build/app.js?v=' + config.version
-    : `//${hostname}:8888/build/app.js`;
+  // Because redux-promise-middleware always returns fulfilled promise, we have
+  // to detect errors manually.
+  // https://github.com/pburtchaell/redux-promise-middleware#usage
+  return Promise.all(promises).then(results => {
+    results.forEach(result => {
+      if (result.error)
+        throw result.payload;
+    });
+  });
+}
 
+function renderPage(store, renderProps, req) {
+  const clientState = store.getState();
+  const {headers, hostname} = req;
+  const appHtml = getAppHtml(store, renderProps);
+  const scriptHtml = getScriptHtml(clientState, headers, hostname);
+
+  return '<!DOCTYPE html>' + ReactDOMServer.renderToStaticMarkup(
+    <Html
+      appCssHash={config.assetsHashes.appCss}
+      bodyHtml={`<div id="app">${appHtml}</div>${scriptHtml}`}
+      googleAnalyticsId={config.googleAnalyticsId}
+      isProduction={config.isProduction}
+      title={DocumentTitle.rewind()}
+    />
+  );
+}
+
+function getAppHtml(store, renderProps) {
+  return ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <IntlProvider>
+        <RoutingContext {...renderProps} />
+      </IntlProvider>
+    </Provider>
+  );
+}
+
+function getScriptHtml(clientState, headers, hostname) {
   let scriptHtml = '';
 
+  const ua = useragent.is(headers['user-agent']);
+  const needIntlPolyfill = ua.safari || (ua.ie && ua.version < '11');
   if (needIntlPolyfill) {
     scriptHtml += `
-    <script src="/node_modules/intl/dist/Intl.min.js"></script>
-    <script src="/node_modules/intl/locale-data/jsonp/en-US.js"></script>`;
+      <script src="/node_modules/intl/dist/Intl.min.js"></script>
+      <script src="/node_modules/intl/locale-data/jsonp/en-US.js"></script>
+    `;
   }
 
-  scriptHtml += `
-    <script src="/assets/bower/jquery/dist/jquery.min.js"></script>
-    <script src="/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+  const appScriptSrc = config.isProduction
+    ? '/_assets/app.js?' + config.assetsHashes.appJs
+    : `//${hostname}:${HOT_RELOAD_PORT}/build/app.js`;
+
+  // Note how clientState is serialized. JSON.stringify is anti-pattern.
+  // https://github.com/yahoo/serialize-javascript#user-content-automatic-escaping-of-html-characters
+  return scriptHtml + `
     <script>
-      window._initialState = ${JSON.stringify(appState)};
+      window.__INITIAL_STATE__ = ${serialize(clientState)};
     </script>
     <script src="${appScriptSrc}"></script>
   `;
-
-  if (config.isProduction && config.googleAnalyticsId !== 'UA-XXXXXXX-X')
-    scriptHtml += `
-      <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','${config.googleAnalyticsId}');ga('send','pageview');
-      </script>`;
-
-  const title = DocumentTitle.rewind() + ' :: ' + appState.intl.messages.app.subtitle;
-
-  return '<!DOCTYPE html>' + React.renderToStaticMarkup(
-    <Html
-      bodyHtml={appHtml + scriptHtml}
-      isProduction={config.isProduction}
-      title={title}
-      version={config.version}
-    />
-  );
 }

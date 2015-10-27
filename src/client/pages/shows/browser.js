@@ -1,5 +1,5 @@
-import Browser from '../../components/browser.react';
-import EventListItem from '../../components/events/listItem.react';
+import Browser from '../../browser/browser.react';
+import EventListItem from '../../events/listItem.react';
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 

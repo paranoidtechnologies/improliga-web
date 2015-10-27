@@ -1,7 +1,7 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
-import EventMonth from '../components/events/month.react';
-import EventListItem from '../components/events/listItem.react';
+import EventMonth from '../events/month.react';
+import EventListItem from '../events/listItem.react';
 import React from 'react';
 import moment from 'moment';
 import './shows.styl';

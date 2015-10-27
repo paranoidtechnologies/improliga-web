@@ -1,5 +1,4 @@
-import React from 'react/addons';
-const TestUtils = React.addons.TestUtils;
+import TestUtils from 'react-addons-test-utils';
 
 // To console.log stringified and pretty printed JSON. Useful for shallow
 // rendered component for example.
@@ -49,5 +48,5 @@ export function mockApi(err, res) {
 }
 
 export function getChildren(obj) {
-  return obj._store.props.children;
+  return obj.props.children;
 }

@@ -1,5 +1,5 @@
-import Component from '../components/component.react';
-import Menu from '../components/static/menu.react';
+import Component from 'react-pure-render/component';
+import Menu from '../static/menu.react';
 import React from 'react';
 
 export default class Header extends Component {
@@ -10,11 +10,11 @@ export default class Header extends Component {
   }
 
   render() {
-    const {msg:{components:{menu:menu}}} = this.props;
+    const {msg} = this.props;
 
     return (
       <header>
-        <Menu msg={menu} />
+        <Menu msg={msg.menu} />
       </header>
     );
   }

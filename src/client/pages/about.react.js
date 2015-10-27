@@ -1,8 +1,8 @@
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
-import Component from '../components/component.react';
 import React from 'react';
-import Tabman from '../components/tabman.react';
-import Article from '../components/static/article.react';
+import Tabman from '../tabman/tabman.react';
+import Article from '../static/article.react';
 
 export default class About extends Component {
   static propTypes = {

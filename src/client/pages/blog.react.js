@@ -1,7 +1,7 @@
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
-import Component from '../components/component.react';
-import BlogList from '../components/blog/list.react';
+import BlogList from '../blog/list.react';
 import './contact.styl';
 
 export default class BlogPage extends Component {

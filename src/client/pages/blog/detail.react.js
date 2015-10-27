@@ -1,8 +1,8 @@
-import Component from '../../components/component.react';
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
-import BlogDetail from '../../components/blog/detail.react';
-import NotFound from '../../components/notfound.react';
+import BlogDetail from '../../blog/detail.react';
+import NotFound from '../notfound.react';
 
 export default class BlogDetailPage extends Component {
 

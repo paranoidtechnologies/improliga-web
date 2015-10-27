@@ -1,7 +1,7 @@
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
-import Component from '../components/component.react';
-import ContactForm from '../components/contact/form.react';
+import ContactForm from '../contact/form.react';
 import './contact.styl';
 
 export default class Contact extends Component {

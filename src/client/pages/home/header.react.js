@@ -1,4 +1,4 @@
-import Component from '../../components/component.react';
+import Component from 'react-pure-render/component';
 import React from 'react';
 import {Link} from 'react-router';
 import Logo from './logo.react';

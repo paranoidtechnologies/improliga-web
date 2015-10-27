@@ -13,7 +13,7 @@ module.exports = function(config) {
   config.set({
     // autoWatch, it works enabled or not. Probably defined by singleRun.
     basePath: '',
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS2'],
     coverageReporter: coverageReporter,
     customLaunchers: {
       ChromeSmall: {
@@ -28,7 +28,7 @@ module.exports = function(config) {
       'src/test/index.js'
     ],
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['phantomjs-shim', 'mocha', 'chai'],
+    frameworks: ['mocha', 'chai'],
     logLevel: process.env.CONTINUOUS_INTEGRATION
       ? config.LOG_WARN
       : config.LOG_INFO,
@@ -45,7 +45,7 @@ module.exports = function(config) {
     reporters: process.env.CONTINUOUS_INTEGRATION ? [
       'coverage', 'mocha'
     ] : [
-      'progress', 'coverage', 'notify'
+      'progress', 'coverage', 'beep'
     ],
     webpack: require('./webpack/makeconfig')(true),
     webpackServer: {

@@ -1,4 +1,4 @@
-import Component from '../components/component.react';
+import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
 import Header from './home/header.react';
@@ -24,8 +24,8 @@ export default class Home extends Component {
     } = this.props;
 
     const pass = {
-      formatDate: msg.app.format.date.exact,
-      formatTime: msg.app.format.time.exact,
+      formatDate: msg.format.date.exact,
+      formatTime: msg.format.time.exact,
     };
 
     return (
