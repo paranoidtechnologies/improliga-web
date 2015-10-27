@@ -1,10 +1,30 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'react-router';
-import routes from './routes';
+import configureStore from '../common/configureStore';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createEngine from 'redux-storage/engines/localStorage';
+import createRoutes from './routes';
+import {IntlProvider} from 'react-intl';
+import {Provider} from 'react-redux';
 
 const app = document.getElementById('app');
-const initialState = window._initialState;
+const engine = createEngine('este-app');
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore({engine, initialState});
+const routes = createRoutes(store.getState);
 
-Router.run(routes, Router.HistoryLocation, (Handler) => {
-  React.render(<Handler initialState={initialState} />, app);
-});
+ReactDOM.render(
+  <Provider store={store}>
+    <IntlProvider>
+      <Router history={createBrowserHistory()}>
+        {routes}
+      </Router>
+    </IntlProvider>
+  </Provider>,
+  app,
+  () => {
+    // This is where state from local storage should be retrieved.
+    // storage.createLoader(engine)(store);
+  }
+);
