@@ -3,7 +3,8 @@ import moment from 'moment';
 
 const formatDate = 'YYYY-MM-DDTHH:mm:ssZ';
 const formatTime = 'HH:mm:ssZ';
-const Event = Record({
+
+export const Event = Record({
   id: '',
   image: null,
   name: '',
@@ -18,17 +19,11 @@ const Event = Record({
   priceStudent: null,
 });
 
-export default Event;
-
 export function wakeUpEvent(itemPassed) {
   let item = itemPassed;
-  let immutable = false;
 
   if (itemPassed) {
-    if (itemPassed.toJS) {
-      immutable = true;
-      item = itemPassed.toJS();
-    }
+    item = itemPassed.toJS();
 
     if (item.start) {
       item.start = moment(item.start, formatDate);
@@ -46,9 +41,5 @@ export function wakeUpEvent(itemPassed) {
     }
   }
 
-  if (immutable) {
-    item = itemPassed.merge(item);
-  }
-
-  return item;
+  return itemPassed.merge(item);
 };

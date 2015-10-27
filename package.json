@@ -111,6 +111,7 @@
     "node-notifier": "^4.1.0",
     "nodemon": "^1.8.0",
     "phantomjs": "^1.9.18",
+    "react-addons-test-utils": "^0.14.0",
     "react-hot-loader": "^1.1.4",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1"
