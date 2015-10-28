@@ -102,6 +102,9 @@ function getAppHtml(store, renderProps) {
 function getScriptHtml(clientState, headers, hostname) {
   let scriptHtml = '';
 
+  scriptHtml += '<script src="/assets/bower/jquery/dist/jquery.min.js"></script>';
+  scriptHtml += '<script src="/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>';
+
   const ua = useragent.is(headers['user-agent']);
   const needIntlPolyfill = ua.safari || (ua.ie && ua.version < '11');
   if (needIntlPolyfill) {
