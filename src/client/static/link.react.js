@@ -6,6 +6,7 @@ import {urls} from '../routeMap';
 
 export default class AppLink extends Component {
   static propTypes = {
+    children: PropTypes.any,
     lang: PropTypes.string.isRequired,
     params: PropTypes.string,
     to: PropTypes.string.isRequired,
@@ -14,7 +15,7 @@ export default class AppLink extends Component {
 
   render() {
     const {children, lang, params, to} = this.props;
-    const toName = lang + ':' + to;
+    const toName = lang + ':' + to;
     const toPath = urls.get(toName, params);
 
     return (<Link to={toPath}>{children}</Link>);

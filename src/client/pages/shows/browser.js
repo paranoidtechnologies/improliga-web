@@ -8,17 +8,18 @@ export default class ShowsBrowser extends Component {
     items: React.PropTypes.oneOfType([
       React.PropTypes.array,
       ImmutablePropTypes.list
-    ])
+    ]),
+    msg: React.PropTypes.object.isRequired,
   }
 
   render() {
-    const {draw, items, msg, pass} = this.props;
+    const {items, msg} = this.props;
 
     return (
       <div className="ui-browser-list">
         <div className="ui-list-items">
           {items.map(function(item, key) {
-            return <EventListItem {...{item, msg, pass}} key={item.id} />;
+            return <EventListItem {...{item, msg}} key={item.id} />;
           })}
         </div>
       </div>

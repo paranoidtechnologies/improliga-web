@@ -20,23 +20,23 @@ export default function createRoutes(getState) {
   const lang = state.intl.selectedLanguage;
 
   return (
-    <Route component={App} path={map[lang + ':home']}>
+    <Route component={App} path={map[lang + ':home']}>
       <IndexRoute component={Home} />
 
-      <Route component={About} path={map[lang + ':about']} />
-      <Route component={Contact} path={map[lang + ':contact']} />
-      <Route component={Shows} path={map[lang + ':shows']} />
-      <Route component={Shows} path={map[lang + ':shows:archive']} />
-      <Route component={Event} path={map[lang + ':shows:detail']} />
+      <Route component={About} path={map[lang + ':about']} />
+      <Route component={Contact} path={map[lang + ':contact']} />
+      <Route component={Shows} path={map[lang + ':shows']} />
+      <Route component={Shows} path={map[lang + ':shows:archive']} />
+      <Route component={Event} path={map[lang + ':shows:detail']} />
 
-      <Route component={Workshops} path={map[lang + ':workshops']} />
-      <Route component={Workshops} path={map[lang + ':workshops:archive']} />
+      <Route component={Workshops} path={map[lang + ':workshops']} />
+      <Route component={Workshops} path={map[lang + ':workshops:archive']} />
 
-      <Route component={TeamsPage} path={map[lang + ':teams']} />
-      <Route component={TeamDetailPage} path={map[lang + ':teams:detail']} />
+      <Route component={TeamsPage} path={map[lang + ':teams']} />
+      <Route component={TeamDetailPage} path={map[lang + ':teams:detail']} />
 
-      <Route component={BlogPage} path={map[lang + ':blog']} />
-      <Route component={BlogDetail} path={map[lang + ':blog:detail']} />
+      <Route component={BlogPage} path={map[lang + ':blog']} />
+      <Route component={BlogDetail} path={map[lang + ':blog:detail']} />
 
       <Route component={NotFound} path="*" />
     </Route>

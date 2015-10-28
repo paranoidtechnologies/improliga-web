@@ -1,11 +1,9 @@
 /* eslint-disable no-undef, no-console */
 import bg from 'gulp-bg';
 import eslint from 'gulp-eslint';
-import fs from 'fs';
 import gulp from 'gulp';
 import path from 'path';
 import runSequence from 'run-sequence';
-import shell from 'gulp-shell';
 import webpackBuild from './webpack/build';
 import yargs from 'yargs';
 import {Server as KarmaServer} from 'karma';
@@ -14,6 +12,16 @@ let env = 'development';
 const args = yargs
   .alias('p', 'production')
   .argv;
+
+const runEslint = () => {
+  return gulp.src([
+    'gulpfile.babel.js',
+    'src/**/*.js',
+    'webpack/*.js'
+  ])
+  .pipe(eslint())
+  .pipe(eslint.format());
+};
 
 const runKarma = ({singleRun}, done) => {
   const server = new KarmaServer({
@@ -43,13 +51,11 @@ gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => {
-  const src = [
-    'gulpfile.babel.js',
-    'src/**/*.js',
-    'webpack/*.js'
-  ];
+  return runEslint();
+});
 
-  return gulp.src(src).pipe(eslint()).pipe(eslint.format());
+gulp.task('eslint-ci', () => {
+  return runEslint().pipe(eslint.failAfterError());
 });
 
 gulp.task('karma-ci', (done) => {
@@ -61,11 +67,11 @@ gulp.task('karma-dev', (done) => {
 });
 
 gulp.task('karma', (done) => {
-  runSequence(process.env.NODE_ENV === 'production' ? 'karma-ci':'karma-dev', done);
+  runSequence(process.env.NODE_ENV === 'production' ? 'karma-ci' : 'karma-dev', done);
 });
 
 gulp.task('test', (done) => {
-  runSequence('env', 'eslint', 'karma', done);
+  runSequence('env', 'eslint-ci', 'karma', done);
 });
 
 gulp.task('server-hot', bg('node', './webpack/server'));

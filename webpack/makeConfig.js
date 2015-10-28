@@ -54,7 +54,7 @@ export default function makeConfig(isDevelopment) {
         },
         {
           exclude: /node_modules/,
-          loader: isDevelopment ? 'babel-istanbul-instrumenter' : 'babel',
+          loader: isDevelopment ? 'babel-istanbul-instrumenter' : 'babel',
           query: {
             stage: 0,
             env: {

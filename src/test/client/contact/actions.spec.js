@@ -1,11 +1,5 @@
 import {expect} from 'chai';
 import * as actions from 'common/contact/actions';
-import {mockApi} from 'test/utils';
-
-const responseBlank = {
-  body: {
-  }
-};
 
 describe('Contact actions', () => {
   it('send contact form exists', () => {

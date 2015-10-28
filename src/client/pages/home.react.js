@@ -17,15 +17,10 @@ export default class Home extends Component {
     shows: object.isRequired
   }
 
-  componentDidMount(next) {
-    return this.props.actions.loadUpcomingShows();
-  }
-
   render() {
     const {
       lang,
       msg,
-      actions: {shows: actions},
       shows
     } = this.props;
 
@@ -38,7 +33,7 @@ export default class Home extends Component {
       <DocumentTitle title={msg.pages.home.title}>
         <div className="page-home">
           <Header lang={lang} msg={msg.pages.home} ref="el-home" />
-          <Shows actions={actions} lang={lang} msg={msg} pass={pass} ref="el-shows" shows={shows} />
+          <Shows lang={lang} msg={msg} pass={pass} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

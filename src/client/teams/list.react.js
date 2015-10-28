@@ -19,7 +19,7 @@ export default class TeamList extends Component {
     return (
       <div className="ui-browser-list">
         {items.map(function(item, key) {
-          return <TeamListItem {...{item, msg, pass}} key={item.id} />;
+          return <TeamListItem {...{item, msg}} key={item.id} />;
         })}
       </div>
     );

@@ -19,7 +19,7 @@ export default class BlogList extends Component {
     return (
       <div className="ui-browser-list">
         {items.map(function(item, key) {
-          return <BlogItem {...{item, msg, pass}} key={item.id} />;
+          return <BlogItem {...{item, msg}} key={item.id} />;
         })}
       </div>
     );

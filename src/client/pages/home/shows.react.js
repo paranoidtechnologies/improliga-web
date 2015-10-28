@@ -19,8 +19,7 @@ export default class Shows extends Component {
   }
 
   render() {
-    //~ const month = moment();
-    const {msg, actions, shows, pass} = this.props;
+    const {msg, shows, pass} = this.props;
 
     return (
       <section className="container ui-section ui-section-shows">
@@ -31,7 +30,7 @@ export default class Shows extends Component {
             <p>{msg.pages.shows.hottest} <Link to="shows">{msg.pages.shows.sectionShows}</Link>.</p>
           </div>
 
-          <ShowsBrowser actions={actions} items={shows.list} msg={msg.pages.shows} pass={pass} />
+          <ShowsBrowser items={shows.list} msg={msg.pages.shows} pass={pass} />
         </div>
 
         <div className="cleaner" />

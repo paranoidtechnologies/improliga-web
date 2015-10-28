@@ -7,7 +7,6 @@ import RouterHandler from '../../common/components/RouterHandler.react';
 import mapDispatchToProps from '../../common/app/mapDispatchToProps';
 import mapStateToProps from '../../common/app/mapStateToProps';
 import {connect} from 'react-redux';
-import util from 'util';
 
 const {object} = PropTypes;
 
@@ -38,7 +37,7 @@ export default class App extends Component {
 
     props.lang = lang;
 
-    if (!lang) {
+    if (!lang) {
       throw new Error('undefined lang');
     }
 

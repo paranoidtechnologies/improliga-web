@@ -1,6 +1,6 @@
 import Component from 'react-pure-render/component';
 import './menu.styl';
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import Link from './link.react';
 
 export default class Menu extends Component {

@@ -7,22 +7,18 @@ export function loadUpcomingShows(params = {}) {
   }
 
   return ({fetch}) => ({
-    type: [LOAD_UPCOMING],
+    type: [LOAD_UPCOMING],
 
-    payload: {
-      promise: fetch('/shows/upcoming').then(response => response.json())
+    payload: {
+      promise: fetch('/shows/upcoming').then(response => response.json())
     }
   });
 }
 
 
 export function loadCalendarShows(month) {
-  const params = {
-    month: month
-  };
-
-  return ({fetch}) => ({
+  return ({fetch}) => ({
     type: [LOAD_CALENDAR],
-    payload: fetch('/shows').then(response => response.json())
+    payload: fetch('/shows').then(response => response.json())
   });
 }

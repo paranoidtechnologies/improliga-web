@@ -12,10 +12,10 @@ export const map = {
   'cs:teams': '/skupiny',
   'cs:teams:detail': '/skupiny',
   'cs:workshops': '/workshopy',
-  'cs:workshops:archive': "/workshopy/archiv/:month",
-  'cs:workshops:detail': "/workshopy/:eventId",
+  'cs:workshops:archive': '/workshopy/archiv/:month',
+  'cs:workshops:detail': '/workshopy/:eventId',
 };
 
 
-export const urls = new Crossing(new RegExp(':([A-Za-z0-9-_%]{1,})'))
+export const urls = new Crossing(new RegExp(':([A-Za-z0-9-_%]{1,})'));
 urls.load(map);

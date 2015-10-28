@@ -9,8 +9,8 @@ export function sendContactForm(data) {
   };
 
   return ({post}) => ({
-    type: SEND_CONTACT_FORM,
-    promise: post(send).then(response => response.json())
+    type: SEND_CONTACT_FORM,
+    promise: post(send).then(response => response.json())
   });
 }
 
