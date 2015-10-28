@@ -71,7 +71,7 @@ gulp.task('karma', (done) => {
 });
 
 gulp.task('test', (done) => {
-  runSequence('env', 'eslint-ci', 'karma', done);
+  runSequence('env', 'eslint-ci', 'karma-ci', done);
 });
 
 gulp.task('server-hot', bg('node', './webpack/server'));
