@@ -8,10 +8,14 @@ function ensureAbsoluteUrl(input) {
   return local + input;
 }
 
+function ensureApiUrl(input) {
+  return 'api/1' + input;
+}
+
 // Wrapper over isomorphicFetch making relative urls absolute. We don't want
 // hardcode fetch urls since they are different when app is deployed or not.
 export default function fetch(input, init) {
-  input = ensureAbsoluteUrl(input);
+  input = ensureAbsoluteUrl(ensureApiUrl(input));
   return isomorphicFetch(input, init);
 }
 
