@@ -75,13 +75,22 @@ gulp.task('test', (done) => {
 });
 
 gulp.task('server-hot', bg('node', './webpack/server'));
-gulp.task('server-nodemon', bg('node_modules/.bin/nodemon', 'src/server'));
+gulp.task('server-tdd-runner', bg('node', 'src/server'));
+
+gulp.task('server-tdd-helper', (done) => {
+  console.log('Restarting tdd server');
+  runSequence('server-tdd-runner', done);
+});
+
+gulp.task('server-tdd', ['server-tdd-runner'], () => {
+  gulp.watch(['./src/**/*'], ['server-tdd-helper']);
+});
 
 gulp.task('server', ['env', 'build'], bg('node', 'src/server'));
 
 // Run karma configured for TDD.
-gulp.task('tdd', ['env'], (done) => {
-  runSequence('server-hot', 'server-nodemon', 'karma-dev', done);
+gulp.task('tdd', ['env', 'server-hot'], (done) => {
+  runSequence('server-tdd', 'karma-dev', done);
 });
 
 gulp.task('default', ['server']);
