@@ -16,10 +16,6 @@ export default class TeamsPage extends Component {
     teams: React.PropTypes.object
   }
 
-  componentDidMount() {
-    this.loadData();
-  }
-
   render() {
     const {msg, teams} = this.props;
     const title = msg.pages.teams.title;
