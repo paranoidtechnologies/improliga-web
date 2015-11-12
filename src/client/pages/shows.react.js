@@ -16,6 +16,7 @@ export default class Shows extends Component {
 
   static propTypes = {
     dispatch: func,
+    intl: object,
     msg: object,
     params: object,
     shows: object

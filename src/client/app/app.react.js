@@ -29,7 +29,6 @@ export default class App extends Component {
     const props = this.props;
     const {intl, location: {pathname}, msg} = props;
     const lang = intl.selectedLanguage;
-    const objProps = props;
 
     return (
       <div className="page" data-pathname={pathname}>

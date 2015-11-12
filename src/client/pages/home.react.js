@@ -4,12 +4,13 @@ import React, {PropTypes} from 'react';
 import Header from './home/header.react';
 import Shows from './home/shows.react';
 
-const {func, object, string} = PropTypes;
+const {func, object} = PropTypes;
 
 export default class Home extends Component {
 
   static propTypes = {
     dispatch: func,
+    intl: object,
     msg: object,
     shows: object
   }

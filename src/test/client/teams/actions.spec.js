@@ -1,6 +1,5 @@
 import {expect} from 'chai';
 import * as actions from 'common/teams/actions';
-import {mockApi} from 'test/utils';
 
 describe('Team actions', () => {
   it('dispatches team list', () => {
