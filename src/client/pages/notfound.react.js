@@ -3,15 +3,18 @@ import DocumentTitle from 'react-document-title';
 import React, {PropTypes} from 'react';
 import Link from '../static/link.react';
 
+const {object} = PropTypes;
+
 export default class NotFound extends Component {
 
   static propTypes = {
-    lang: PropTypes.string.isRequired,
-    msg: PropTypes.object.isRequired,
+    intl: object,
+    msg: object,
   }
 
   render() {
-    const {lang, msg} = this.props;
+    const {intl, msg} = this.props;
+    const lang = intl.selectedLanguage;
 
     return (
       <DocumentTitle title={msg.notFound.title}>
