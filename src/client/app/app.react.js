@@ -26,20 +26,10 @@ export default class App extends Component {
   }
 
   render() {
-    const {intl, location: {pathname}, msg} = this.props;
+    const props = this.props;
+    const {intl, location: {pathname}, msg} = props;
     const lang = intl.selectedLanguage;
-    const objProps = this.props;
-    let props = {};
-
-    for (let key in objProps) {
-      props[key] = objProps[key];
-    }
-
-    props.lang = lang;
-
-    if (!lang) {
-      throw new Error('undefined lang');
-    }
+    const objProps = props;
 
     return (
       <div className="page" data-pathname={pathname}>
