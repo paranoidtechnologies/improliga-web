@@ -3,7 +3,10 @@ import React from 'react';
 import ShowsBrowser from '../shows/browser';
 import './shows.styl';
 import {Link} from 'react-router';
+import fetch from '../../../common/components/fetch';
+import {loadUpcomingShows} from '../../../common/shows/actions';
 
+@fetch(loadUpcomingShows)
 export default class Shows extends Component {
   static propTypes = {
     msg: React.PropTypes.object.isRequired,

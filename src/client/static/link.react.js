@@ -8,7 +8,7 @@ export default class AppLink extends Component {
   static propTypes = {
     children: PropTypes.any,
     lang: PropTypes.string.isRequired,
-    params: PropTypes.string,
+    params: PropTypes.object,
     to: PropTypes.string.isRequired,
   }
 

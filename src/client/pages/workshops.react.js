@@ -2,35 +2,38 @@ import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import EventMonth from '../events/month.react';
 import EventListItem from '../events/listItem.react';
-import React from 'react';
+import React, {PropTypes} from 'react';
 import moment from 'moment';
+import fetch from '../../common/components/fetch';
+import {loadCalendarWorkshops} from '../../common/workshops/actions';
 import './shows.styl';
 
+const {func, object} = PropTypes;
+const curMonth = moment();
+
+@fetch(loadCalendarWorkshops, curMonth)
 export default class Workshops extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired,
-    workshops: React.PropTypes.object.isRequired,
+    dispatch: func,
+    msg: object,
+    params: object,
+    shows: object
   }
 
-  curMonth = null
-
-  componentDidMount() {
-    this.loadData();
-  }
+  userMonth = null
 
   componentDidUpdate() {
     this.loadData();
   }
 
   loadData() {
+    const {dispatch} = this.props;
     const mon = this.getMonth().format('YYYY-MM');
 
-    if (this.curMonth !== mon) {
-      this.curMonth = mon;
-      return this.props.actions.workshops.loadCalendarWorkshops(mon);
+    if (this.userMonth !== mon) {
+      this.userMonth = mon;
+      return dispatch(loadCalendarWorkshops, mon);
     }
   }
 
@@ -50,7 +53,7 @@ export default class Workshops extends Component {
   }
 
   render() {
-    const {msg, workshops} = this.props;
+    const {intl, msg, workshops} = this.props;
     const date = this.getMonth();
     const month = date.month();
     const title = msg.pages.workshops.title + ' ' + msg.months[month] + ' ' + date.format('YYYY');
@@ -59,6 +62,7 @@ export default class Workshops extends Component {
       formatDate: msg.format.date.exact,
       formatTime: msg.format.time.exact,
       items: workshops.calendar,
+      lang: intl.selectedLanguage,
       listDraw: EventListItem,
       month: date,
       msg: {
@@ -68,7 +72,7 @@ export default class Workshops extends Component {
         months: msg.months,
         list: msg.pages.workshops
       },
-      routeArchive: 'workshopsArchive',
+      routeArchive: 'workshops:archive',
     };
 
     return (

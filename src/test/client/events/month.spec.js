@@ -9,6 +9,7 @@ describe('Event month calendar and list', () => {
     const props = {
       formatDate: 'YYYY-MM-DD',
       formatTime: 'HH:mm:ss',
+      lang: 'cs',
       listDraw: function() {},
       month: moment('2015-01', 'YYYY-MM'),
       msg: {

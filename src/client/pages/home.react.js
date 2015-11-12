@@ -3,26 +3,20 @@ import DocumentTitle from 'react-document-title';
 import React, {PropTypes} from 'react';
 import Header from './home/header.react';
 import Shows from './home/shows.react';
-import fetch from '../../common/components/fetch';
-import {loadUpcomingShows} from '../../common/shows/actions';
 
-const {object, string} = PropTypes;
+const {func, object, string} = PropTypes;
 
-@fetch(loadUpcomingShows)
 export default class Home extends Component {
 
   static propTypes = {
-    lang: string.isRequired,
-    msg: object.isRequired,
-    shows: object.isRequired
+    dispatch: func,
+    msg: object,
+    shows: object
   }
 
   render() {
-    const {
-      lang,
-      msg,
-      shows
-    } = this.props;
+    const {dispatch, intl, msg, shows} = this.props;
+    const lang = intl.selectedLanguage;
 
     const pass = {
       formatDate: msg.format.date.exact,
@@ -33,7 +27,7 @@ export default class Home extends Component {
       <DocumentTitle title={msg.pages.home.title}>
         <div className="page-home">
           <Header lang={lang} msg={msg.pages.home} ref="el-home" />
-          <Shows lang={lang} msg={msg} pass={pass} ref="el-shows" shows={shows} />
+          <Shows dispatch={dispatch} lang={lang} msg={msg} pass={pass} ref="el-shows" shows={shows} />
         </div>
       </DocumentTitle>
     );

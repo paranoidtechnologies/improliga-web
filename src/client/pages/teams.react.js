@@ -3,22 +3,21 @@ import DocumentTitle from 'react-document-title';
 import TeamList from '../teams/list.react';
 import React from 'react';
 import './teams.styl';
+import fetch from '../../common/components/fetch';
+import {loadTeamsPage} from '../../common/teams/actions';
 
+@fetch(loadTeamsPage)
 export default class TeamsPage extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired,
-    teams: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object,
+    msg: React.PropTypes.object,
+    params: React.PropTypes.object,
+    teams: React.PropTypes.object
   }
 
   componentDidMount() {
     this.loadData();
-  }
-
-  loadData() {
-    return this.props.actions.teams.loadTeamsPage();
   }
 
   render() {
@@ -29,6 +28,8 @@ export default class TeamsPage extends Component {
       items: teams.list,
       msg: msg
     };
+
+    console.log(this.props.actions);
 
     return (
       <DocumentTitle title={title}>

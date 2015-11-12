@@ -6,7 +6,7 @@ import Article from '../static/article.react';
 
 export default class About extends Component {
   static propTypes = {
-    msg: React.PropTypes.object.isRequired
+    msg: React.PropTypes.object
   }
 
   render() {

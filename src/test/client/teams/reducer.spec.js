@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import store from 'common/teams/reducer';
 import {List} from 'immutable';
-import {actions} from 'common/teams/actions';
+import {LOAD_TEAMS_PAGE, LOAD_TEAM_DETAIL} from 'common/teams/actions';
 
 describe('Team store', () => {
   it('responds to team page browse', () => {
@@ -14,7 +14,7 @@ describe('Team store', () => {
       'data':[firstItem]
     };
 
-    let res = store(undefined, actions.loadTeamsPage, payload);
+    let res = store(undefined, LOAD_TEAMS_PAGE, payload);
 
     expect(res).to.be.an('object');
     expect(res.list).to.be.an.instanceof(List);
@@ -35,7 +35,7 @@ describe('Team store', () => {
       'data':[firstItem]
     };
 
-    let res = store(undefined, actions.loadTeamDetail, payload);
+    let res = store(undefined, LOAD_TEAM_DETAIL, payload);
 
     expect(res).to.be.an('object');
     expect(res.detail).to.be.an('object');

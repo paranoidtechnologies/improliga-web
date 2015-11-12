@@ -1,31 +1,30 @@
-export const actions = create();
-export const feature = 'teams';
+export const LOAD_TEAMS_PAGE = 'LOAD_TEAMS_PAGE';
+export const LOAD_TEAM_DETAIL = 'LOAD_TEAM_DETAIL';
 
-export function create(api, dispatch, validate) {
-  return {
-    loadTeamsPage() {
-      let params = {};
-
-      api.fetch('/teams', feature, params, (err, res) => {
-        if (err) {
-          api.error(err);
-        } else {
-          dispatch(actions.loadTeamsPage, res.body);
-        }
-      });
-    },
-
-
-    loadTeamDetail(teamId) {
-      let params = {};
-
-      api.fetch('/teams/' + teamId, 'teamDetail', params, (err, res) => {
-        if (err) {
-          api.error(err);
-        } else {
-          dispatch(actions.loadTeamDetail, res.body);
-        }
-      });
-    }
+export function loadTeamsPage(page=6) {
+  let params = {
+    page: page
   };
-}
+
+  return ({fetch}) => {
+    console.log(']]', fetch, fetch.foo);
+
+    return {
+      type: [LOAD_TEAMS_PAGE],
+      payload: {
+        promise: fetch('/teams').then(response => response.json())
+      }
+    };
+  };
+};
+
+export function loadTeamDetail(teamId) {
+  let params = {};
+
+  return ({fetch}) => ({
+    type: [LOAD_TEAM_DETAIL],
+    payload: {
+      promise: fetch('/teams/' + teamId).then(response => response.json())
+    }
+  });
+};

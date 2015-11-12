@@ -5,7 +5,6 @@ import TeamListItem from './item.react';
 
 export default class TeamList extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
     items: React.PropTypes.oneOfType([
       React.PropTypes.array,
       ImmutablePropTypes.list

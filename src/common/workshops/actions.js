@@ -1,22 +1,21 @@
-export const actions = create();
-export const feature = 'workshops';
+import moment from 'moment';
 
-export function create(api, dispatch, validate) {
-  return {
-    loadCalendarWorkshops(month) {
-      const params = {
-        month: month
-      };
+export const LOAD_WORKSHOPS_CALENDAR = 'LOAD_WORKSHOPS_CALENDAR';
 
-      api.fetch('/workshops', 'workshopsCalendar', params, function(err, res) {
-        if (err) {
-          api.error(err, res);
-        } else {
-          dispatch(actions.loadCalendarWorkshops, {
-            list: res.body.data
-          });
-        }
-      });
-    }
-  };
-}
+
+export function loadCalendarWorkshops(action) {
+  var month;
+
+  if (action && action.params) {
+    month = action.params.month;
+  }
+
+  if (!month) {
+    month = moment().format('YYYY-MM');
+  }
+
+  return ({fetch}) => ({
+    type: [LOAD_WORKSHOPS_CALENDAR],
+    payload: fetch('/shows?month=' + month).then(response => response.json())
+  });
+};

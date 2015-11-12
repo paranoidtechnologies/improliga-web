@@ -2,35 +2,38 @@ import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import EventMonth from '../events/month.react';
 import EventListItem from '../events/listItem.react';
-import React from 'react';
+import React, {PropTypes} from 'react';
 import moment from 'moment';
+import fetch from '../../common/components/fetch';
+import {loadCalendarShows} from '../../common/shows/actions';
 import './shows.styl';
 
+const {func, object} = PropTypes;
+const curMonth = moment();
+
+@fetch(loadCalendarShows, curMonth)
 export default class Shows extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired,
-    shows: React.PropTypes.object.isRequired
+    dispatch: func,
+    msg: object,
+    params: object,
+    shows: object
   }
 
-  curMonth = null
-
-  componentDidMount() {
-    this.loadData();
-  }
+  userMonth = null
 
   componentDidUpdate() {
     this.loadData();
   }
 
   loadData() {
+    const {dispatch} = this.props;
     const mon = this.getMonth().format('YYYY-MM');
 
-    if (this.curMonth !== mon) {
-      this.curMonth = mon;
-      return this.props.actions.shows.loadCalendarShows(mon);
+    if (this.userMonth !== mon) {
+      this.userMonth = mon;
+      return dispatch(loadCalendarShows, mon);
     }
   }
 
@@ -50,7 +53,7 @@ export default class Shows extends Component {
   }
 
   render() {
-    const {msg, shows} = this.props;
+    const {intl, msg, shows} = this.props;
     const date = this.getMonth();
     const month = date.month();
     const title = msg.pages.shows.title + ' ' + msg.months[month] + ' ' + date.format('YYYY');
@@ -59,6 +62,7 @@ export default class Shows extends Component {
       formatDate: msg.format.date.exact,
       formatTime: msg.format.time.exact,
       items: shows.calendar,
+      lang: intl.selectedLanguage,
       listDraw: EventListItem,
       month: date,
       msg: {
@@ -68,7 +72,7 @@ export default class Shows extends Component {
         months: msg.months,
         list: msg.pages.shows
       },
-      routeArchive: 'showsArchive'
+      routeArchive: 'shows:archive'
     };
 
     return (

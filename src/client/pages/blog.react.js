@@ -2,17 +2,16 @@ import Component from 'react-pure-render/component';
 import DocumentTitle from 'react-document-title';
 import React from 'react';
 import BlogList from '../blog/list.react';
+import fetch from '../../common/components/fetch';
+import {loadBlog} from '../../common/blog/actions';
 import './contact.styl';
 
+@fetch(loadBlog)
 export default class BlogPage extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    blog: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-  }
-
-  componentDidMount(next) {
-    return this.props.actions.blog.loadBlog();
+    actions: React.PropTypes.object,
+    blog: React.PropTypes.object,
+    msg: React.PropTypes.object,
   }
 
   render() {

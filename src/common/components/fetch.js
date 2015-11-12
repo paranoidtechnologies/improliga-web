@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 
-export default function fetch(action) {
+export default function fetch(action, props) {
 
   return Wrapped => class Fetch extends Component {
 

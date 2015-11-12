@@ -7,10 +7,10 @@ import NotFound from '../notfound.react';
 export default class TeamDetailPage extends Component {
 
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired,
-    teams: React.PropTypes.object.isRequired,
+    actions: React.PropTypes.object,
+    msg: React.PropTypes.object,
+    params: React.PropTypes.object,
+    teams: React.PropTypes.object,
   }
 
   componentDidMount() {

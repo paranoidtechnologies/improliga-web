@@ -1,6 +1,6 @@
 import Team from './team';
 import {List, Record} from 'immutable';
-import {actions} from './actions';
+import {LOAD_TEAMS_PAGE, LOAD_TEAM_DETAIL} from './actions';
 
 const initialState = new (Record({
   list: [],
@@ -17,7 +17,7 @@ export default function teamsReducer(state = initialState, action, payload) {
 
   switch (action) {
 
-    case actions.loadTeamsPage: {
+    case LOAD_TEAMS_PAGE: {
       let data;
 
       if (payload.data) {
@@ -27,7 +27,7 @@ export default function teamsReducer(state = initialState, action, payload) {
       return state.set('list', new List(data));
     }
 
-    case actions.loadTeamDetail:  {
+    case LOAD_TEAM_DETAIL:  {
       if (payload.data) {
         return state.set('detail', payload.data[0]);
       }

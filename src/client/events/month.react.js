@@ -1,27 +1,30 @@
 import Component from 'react-pure-render/component';
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import Link from '../static/link.react';
 import {momentObj} from 'react-moment-proptypes';
 import EventCalendar from '../calendar/calendar.react';
 import EventMonthList from './monthList.react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
+const {string, oneOfType, array, func, object} = PropTypes;
+
 export default class EventMonth extends Component {
   static propTypes = {
-    formatDate: React.PropTypes.string.isRequired,
-    formatTime: React.PropTypes.string.isRequired,
-    items: React.PropTypes.oneOfType([
-      React.PropTypes.array,
+    formatDate: string.isRequired,
+    formatTime: string.isRequired,
+    items: oneOfType([
+      array,
       ImmutablePropTypes.list
     ]),
-    listDraw: React.PropTypes.func.isRequired,
+    lang: string.isRequired,
+    listDraw: func.isRequired,
     month: momentObj,
-    msg: React.PropTypes.object.isRequired,
-    routeArchive: React.PropTypes.string.isRequired,
+    msg: object.isRequired,
+    routeArchive: string.isRequired,
   };
 
   render() {
-    const {formatDate, formatTime, items, listDraw, month, msg, routeArchive} = this.props;
+    const {formatDate, formatTime, items, lang, listDraw, month, msg, routeArchive} = this.props;
     const monthFormat = 'YYYY-MM';
     const prev = month.clone().subtract(1, 'month');
     const next = month.clone().add(1, 'month');
@@ -54,10 +57,10 @@ export default class EventMonth extends Component {
 
       <section className="controls">
         <div className="col-xs-6 text-center">
-          <Link params={{month: prev.format(monthFormat)}} to={routeArchive}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
+          <Link lang={lang} params={{month: prev.format(monthFormat)}} to={routeArchive}>&lt; {msg.months[prev.month()]} {prev.format('YYYY')}</Link>
         </div>
         <div className="col-xs-6 text-center">
-          <Link params={{month: next.format(monthFormat)}} to={routeArchive}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
+          <Link lang={lang} params={{month: next.format(monthFormat)}} to={routeArchive}>{msg.months[next.month()]} {next.format('YYYY')} &gt;</Link>
         </div>
         <div className="cleaner" />
       </section>

@@ -6,9 +6,9 @@ import './contact.styl';
 
 export default class Contact extends Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired,
-    contact: React.PropTypes.object.isRequired,
-    msg: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object,
+    contact: React.PropTypes.object,
+    msg: React.PropTypes.object
   }
 
   render() {

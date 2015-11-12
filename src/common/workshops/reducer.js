@@ -1,6 +1,6 @@
 import {Event, wakeUpEvent} from '../events/event';
 import {List, Record} from 'immutable';
-import {actions} from './actions';
+import {LOAD_WORKSHOPS_CALENDAR} from './actions';
 
 const initialState = new (Record({
   list: [],
@@ -17,7 +17,7 @@ export default function workshopsReducer(state = initialState, action, payload) 
 
   switch (action) {
 
-    case actions.loadCalendarWorkshops: {
+    case LOAD_WORKSHOPS_CALENDAR: {
       let data;
 
       if (payload.list) {
