@@ -32,10 +32,6 @@ const runKarma = ({singleRun}, done) => {
 };
 
 gulp.task('env', () => {
-  if (typeof process.env.NODE_ENV !== 'undefined') { // eslint-disable-line no-undef
-    env = process.env.NODE_ENV; // eslint-disable-line no-undef
-  }
-
   if (args.production) {
     env = 'production';
   }
@@ -43,8 +39,6 @@ gulp.task('env', () => {
   if (env === 'production') {
     args.production = true;
   }
-
-  process.env.NODE_ENV = env; // eslint-disable-line no-undef
 });
 
 gulp.task('build-webpack', ['env'], webpackBuild);
@@ -67,7 +61,7 @@ gulp.task('karma-dev', (done) => {
 });
 
 gulp.task('karma', (done) => {
-  runSequence(process.env.NODE_ENV === 'production' ? 'karma-ci' : 'karma-dev', done);
+  runSequence(env === 'production' ? 'karma-ci' : 'karma-dev', done);
 });
 
 gulp.task('test', (done) => {
