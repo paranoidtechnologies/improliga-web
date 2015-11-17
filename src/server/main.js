@@ -18,5 +18,8 @@ app.use(frontend);
 app.use(errorHandler);
 
 app.listen(config.port, () => {
-  console.log('Server started at port %s', config.port);
+  var env = process.env.NODE_ENV;
+
+  env = env.charAt(0).toUpperCase() + env.slice(1);
+  console.log('%s server started at port %s', env, config.port);
 });
