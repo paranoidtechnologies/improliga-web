@@ -2,12 +2,22 @@
 
 var makeWebpackConfig = require('./webpack/makeConfig');
 
+var getBrowserPath = function(browser) {
+  return browser.toLowerCase().split(/[ /-]/)[0];
+};
+
 var coverageReporter = {
-  type: process.env.CONTINUOUS_INTEGRATION ? 'lcov' : 'html',
   dir: 'coverage/',
-  subdir: function(browser) {
-    return browser.toLowerCase().split(/[ /-]/)[0];
-  }
+  reporters: [
+    {
+      type: 'html',
+      subdir: getBrowserPath
+    },
+    {
+      type: 'lcov',
+      subdir: getBrowserPath
+    }
+  ]
 };
 
 module.exports = function(config) {
