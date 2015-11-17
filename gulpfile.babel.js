@@ -39,6 +39,8 @@ gulp.task('env', () => {
   if (env === 'production') {
     args.production = true;
   }
+
+  process.env.NODE_ENV = env;
 });
 
 gulp.task('build-webpack', ['env'], webpackBuild);
