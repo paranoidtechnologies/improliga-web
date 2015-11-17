@@ -19,7 +19,7 @@ export default class Html extends Component {
       <link href={'/build/app.css?v=' + appCssHash} rel="stylesheet" />;
 
     const googleTagManager = gtmId && <script
-      dangerouslySetInnerHTML={{__html: `               
+      dangerouslySetInnerHTML={{__html: `
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -29,7 +29,7 @@ export default class Html extends Component {
       />;
 
     const googleTagManagerDataLayer = gtmId && <script
-      dangerouslySetInnerHTML={{__html: `               
+      dangerouslySetInnerHTML={{__html: `
        dataLayer.push({
         'event':'virtualPageview',
         'pageName':'${title}',
@@ -46,7 +46,7 @@ export default class Html extends Component {
           <meta content={version} name="version" />
           <title>{title}</title>
           <link href="/assets/bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-          {linkStyles}      
+          {linkStyles}
           {googleTagManager}
           {googleTagManagerDataLayer}
         </head>

@@ -85,7 +85,7 @@ function renderPage(store, renderProps, req) {
       gtmId={config.gtmId}
       isProduction={config.isProduction}
       title={DocumentTitle.rewind()}
-version={config.version}	
+version={config.version}
     />
   );
 }
