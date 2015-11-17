@@ -26,7 +26,7 @@ var config = new Map({
     appCss: getAssetHash('build/app.css'),
     appJs: getAssetHash('build/app.js')
   },
-  googleAnalyticsId: 'UA-XXXXXXX-X',
+  gtmId: 'GTM-PTHTDM', // Google Tag Manager
   isProduction: isProduction,
   port: process.env.PORT || 8000,
   version: pack.version,

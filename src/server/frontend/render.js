@@ -82,9 +82,10 @@ function renderPage(store, renderProps, req) {
     <Html
       appCssHash={config.assetsHashes.appCss}
       bodyHtml={`<div id="app">${appHtml}</div>${scriptHtml}`}
-      googleAnalyticsId={config.googleAnalyticsId}
+      gtmId={config.gtmId}
       isProduction={config.isProduction}
       title={DocumentTitle.rewind()}
+version={config.version}	
     />
   );
 }
